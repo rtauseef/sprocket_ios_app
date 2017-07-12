@@ -5,17 +5,17 @@ Feature: Verify Text Edit screen
 @done
 Scenario Outline: Verify 'Text' option
     Given I am on the "<social_media_screen_name>" screen
-    When I tap "Edit" button
+    When I touch "Edit"
     Then I should see the "Edit" screen
-    Then I tap "Text" button
+    Then I choose "text" option
     Then I should see the "TextEdit" screen
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
-    And I tap "Save" mark
+    And I choose "save" option
     Then I am on the "Edit" screen
     And I should see the photo with the "text"
-    Then I tap "Check" mark
+    Then I choose "save" option
     Then I should see the "<social_media_screen_name>" screen
    
     Examples:
@@ -23,25 +23,26 @@ Scenario Outline: Verify 'Text' option
     | Instagram Preview  |
     | CameraRoll Preview |
 
+
 @done
 Scenario: Verify text edit screen navigation
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
     And I enter unique text
-    Then I tap "Cancel" mark
+    Then I choose "cancel" option
     Then I should see the "Edit" screen
 
 @regression
 Scenario Outline: Verify Text editor screen options
     Given I am on the "TextEdit" screen for "<social_media_screen_name>" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     And I should see the photo with the "text"
     And I should not see the keyboard view
-    And I should see "Bring to front" button
-    And I should see "Delete" button
-    And I should see "Font" button
-    And I should see "Color" button
-    And I should see "Background color" button
+    And I should see "Bring to front" 
+    And I should see "Delete"
+    And I should see "Font"
+    And I should see "Color"
+    And I should see "Background color"
     
        
     Examples:
@@ -50,15 +51,17 @@ Scenario Outline: Verify Text editor screen options
     | Google Preview     |
     | CameraRoll Preview |
 
+    
+
 
 @regression
 Scenario: Verify entered text cancellation
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
-    Then I tap "Close" mark
+    Then I touch "Discard changes"
     Then I should see the "Edit" screen
     And I should see the photo with the "text"
     
@@ -67,7 +70,7 @@ Scenario: Verify entered text cancellation
 Scenario: Verify text deletion option
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I touch "Delete"
@@ -78,15 +81,14 @@ Scenario: Verify text deletion option
 Scenario: Verify font
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
-    Then I select "Font" 
-    #And I select "Avenir"
-    And I select "font_2" font
-    Then I tap "Save" mark
     Then I wait for some seconds
-    #Then I should see the text with selected "Font"
+    Then I touch "Font" 
+    And I select "font_2" font
+    Then I choose "save" option
+    Then I wait for some seconds
     Then I should see the photo with the "font_2" font
     
   
@@ -94,9 +96,9 @@ Scenario: Verify font
 Scenario: Verify font list
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     And I should see the photo with the "text"
-    Then I select "Font"
+    Then I touch "Font"
     Then I should see the following "Fonts" in the screen:
     
     | Aleo                | 
@@ -126,22 +128,22 @@ Scenario: Verify font list
 Scenario: Verify all the fonts are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview"
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     And I should see the photo with the "text"
-    Then I select "Font"
+    Then I touch "Font"
     Then I verify that all the "fonts" are applied successfully
 
 @done
 Scenario: Verify text color
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
-    Then I select "Color" 
-    And I select "Blue"
+    Then I touch "Color" 
+    And I touch "Blue"
     Then I wait for some seconds
-    Then I tap "Save" mark
+    Then I choose "save" option
     Then I wait for some seconds
     Then I should see the text with selected "Color"
       
@@ -149,10 +151,10 @@ Scenario: Verify text color
 Scenario: Verify color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
-    Then I select "Color" 
+    Then I touch "Color" 
     Then I should see the following "Colors" in the screen:
     | White      |
     | Gray       |
@@ -174,32 +176,36 @@ Scenario: Verify color list
 Scenario: Verify all the colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     Then I should see the "TextOptionEditor" screen
     And I should see the photo with the "text"
     Then I select "Color"
     Then I verify that all the "colors" are applied successfully
 
 @done
+@111
 Scenario: Verify text background
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
+    Then I should see the "Text Option Editor" screen
     And I should see the photo with the "text"
-    Then I select "Background color" 
-    And I select "Gray"
+    Then I touch "Background color" 
     Then I wait for some seconds
-    Then I tap "Save" mark
+    And I touch "Gray"
+    Then I wait for some seconds
+    Then I choose "save" option
     Then I wait for some seconds
     Then I should see the text with selected "Background Color"
       
 @regression
+@11
 Scenario: Verify background color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     And I should see the photo with the "text"
-    Then I select "Background color"
+    Then I touch "Background color"
     Then I should see the following "Background Colors" in the screen:
     | White      |
     | Gray       |
@@ -222,9 +228,9 @@ Scenario: Verify background color list
 Scenario: Verify all the background colors are applied successfully
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
-    Then I tap "Add text" mark
+    Then I choose "add_text" option
     And I should see the photo with the "text"
-    Then I select "Background color"
+    Then I touch "Background color"
     Then I verify that all the "Background colors" are applied successfully
 
     

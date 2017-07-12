@@ -28,8 +28,9 @@ Feature: Check Print Queue functionality
         And I check the product id is "com.hp.sprocket"
         And I check the library version
         And I check the application type is "HP"
-        Then I tap "Print Queue" mark
+        Then I select "printqueue" 
         And I touch "Delete All"
+        Then I wait for some seconds
         And I touch "Yes"
         Then I wait for some seconds
         Then Fetch metrics details
@@ -78,8 +79,9 @@ Feature: Check Print Queue functionality
     And I check the product id is "com.hp.sprocket"
     And I check the library version
     And I check the application type is "HP"
-    Then I tap "Print Queue" mark
+    Then I select "printqueue" 
     And I touch "Delete All"
+    And I wait for some seconds
     And I touch "Yes"
     Then I wait for some seconds
     Then Fetch metrics details

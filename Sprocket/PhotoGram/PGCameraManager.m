@@ -402,11 +402,13 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
             [PGSavePhotos promptToSavePhotos:weakSelf.viewController completion:^(BOOL savePhotos) {
                 if (savePhotos) {
                     [PGSavePhotos saveImage:photo completion:^(BOOL success, PHAsset * asset) {
-                        if (success) {
-                            [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
-                        } else {
-                            [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
-                        }
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if (success) {
+                                [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
+                            } else {
+                                [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                            }
+                        });
                     }];
                 } else {
                     [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
@@ -415,15 +417,15 @@ NSString * const kPGCameraManagerPhotoTaken = @"PGCameraManagerPhotoTaken";
         } else {
             if ([PGSavePhotos savePhotos]) {
                 [PGSavePhotos saveImage:photo completion:^(BOOL success, PHAsset * asset) {
-                    if (success) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];
-                        });
-                        [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
-                    } else {
-                        [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
-                        [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
-                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (success) {
+                            [weakSelf loadPreviewViewControllerWithPhotoAsset:asset andPhoto:photo andInfo:nil];                            
+                        } else {
+                            [weakSelf loadPreviewViewControllerWithPhoto:photo andInfo:nil];
+                        }
+                    });
+                    [[PGAnalyticsManager sharedManager] trackCameraAutoSavePreferenceActivity:@"On"];
+
                 }];
 
             } else {

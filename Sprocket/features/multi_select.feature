@@ -17,11 +17,11 @@ Feature: Verify multiselect feature
     And I should see the number of photos selected as "3"
     Then I tap on the multi selected number  
     Then I should see the "CameraRoll Preview" screen
-    And I should see "cancel" button
-    And I should see "Edit" button
-    Then I should see "Print" button
-    And I should see "Share" button
-    And I should see "Download" button
+    And I could see "cancel" option
+    And I should see "Edit" 
+    Then I could see "print" option
+    And I could see "share" option
+    And I could see "download" option
     And I should see the count of images and checkmark circle in each page when swipe "left"
     And I should see the count of images and checkmark circle in each page when swipe "right"
 
@@ -58,7 +58,7 @@ Feature: Verify multiselect feature
 
   @done
   @regression
-Scenario: Verify preview -Drawer multiselect
+    Scenario: Verify preview -Drawer multiselect
     Given I am on the "CameraRoll Photo" screen
     And I touch "Select"
     Then I should see the multiselect option enabled
@@ -66,15 +66,15 @@ Scenario: Verify preview -Drawer multiselect
     And I should see the number of photos selected as "3"
     Then I tap on the multi selected number  
     Then I am on the "CameraRoll Preview" screen
-    Then I should see "PreviewBardots" button
-    Then I tap "PreviewBardots" button
+    Then I could see "preview_bar_dots" option
+    Then I select "preview_bar_dots" 
     Then I should see the preview-drawer "slides up"
     And I should see "Print Queue" with "0" items and a right arrow
-    Then I tap "Print Queue" mark
+    Then I select "printqueue" 
     Then I verify the "content" of the popup message for "No Prints" 
     And I should see the button "OK"
     And I touch "OK"
-    Then I tap "PreviewBardots" button
+    Then I select "preview_bar_dots" 
     Then I should see the preview-drawer "closes"
 
 

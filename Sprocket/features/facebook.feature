@@ -13,7 +13,6 @@ Feature: Signin with facebook credentials and verify features
  @appium
  @fbtest
  @ios8
- @fbtest
  Scenario: Signin to Facebook
       Given I login to facebook through safari
       

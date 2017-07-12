@@ -16,10 +16,6 @@ class CameraRollPreviewScreen < Calabash::IBase
       
   end
 
-  def edit
-         "view marked:'Edit'"
-  end
-
   def print
           "* id:'printButton'"
   end
@@ -52,7 +48,7 @@ end
        "* id:'PreviewBarDots'" 
     end
     
-    def print_queue
+    def printqueue
         "view marked:'Print Queue'" 
     end
     

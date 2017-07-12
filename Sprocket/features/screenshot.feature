@@ -1,5 +1,11 @@
 Feature: Verify Screenshot feature
   As a user I want to take screenshot of the available screens
+
+    @TA18215
+    @screenshot
+    @reset
+    Scenario: Take screenshots of all the screens
+        Given  I am on the "Landing" screen
  
     @TA18215
     @screenshot

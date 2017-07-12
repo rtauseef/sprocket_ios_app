@@ -1165,9 +1165,23 @@
 		71f2dffb8966b2947e2dced6 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E39EF27419B648E500AAB884 /* SourceSansPro-Regular.ttf */; };
 		72f28ed86ea1cb1293a4f971 /* Search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B62FFB19A50E5800CB80D7 /* Search@2x.png */; };
 		731333AC1ECF68BE00E957BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 731333AE1ECF68BE00E957BB /* Localizable.strings */; };
+		733BC1ED1F0D65E600CCA697 /* PGTilingOverlayTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */; };
+		733BC1EE1F0D65E600CCA697 /* PGTilingOverlayTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */; };
+		733BC1F21F0D687F00CCA697 /* PGTilingOverlayTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */; };
+		733BC1F31F0D687F00CCA697 /* PGTilingOverlayTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */; };
+		733BC1F81F0D9E0E00CCA697 /* PGInteractionIgnorerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */; };
+		733BC1F91F0D9E0E00CCA697 /* PGInteractionIgnorerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */; };
 		7387003C1EF4BC9F004D321D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7387003E1EF4BC9F004D321D /* InfoPlist.strings */; };
 		7397DE051EE7444A00F544C0 /* PGProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F236FAC61E8721F700FC31B5 /* PGProgressView.xib */; };
+		73CAA5C61F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */; };
+		73CAA5C71F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */; };
+		73CAA5CA1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */; };
+		73CAA5CB1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */; };
+		73CAA5CE1F0C854200ACC13C /* PGTilingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */; };
+		73CAA5CF1F0C854200ACC13C /* PGTilingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */; };
 		73D294751EFD824D009BC2E1 /* PGSocialSourcesCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */; };
+		73F070611F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F070601F0EFB340071E580 /* PGTilingOverlayContainer.m */; };
+		73F070621F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F070601F0EFB340071E580 /* PGTilingOverlayContainer.m */; };
 		7b8466b0979a995b7b87c1d3 /* libPods-Sprocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ADA440740B42CF763D98B2 /* libPods-Sprocket.a */; };
 		7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D31D60EC6F001288D9 /* PGSignInButton.m */; };
 		7d77c7f45dfeb0922ccfe7e1 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 378EA80619A69E5700C72F1A /* Back@2x.png */; };
@@ -2530,6 +2544,14 @@
 		F20630131F01DC7500A369EB /* disney_headband_e_TN.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDE1F01D48700A369EB /* disney_headband_e_TN.png */; };
 		F20630141F01DC7500A369EB /* disney_headband_e_TN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FDF1F01D48700A369EB /* disney_headband_e_TN@2x.png */; };
 		F20630151F01DC7500A369EB /* disney_headband_e_TN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2062FE01F01D48700A369EB /* disney_headband_e_TN@3x.png */; };
+		F206301C1F0328F600A369EB /* PGCloudAssetClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F206301B1F0328F600A369EB /* PGCloudAssetClient.m */; };
+		F206301D1F0328F600A369EB /* PGCloudAssetClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F206301B1F0328F600A369EB /* PGCloudAssetClient.m */; };
+		F20630201F03291A00A369EB /* PGCloudAssetCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206301F1F03291A00A369EB /* PGCloudAssetCategory.m */; };
+		F20630211F03291A00A369EB /* PGCloudAssetCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206301F1F03291A00A369EB /* PGCloudAssetCategory.m */; };
+		F20630241F03292900A369EB /* PGCloudAssetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630231F03292900A369EB /* PGCloudAssetImage.m */; };
+		F20630251F03292900A369EB /* PGCloudAssetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630231F03292900A369EB /* PGCloudAssetImage.m */; };
+		F20630281F03294000A369EB /* PGCloudAssetStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630271F03294000A369EB /* PGCloudAssetStorage.m */; };
+		F20630291F03294000A369EB /* PGCloudAssetStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = F20630271F03294000A369EB /* PGCloudAssetStorage.m */; };
 		F20CE2511EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
 		F20CE2521EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m in Sources */ = {isa = PBXBuildFile; fileRef = F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */; };
 		F20CE2581EC2436400FD910D /* PGInAppMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */; };
@@ -2948,6 +2970,11 @@
 		731333AF1ECF68BE00E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		731333B01ECF68BF00E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/PG_Main.strings"; sourceTree = "<group>"; };
 		731333B11ECF68C000E957BB /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTilingOverlayTile.xib; sourceTree = "<group>"; };
+		733BC1F01F0D687F00CCA697 /* PGTilingOverlayTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTilingOverlayTile.h; sourceTree = "<group>"; };
+		733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTilingOverlayTile.m; sourceTree = "<group>"; };
+		733BC1F61F0D9E0E00CCA697 /* PGInteractionIgnorerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGInteractionIgnorerView.h; sourceTree = "<group>"; };
+		733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGInteractionIgnorerView.m; sourceTree = "<group>"; };
 		738700311EF4BC95004D321D /* cs-CZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "cs-CZ"; path = "cs-CZ.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		738700331EF4BC96004D321D /* cs-CZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "cs-CZ"; path = "cs-CZ.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		738700341EF4BC98004D321D /* cs-CZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "cs-CZ"; path = "cs-CZ.lproj/PGSwipeCoachMarksView.strings"; sourceTree = "<group>"; };
@@ -3045,6 +3072,10 @@
 		738700CE1EF4CC63004D321D /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		738700CF1EF4CCA2004D321D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		738700D01EF4CCA3004D321D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTilingOverlay2x2.xib; sourceTree = "<group>"; };
+		73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGTilingOverlay3x3.xib; sourceTree = "<group>"; };
+		73CAA5CC1F0C854200ACC13C /* PGTilingOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTilingOverlay.h; sourceTree = "<group>"; };
+		73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTilingOverlay.m; sourceTree = "<group>"; };
 		73D0F3C31EF880E100BCCAF3 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		73D0F3C41EF880E300BCCAF3 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		73D0F3C51EF880E500BCCAF3 /* zh-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-CN"; path = "zh-CN.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -3093,6 +3124,8 @@
 		73D0F4181EF8A0AA00BCCAF3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PG_Main.strings"; sourceTree = "<group>"; };
 		73D0F4191EF8A0AB00BCCAF3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73D0F41A1EF8A0AC00BCCAF3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		73F0705F1F0EFB340071E580 /* PGTilingOverlayContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGTilingOverlayContainer.h; sourceTree = "<group>"; };
+		73F070601F0EFB340071E580 /* PGTilingOverlayContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGTilingOverlayContainer.m; sourceTree = "<group>"; };
 		768D043A94A0B2FCD814399A /* libPods-PushNotificationExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PushNotificationExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A46E19068549F5C163BA6D /* Pods-Sprocket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sprocket.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket.release.xcconfig"; sourceTree = "<group>"; };
 		82006BEA1D64E5CC009D5E3B /* PGImglyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGImglyManager.h; sourceTree = "<group>"; };
@@ -4611,6 +4644,14 @@
 		F2062FF31F01D9D400A369EB /* DisneyPolaroid2Frame_TN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DisneyPolaroid2Frame_TN@2x.png"; path = "Resources/Images/Frames/DisneyPolaroid2Frame_TN@2x.png"; sourceTree = "<group>"; };
 		F2062FF41F01D9D400A369EB /* DisneyPolaroid2Frame_TN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DisneyPolaroid2Frame_TN@3x.png"; path = "Resources/Images/Frames/DisneyPolaroid2Frame_TN@3x.png"; sourceTree = "<group>"; };
 		F2062FF51F01D9D400A369EB /* DisneyPolaroid2Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DisneyPolaroid2Frame.png; path = Resources/Images/Frames/DisneyPolaroid2Frame.png; sourceTree = "<group>"; };
+		F206301A1F0328F600A369EB /* PGCloudAssetClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetClient.h; sourceTree = "<group>"; };
+		F206301B1F0328F600A369EB /* PGCloudAssetClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetClient.m; sourceTree = "<group>"; };
+		F206301E1F03291A00A369EB /* PGCloudAssetCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetCategory.h; sourceTree = "<group>"; };
+		F206301F1F03291A00A369EB /* PGCloudAssetCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetCategory.m; sourceTree = "<group>"; };
+		F20630221F03292900A369EB /* PGCloudAssetImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetImage.h; sourceTree = "<group>"; };
+		F20630231F03292900A369EB /* PGCloudAssetImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetImage.m; sourceTree = "<group>"; };
+		F20630261F03294000A369EB /* PGCloudAssetStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCloudAssetStorage.h; sourceTree = "<group>"; };
+		F20630271F03294000A369EB /* PGCloudAssetStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCloudAssetStorage.m; sourceTree = "<group>"; };
 		F20CE24F1EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HPPRSelectPhotoCollectionViewController+InAppMessageHost.h"; sourceTree = "<group>"; };
 		F20CE2501EBBF21A00FD910D /* HPPRSelectPhotoCollectionViewController+InAppMessageHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HPPRSelectPhotoCollectionViewController+InAppMessageHost.m"; sourceTree = "<group>"; };
 		F20CE2571EC2436400FD910D /* PGInAppMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGInAppMessageView.xib; sourceTree = "<group>"; };
@@ -4832,6 +4873,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		73F0705D1F0EFAD10071E580 /* Tiling */ = {
+			isa = PBXGroup;
+			children = (
+				73CAA5CC1F0C854200ACC13C /* PGTilingOverlay.h */,
+				73CAA5CD1F0C854200ACC13C /* PGTilingOverlay.m */,
+				73CAA5C51F0C684D00ACC13C /* PGTilingOverlay2x2.xib */,
+				73CAA5C91F0C6F9800ACC13C /* PGTilingOverlay3x3.xib */,
+				73F0705F1F0EFB340071E580 /* PGTilingOverlayContainer.h */,
+				73F070601F0EFB340071E580 /* PGTilingOverlayContainer.m */,
+				733BC1F01F0D687F00CCA697 /* PGTilingOverlayTile.h */,
+				733BC1F11F0D687F00CCA697 /* PGTilingOverlayTile.m */,
+				733BC1EC1F0D65E600CCA697 /* PGTilingOverlayTile.xib */,
+			);
+			name = Tiling;
+			sourceTree = "<group>";
+		};
 		821523271D82215600C0541C /* Sprocket Print */ = {
 			isa = PBXGroup;
 			children = (
@@ -5006,6 +5063,7 @@
 			isa = PBXGroup;
 			children = (
 				F27257001E983F97009E553D /* imgly */,
+				73F0705D1F0EFAD10071E580 /* Tiling */,
 				822ED5311D19F8D000F4EE4B /* PGOverlayCameraViewController.h */,
 				822ED5321D19F8D000F4EE4B /* PGOverlayCameraViewController.m */,
 				822ED5331D19F8D000F4EE4B /* PGOverlayCameraViewController.xib */,
@@ -6216,6 +6274,7 @@
 			isa = PBXGroup;
 			children = (
 				EDA212801F01B38900B6AFE4 /* AR */,
+				F20630181F0328BB00A369EB /* CloudAssetClient */,
 				F24DA7D21EAEA10200C24AAB /* Watermark */,
 				F22F12B41E78AC8E00753C5A /* Multi-Print */,
 				F22F127F1E6F387900753C5A /* Security */,
@@ -6497,6 +6556,8 @@
 				821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */,
 				E3D6810A19A2B2A6000D45E0 /* PGView.h */,
 				E3D6810B19A2B2A6000D45E0 /* PGView.m */,
+				733BC1F61F0D9E0E00CCA697 /* PGInteractionIgnorerView.h */,
+				733BC1F71F0D9E0E00CCA697 /* PGInteractionIgnorerView.m */,
 				F2E785241DDA55A30074FFB7 /* PGSocialSourcesCircleView.h */,
 				F2E785251DDA55A30074FFB7 /* PGSocialSourcesCircleView.m */,
 			);
@@ -6704,6 +6765,21 @@
 			);
 			name = Disney;
 			path = Resources/Images/Stickers/Disney;
+			sourceTree = "<group>";
+		};
+		F20630181F0328BB00A369EB /* CloudAssetClient */ = {
+			isa = PBXGroup;
+			children = (
+				F206301A1F0328F600A369EB /* PGCloudAssetClient.h */,
+				F206301B1F0328F600A369EB /* PGCloudAssetClient.m */,
+				F206301E1F03291A00A369EB /* PGCloudAssetCategory.h */,
+				F206301F1F03291A00A369EB /* PGCloudAssetCategory.m */,
+				F20630221F03292900A369EB /* PGCloudAssetImage.h */,
+				F20630231F03292900A369EB /* PGCloudAssetImage.m */,
+				F20630261F03294000A369EB /* PGCloudAssetStorage.h */,
+				F20630271F03294000A369EB /* PGCloudAssetStorage.m */,
+			);
+			name = CloudAssetClient;
 			sourceTree = "<group>";
 		};
 		F21185B71EBBD98500D8D073 /* Messaging */ = {
@@ -7166,6 +7242,7 @@
 				929CE1B81EF075C700039377 /* fork_TN@2x.png in Resources */,
 				929CE4B71EF0792000039377 /* TurquoiseFrame_TN@2x.png in Resources */,
 				F2062FFD1F01D9D400A369EB /* DisneyPolaroid1Frame.png in Resources */,
+				733BC1ED1F0D65E600CCA697 /* PGTilingOverlayTile.xib in Resources */,
 				929CDFC71EF075C600039377 /* pig.png in Resources */,
 				929CE17C1EF075C700039377 /* smoking_pipe_TN@2x.png in Resources */,
 				929CE05A1EF075C700039377 /* HP_white-sticker.png in Resources */,
@@ -7373,6 +7450,7 @@
 				929CE10A1EF075C700039377 /* sunglasses.png in Resources */,
 				929CE4AA1EF0792000039377 /* StarsOverlayFrame_TN.png in Resources */,
 				929CE1491EF075C700039377 /* fishing_fatherson_TN@3x.png in Resources */,
+				73CAA5CA1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */,
 				929CE1E51EF075C700039377 /* soda_TN@3x.png in Resources */,
 				929CE0EE1EF075C700039377 /* Mustache-dark.png in Resources */,
 				929CDFB21EF075C600039377 /* koala_TN@3x.png in Resources */,
@@ -8007,6 +8085,7 @@
 				929CE3C11EF075C800039377 /* plane_TN@3x.png in Resources */,
 				929CDFF51EF075C600039377 /* cat-celebrate_TN@2x.png in Resources */,
 				929CE3381EF075C800039377 /* moon_TN@2x.png in Resources */,
+				73CAA5C61F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */,
 				929CE4BF1EF0792000039377 /* WhiteFrame_TN@2x.png in Resources */,
 				929CE05C1EF075C700039377 /* HP_white-sticker_TN@2x.png in Resources */,
 				929CDFA51EF075C600039377 /* dog_TN@2x.png in Resources */,
@@ -8348,6 +8427,7 @@
 				264C1FF71EF1D1AB00B3BB98 /* sundae_TN@3x.png in Resources */,
 				264C1FEC1EF1D1AB00B3BB98 /* Soda_can_TN@3x.png in Resources */,
 				264C1FA11EF1D1AA00B3BB98 /* bacon_egg_TN.png in Resources */,
+				733BC1EE1F0D65E600CCA697 /* PGTilingOverlayTile.xib in Resources */,
 				264C20A91EF1D1C700B3BB98 /* catglasses_TN.png in Resources */,
 				264C21C61EF1D1FA00B3BB98 /* birds_TN@3x.png in Resources */,
 				264C1D541EF1D13100B3BB98 /* RainbowFrame_TN@2x.png in Resources */,
@@ -8555,6 +8635,7 @@
 				F2030BEA1EA5420600141855 /* imgly_license in Resources */,
 				264C20D01EF1D1C700B3BB98 /* Lips.png in Resources */,
 				264C1EB11EF1D15700B3BB98 /* wave_TN.png in Resources */,
+				73CAA5CB1F0C6F9800ACC13C /* PGTilingOverlay3x3.xib in Resources */,
 				264C1E0E1EF1D15700B3BB98 /* banner-copy_TN@2x.png in Resources */,
 				264C215E1EF1D1D400B3BB98 /* thumbs-up_TN@2x.png in Resources */,
 				264C20EC1EF1D1C700B3BB98 /* panda-mask.png in Resources */,
@@ -9176,6 +9257,7 @@
 				264C21981EF1D1ED00B3BB98 /* confetti_graduation.png in Resources */,
 				264C1FCB1EF1D1AA00B3BB98 /* icecream_tub_TN@3x.png in Resources */,
 				264C1D4F1EF1D13100B3BB98 /* PolkadotsFrame_TN.png in Resources */,
+				73CAA5C71F0C684D00ACC13C /* PGTilingOverlay2x2.xib in Resources */,
 				264C1E321EF1D15700B3BB98 /* floating_flowers_2_TN@2x.png in Resources */,
 				264C1D511EF1D13100B3BB98 /* PolkadotsFrame_TN@3x.png in Resources */,
 				264C21151EF1D1D400B3BB98 /* Football_TN.png in Resources */,
@@ -9778,6 +9860,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B3F5D31EFC5E9300F1E6FB /* PGMetarVideo.m in Sources */,
+				733BC1F91F0D9E0E00CCA697 /* PGInteractionIgnorerView.m in Sources */,
 				F2B3F5BF1EFC5E9300F1E6FB /* PGMetarArtifact.m in Sources */,
 				F2B3F5D11EFC5E9300F1E6FB /* PGMetarSource.m in Sources */,
 				F2B3F5B71EFC5E7600F1E6FB /* PGPayoffViewLivePhotoViewController.m in Sources */,
@@ -9789,6 +9872,7 @@
 				F2B3F5C41EFC5E9300F1E6FB /* PGMetarImageItem.m in Sources */,
 				7bd52e13e9c9d29169f4b5c8 /* PGSignInButton.m in Sources */,
 				488f9841d6340d3e1b52e08c /* PGSurveyManager.m in Sources */,
+				73CAA5CF1F0C854200ACC13C /* PGTilingOverlay.m in Sources */,
 				12495e2dc332c51c9c9bb3da /* PGRevealViewController.m in Sources */,
 				c2e153366dd0c752981c1913 /* PGStickerItem.m in Sources */,
 				1174168234d1a88405ac0c0b /* NSURLRequest+Helper.m in Sources */,
@@ -9802,8 +9886,10 @@
 				F2B3F5CD1EFC5E9300F1E6FB /* PGMetarPayoffViewController.m in Sources */,
 				40dd4c432d32cc53bf1523df /* PGSegmentedControlView.m in Sources */,
 				8263D7D21E7867670036E903 /* PGSavePhotos.m in Sources */,
+				73F070621F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */,
 				926F9E291EB7FB5B00EDAB65 /* PGSideBarMenuTableViewCell.m in Sources */,
 				F2B3F5AC1EFC5E5A00F1E6FB /* PGWatermarkOperationHPMetar.m in Sources */,
+				F20630251F03292900A369EB /* PGCloudAssetImage.m in Sources */,
 				23d37ed630adac695447ceca /* NSLocale+Additions.m in Sources */,
 				F2B3F5C91EFC5E9300F1E6FB /* PGMetarOfflineTagManager.m in Sources */,
 				F2B3F5AB1EFC5E5A00F1E6FB /* PGWatermarkOperationHPLink.m in Sources */,
@@ -9848,6 +9934,7 @@
 				F2B3F5C71EFC5E9300F1E6FB /* PGMetarLocationVenue.m in Sources */,
 				a87555cde15740ecf2522d3b /* PGInstagramLandingPageViewController.m in Sources */,
 				F2B3F5CF1EFC5E9300F1E6FB /* PGMetarSocial.m in Sources */,
+				733BC1F31F0D687F00CCA697 /* PGTilingOverlayTile.m in Sources */,
 				F2012E2A1E3005A70076B836 /* PGPituLandingPageViewController.m in Sources */,
 				F2B3F5A71EFC5E5A00F1E6FB /* PGPayoffProcessor.m in Sources */,
 				F2E785311DDD23B20074FFB7 /* PGQzoneLandingPageViewController.m in Sources */,
@@ -9907,16 +9994,19 @@
 				82E3DEBF1E8342330008F600 /* PGEmbellishmentMetricsManager.m in Sources */,
 				829E02881DDA64C200B025C5 /* PGSocialSourcesMenuViewController.m in Sources */,
 				F22F12841E6F539200753C5A /* PGSecretKeeper.m in Sources */,
+				F206301D1F0328F600A369EB /* PGCloudAssetClient.m in Sources */,
 				1d083780537ed0fd761b7b5c /* UIViewController+Trackable.m in Sources */,
 				1dcacb86a129f72d1a0c8dc6 /* PGGesturesView.m in Sources */,
 				829E028C1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
 				F2B3F5A81EFC5E5A00F1E6FB /* PGScanViewController.m in Sources */,
+				F20630291F03294000A369EB /* PGCloudAssetStorage.m in Sources */,
 				F2B3F5B51EFC5E7600F1E6FB /* PGPayoffViewImageViewController.m in Sources */,
 				f5b8d5b110ed3e346ffcb609 /* UITextView+Additions.m in Sources */,
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
 				F24DA7D71EAEA13800C24AAB /* (null) in Sources */,
+				F20630211F03291A00A369EB /* PGCloudAssetCategory.m in Sources */,
 				F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
 				8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
 				F2E785231DDA4E230074FFB7 /* PGSocialSourcesManager.m in Sources */,
@@ -9973,6 +10063,7 @@
 				E3AA023C1AB22CFF002E554F /* PGSurveyManager.m in Sources */,
 				EDD33F861EF9CE520028DBC8 /* PGPayoffViewWikipediaViewController.m in Sources */,
 				EDD33F6E1EF9CE520028DBC8 /* PGMetarOfflineTagManager.m in Sources */,
+				733BC1F21F0D687F00CCA697 /* PGTilingOverlayTile.m in Sources */,
 				EDD33F741EF9CE520028DBC8 /* PGMetarSocial.m in Sources */,
 				EDD33F7A1EF9CE520028DBC8 /* PGPayoffFeedbackDatabase.m in Sources */,
 				EDD33F881EF9CE520028DBC8 /* PGWikipediaTableViewCell.m in Sources */,
@@ -10001,6 +10092,7 @@
 				F2C1EEC01ECD06AE00C11BE9 /* UIImageView+Cached.m in Sources */,
 				EDD33F821EF9CE520028DBC8 /* PGPayoffViewLivePhotoViewController.m in Sources */,
 				F2B3F5A01EFC423700F1E6FB /* PGFrameItem.m in Sources */,
+				733BC1F81F0D9E0E00CCA697 /* PGInteractionIgnorerView.m in Sources */,
 				826BE96B1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				EDE0EA931F041F7B00F1D0EC /* PGWikipediaDropdownViewController.m in Sources */,
 				260BD0731DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m in Sources */,
@@ -10030,16 +10122,20 @@
 				829E028B1DDA868300B025C5 /* PGSideBarMenuViewController.m in Sources */,
 				82D6C74D1D1B47060030569F /* PGCameraManager.m in Sources */,
 				F1A3F9B11AD5EE2800EC0817 /* PGCrashlyticsLogger.m in Sources */,
+				73CAA5CE1F0C854200ACC13C /* PGTilingOverlay.m in Sources */,
 				EDD33F721EF9CE520028DBC8 /* PGMetarPayoffViewController.m in Sources */,
 				E38E96B519C79FC900EA926A /* PGWebViewerViewController.m in Sources */,
 				E34D50CC199ABC29006D80E0 /* UIFont+Style.m in Sources */,
 				825E2A931DBED51E00DB7D5C /* PGBatteryImageView.m in Sources */,
 				E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */,
 				65E025251ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
+				F20630281F03294000A369EB /* PGCloudAssetStorage.m in Sources */,
 				E34D50BE199ABA70006D80E0 /* PGInstagramLandingPageViewController.m in Sources */,
 				656FC3A61EC673BF00433269 /* PGCustomStickerManager.m in Sources */,
+				73F070611F0EFB340071E580 /* PGTilingOverlayContainer.m in Sources */,
 				F2E85D351EB7A00000569AE9 /* PGPrintQueueManager.m in Sources */,
 				924A708B1DF8C3C1009A0FB1 /* PGInterstitialAwarenessViewController.m in Sources */,
+				F20630201F03291A00A369EB /* PGCloudAssetCategory.m in Sources */,
 				826B69D81DDD4F2E0096411F /* PGSocialSourceMenuTableViewCell.m in Sources */,
 				E3D6811F19A2DE22000D45E0 /* UIImage+ImageResize.m in Sources */,
 				656FC3AB1EC6744800433269 /* UIImage+Fixup.m in Sources */,
@@ -10048,6 +10144,7 @@
 				F18C59261A702DB900DEF77C /* PGLandingMainPageViewController.m in Sources */,
 				E375385119BE4DA5009C695F /* SWRevealViewController.m in Sources */,
 				EDD33F6C1EF9CE520028DBC8 /* PGMetarLocationVenue.m in Sources */,
+				F20630241F03292900A369EB /* PGCloudAssetImage.m in Sources */,
 				EDD33F761EF9CE520028DBC8 /* PGMetarSource.m in Sources */,
 				EDD33F891EF9CE520028DBC8 /* PGOfflinePayoffDatabase.m in Sources */,
 				F2C1EECC1ED35BAF00C11BE9 /* PGInboxMessageViewController.m in Sources */,
@@ -10081,6 +10178,7 @@
 				EDD33F8D1EF9CE520028DBC8 /* PGPayoffProcessor.m in Sources */,
 				EDD33F911EF9CE520028DBC8 /* PGWatermarkOperationHPLink.m in Sources */,
 				E3B62FF819A412E900CB80D7 /* UIView+Animations.m in Sources */,
+				F206301C1F0328F600A369EB /* PGCloudAssetClient.m in Sources */,
 				26760A7F1DB00FBF00F28176 /* PGBaseAnalyticsManager.m in Sources */,
 				E316631019C0A2EA00996E20 /* UIImage+MaskImage.m in Sources */,
 				EDD33F641EF9CE520028DBC8 /* PGMetarArtifact.m in Sources */,
