@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Hata";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Resim Gönderme Hatası";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Ürün Yazılımı Yükseltmesi Sonlandırılıyor";
 
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Fotoğraf Kağıdı";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Fotoğraf Desteklenmiyor";
-
 /* The color pink */
 "Pink" = "Pembe";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Yazdırma";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Daha yüksek bir sıcaklığa ulaşılıncaya kadar yazdırma işlevi devre dışı bırakıldı. Başka bir fotoğraf göndermek için bekleyin.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Daha düşük bir sıcaklığa ulaşılıncaya kadar yazdırma işlevi devre dışı bırakıldı. Başka bir fotoğraf göndermek için bekleyin.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Yazdırma işlemi için mobil aygıtın ve yazıcının aynı Wi-Fi ağı üzerinde olması gerekir. Lütfen Wi-Fi ayarlarınızı kontrol edin.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Sprocket yazıcınız ısındıktan sonra yazdırma devam edecek.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Sprocket yazıcınız soğuduktan sonra yazdırma devam edecek.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Sürüyor...";
 
 /* The color purple */
 "Purple" = "Mor";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket zaten bir görüntüyü işliyor. Daha fazla görüntü göndermek için lütfen bekleyin.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket Soğuk";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket Sıcak";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Başka bir iş yazdırılmadan önce sprocket'in soğutulması gerekiyor. Başka bir fotoğraf göndermek için bekleyin.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Sprocket Yazıcı Kullanımda";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Aygıt tanınmıyor.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Sprocket yazıcıda bir iş işleniyor. Fotoğrafı tekrar göndermek için bekleyin.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Fotoğrafınız gönderilirken bir hata oluştu. Fotoğraf biçimi bu yazıcıda desteklenmiyor olabilir. Başka bir resim seçin. ";
+"There was an error while sending your image to the printer." = "Resim yazıcınıza gönderilirken bir hata oluştu.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Bu sembol, ürününüzü diğer evsel atıklarınızla birlikte bertaraf etmemeniz gerektiğini ifade eder. Atık ekipmanınızı; atık elektrikli ve elektronik cihazların geri dönüştürülmesi için belirtilen toplama noktasına teslim ederek bertaraf etmek sizin sorumluluğunuzdadır. Daha fazla bilgi için lütfen ev atıkları bertaraf hizmetinize başvurun veya http://www.hp.com/recycle adresine gidin.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Tüm Seçimi Kaldır";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "HP markalı ZINK Fotoğraf Kağıdı kullanın. Mavi Smartsheet sayfasını barkodu aşağı bakacak şekilde yükleyin ve yazıyı yeniden başlatın. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "HP markalı ZINK Fotoğraf Kağıdı kullanın. Mavi Smartsheet sayfasını barkodu aşağı bakacak şekilde yükleyin ve yazıyı yeniden başlatın.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Yazdırma Kuyruğu nedir?";

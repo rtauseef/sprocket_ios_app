@@ -10,13 +10,21 @@
 // the license agreement.
 //
 
-#import "HPPRPituMedia.h"
-#import "HPPRPituPhotoProvider.h"
+#import "HPPRFolderMedia.h"
 
-@implementation HPPRPituMedia
+@implementation HPPRFolderMedia
+{
+    HPPRSelectPhotoProvider *_folderProvider;
+}
+
+- (id)initWithAsset:(PHAsset *)asset provider:(HPPRSelectPhotoProvider *)provider
+{
+    _folderProvider = provider;
+    return [super initWithAsset:asset];
+}
 
 - (HPPRSelectPhotoProvider *)photoProvider {
-    return [HPPRPituPhotoProvider sharedInstance];
+    return _folderProvider;
 }
 
 @end

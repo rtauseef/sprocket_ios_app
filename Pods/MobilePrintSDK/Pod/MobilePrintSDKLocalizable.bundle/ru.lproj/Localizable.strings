@@ -50,10 +50,10 @@
 "5 x 7" = "5 x 7";
 
 /* Option for paper size */
-"8.5 x 11" = "8,5 x 11";
+"8.5 x 11" = "8.5 x 11";
 
 /* Message given when sprocket cannot print due to having an error related to the battery. */
-"A battery error has occured. Restart Sprocket to continue printing." = "Возникла ошибка батареи. Перезапустите Sprocket для продолжения печати.";
+"A battery error has occured. Restart Sprocket to continue printing." = "Возникла ошибка батареи. Перезапустите sprocket для продолжения печати.";
 
 /* Option for paper size */
 "A4" = "A4";
@@ -143,7 +143,7 @@
 "Cooling Down..." = "Охлаждение...";
 
 /* copies label in job summary */
-"Copies" = "Кол-во копий";
+"Copies" = "копий";
 
 /* copy label in job summary */
 "Copy" = "Копировать";
@@ -180,6 +180,9 @@
 
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Ошибка";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Ошибка отправки изображения";
 
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Завершение обновления микропрограммы";
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Фотобумага";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Фотография не поддерживается";
-
 /* The color pink */
 "Pink" = "Розовый";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Печать";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Печать прервана, ожидание прогрева устройства. Подождите отправлять следующее фото.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Печать прервана, ожидание охлаждения устройства. Подождите отправлять следующее фото.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Для выполнения печати ваше мобильное устройство и принтер должны быть подключены к одной и той же сети Wi-Fi. Проверьте настройки Wi-Fi.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Печать возобновится после того, как sprocket прогреется.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Печать возобновится после того, как sprocket охладится.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Обработка...";
 
 /* The color purple */
 "Purple" = "Фиолетовый";
@@ -400,7 +404,7 @@
 "Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Для выбора принтера ваше мобильное устройство и принтер должны быть подключены к одной и той же сети Wi-Fi. Проверьте настройки Wi-Fi.";
 
 /* Indicates that the firmware upgrade is being sent to the printer */
-"Sending Firmware Upgrade\nto Sprocket Printer" = "Отправка обновления микропрограммы\nна принтер Sprocket";
+"Sending Firmware Upgrade\nto Sprocket Printer" = "Отправка обновления микропрограммы\nна принтер sprocket";
 
 /* Indicates that the phone is sending an image to the printer */
 "Sending to sprocket printer" = "Отправка на принтер sprocket";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket уже выполняет обработку изображения. Подождите, прежде чем отправлять другие изображения.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket холодный";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket теплый";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Принтеру sprocket необходимо охлаждение перед печатью следующего задания. Подождите отправлять следующее фото.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Принтер sprocket используется";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Устройство не распознано.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Принтер sprocket уже выполняет задание. Подождите повторно отправлять фото.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "При отправке фотографии произошла ошибка. Формат фотографии может не поддерживаться данным принтером. Выберите другую фотографию. ";
+"There was an error while sending your image to the printer." = "Возникла ошибка при отправке изображения на принтер.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Этот символ указывает на то, что данное изделие нельзя утилизировать вместе с другими бытовыми отходами. Для защиты здоровья человека и окружающей среды отработанное оборудование необходимо сдать в специальный пункт переработки электрического и электронного оборудования. Дополнительные сведения можно получить в местной службе утилизации бытовых отходов или на сайте http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Снять выделение";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Используйте фотобумагу ZINK марки HP. Загрузите бумагу Smartsheet штрихкодом вниз и перезапустите принтер. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Используйте фотобумагу ZINK марки HP. Загрузите бумагу Smartsheet штрихкодом вниз и перезапустите принтер.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Что такое \"очередь печати\"?";

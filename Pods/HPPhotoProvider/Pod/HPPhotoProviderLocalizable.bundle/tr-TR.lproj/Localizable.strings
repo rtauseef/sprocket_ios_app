@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu fotoğraf)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu video)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 fotoğraf)";
+
+/* No comment provided by engineer. */
+" (1 video)" = " (1 video)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "%@ Erişim";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "%lu fotoğraf";
 
+/* Number of videos */
+"%lu videos" = "%lu video";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 fotoğraf";
+
+/* No comment provided by engineer. */
+"1 video" = "1 video";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Albüm silindi";
@@ -76,6 +88,9 @@
 /* No comment provided by engineer. */
 "Qzone" = "Qzone";
 
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "En Son Fotoğraflar";
+
 /* Button caption */
 "Retry" = "Yeniden Dene";
 
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "Bir fotoğraf seçmek için önce bu uygulamanın fotoğraf kitaplığınıza erişmesine onay vermeniz gerekir.";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "Videolar";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Wikipedia";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "Çevrimdışı görünüyorsunuz";

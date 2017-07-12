@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Virhe";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Kuvan lähetysvirhe";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Viimeistellään laiteohjelmistopäivitystä";
 
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Valokuvapaperi";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Valokuvaa ei tueta";
-
 /* The color pink */
 "Pink" = "Vaaleanpunainen";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Tulostaminen";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Tulostus ei ole käytettävissä, ennen kuin saavutetaan korkeampi lämpötila. Odota ennen seuraavan kuvan lähettämistä.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Tulostus ei ole käytettävissä, ennen kuin saavutetaan matalampi lämpötila. Odota ennen seuraavan kuvan lähettämistä.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Tulostus ei ole mahdollista, jos mobiililaite ja tulostin eivät ole samassa Wi-Fi-verkossa. Tarkista Wi-Fi-asetukset.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Tulostusta jatketaan, kun Sprocket on lämmennyt.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Tulostusta jatketaan, kun Sprocket on jäähtynyt.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Käsitellään...";
 
 /* The color purple */
 "Purple" = "Violetti";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket on jo käsittelemässä kuvaa. Odota, ennen kuin lähetät lisää sisältöä.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket on kylmä";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket on lämmin";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Sprocketin on jäähdyttävä ennen seuraavaa tulostustyötä. Odota ennen seuraavan kuvan lähettämistä.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Sprocket-tulostin on käytössä";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Laitetta ei tunnisteta.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Sprocket-tulostin käsittelee parhaillaan työtä. Odota, ennen kuin lähetät kuvan uudelleen.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Kuvaa lähetettäessä tapahtui virhe. Tämä tulostin ei ehkä tue kuvan muotoa. Valitse toinen kuva. ";
+"There was an error while sending your image to the printer." = "Lähetettäessä kuvaa tulostimeen tapahtui virhe.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Tämä merkki tarkoittaa sitä, että tuotetta ei saa hävittää kotitalousjätteen mukana. Käytöstä poistetut sähkö- ja elektroniikkalaitteet on toimitettava kunnan osoittamaan elektroniikkaromun keräyspisteeseen terveyden ja ympäristön suojelemiseksi. Lisätietoja saat kotitalousjätteen kerääjältä tai osoitteesta http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Poista kaikkien valinta";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Käytä HP:n omaa ZINK-valokuvapaperia. Aseta sininen Smartsheet paikoilleen viivakoodi alaspäin ja käynnistä tulostin uudelleen. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Käytä HP:n omaa ZINK-valokuvapaperia. Aseta sininen Smartsheet paikoilleen viivakoodi alaspäin ja käynnistä tulostin uudelleen.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Mikä on tulostusjono?";

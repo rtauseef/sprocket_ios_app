@@ -54,6 +54,7 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 @property (strong, nonatomic) NSTimer *startCameraTimer;
 
 @property (strong, nonatomic) NSMutableArray<HPPRMedia *> *selectedPhotos;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @property (assign, nonatomic, getter=isPortraitInterfaceOrientation) BOOL portraitInterfaceOrientation;
 
@@ -63,6 +64,7 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
     CGPoint _contentOffsetStart;
 }
 
+NSString * const kHPPRSelectPhotoRefreshImagesNotification = @"com.hp.photo.provider.notification.select.photo.refresh";
 
 #pragma mark - View management
 
@@ -98,10 +100,7 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
     
     self.backgroundView.backgroundColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRBackgroundColor];
     self.showGridView = YES;
-    
-    UIFont *labelFont = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelFont];
-    UIColor *labelColor = [[HPPR sharedInstance].appearance.settings objectForKey:kHPPRSecondaryLabelColor];
-    
+   
     [self initForDisplayType];
     
     self.spinner = [self.view HPPRAddSpinner];
@@ -117,6 +116,18 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 
     UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     [self.view addGestureRecognizer:longPressRecognizer];
+    
+    if (nil == self.childViewController) {
+        self.containerView.hidden = YES;
+    } else {
+        self.containerView.hidden = NO;
+        [self addChildViewController:self.childViewController];
+        [self.containerView addSubview:self.childViewController.view];
+        self.childViewController.view.frame = self.containerView.bounds;
+        [self.childViewController didMoveToParentViewController:self];
+    }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRefreshImageNotification:) name:kHPPRSelectPhotoRefreshImagesNotification object:nil];
     
     [self refresh];
 }
@@ -234,6 +245,14 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
         [self.spinner stopAnimating];
 
         [self initRefreshControl];
+    }];
+}
+
+- (void)handleRefreshImageNotification:(NSNotification *)notification
+{
+    [self.spinner startAnimating];
+    [self refreshImages:^{
+        [self.spinner stopAnimating];
     }];
 }
 
@@ -657,6 +676,12 @@ static const CGFloat kPhotoSelectionPinchThreshold = 1.0F;
 - (void)providerLostAccess
 {
     // do nothing
+}
+
+- (NSUInteger)selectedSegmentIndex
+{
+    // do nothing
+    return 0;
 }
 
 - (void)providerLostConnection

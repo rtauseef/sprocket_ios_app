@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Kļūda";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Attēla sūtīšanas kļūda";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Beidz programmaparatūras jaunināšanu";
 
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Fotopapīrs";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Neatbalstīts fotoattēls";
-
 /* The color pink */
 "Pink" = "Rozā";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Drukāšana";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Drukāšana ir atspējota, līdz tiks sasniegta augstāka temperatūra. Uzgaidiet un tad sūtiet citu fotoattēlu.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Drukāšana ir atspējota, līdz tiks sasniegta zemāka temperatūra. Uzgaidiet un tad sūtiet citu fotoattēlu.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Lai drukātu, jūsu mobilajai ierīcei un printerim jābūt vienā Wi-Fi tīklā. Lūdzu, pārbaudiet savus Wi-Fi iestatījumus.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Drukāšana tiks atsākta, kad printeris sprocket ir uzsilis.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Drukāšana tiks atsākta, kad printeris sprocket ir atdzisis.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Notiek apstrāde...";
 
 /* The color purple */
 "Purple" = "Violeta";
@@ -411,17 +415,17 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "Sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Printeris sprocket jau apstrādā attēlu. Lūdzu, uzgaidiet, lai nosūtītu vairāk.";
+
 /* Message given when sprocket cannot print due to being too cold */
-"Sprocket is Cold" = "Sprocket printeris ir atdzisis";
+"Sprocket is Cold" = "Printeris sprocket ir atdzisis";
 
 /* Message given when sprocket has no known error */
 "Sprocket is ready to print." = "Sprocket printeris ir gatavs drukāšanai";
 
 /* Message given when sprocket cannot print due to being too hot */
-"Sprocket is Warm" = "Sprocket printeris ir iesilis";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Pirms drukāt citu darbu, Sprocket printerim jāatdziest. Uzgaidiet un tad sūtiet citu fotoattēlu.";
+"Sprocket is Warm" = "Printeris sprocket ir iesilis";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Tiek lietots Sprocket printeris";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Ierīce nav atpazīta.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Sprocket printeris jau apstrādā darbu. Lūdzu, uzgaidiet, lai atkārtoti nosūtītu fotoattēlu.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Nosūtot fotoattēlu, radās kļūda. Fotoattēlu formāts, iespējams, netiek atbalstīts šajā printerī. Izvēlieties citu attēlu. ";
+"There was an error while sending your image to the printer." = "Sūtot attēlu uz printeri, radās kļūda.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Šis simbols nozīmē, ka savu izstrādājumu nedrīkstat izmest mājsaimniecības atkritumos. Jūsu pienākums ir saudzēt cilvēku veselību un vidi, nododot nolietoto elektrisko un elektronisko aprīkojumu paredzētajā savākšanas vietā pārstrādei. Lai saņemtu plašāku informāciju, lūdzu, sazinieties ar savu sadzīves atkritumu apsaimniekošanas uzņēmumu vai dodieties uz http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Noņemt visu atlasi";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Izmantojiet HP zīmola ZINK fotopapīru. Ievietojiet zilo Smartsheet ar svītrkodu uz leju un pārstartējiet printeri. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Izmantojiet HP zīmola ZINK fotopapīru. Ievietojiet zilo Smartsheet ar svītrkodu uz leju un pārstartējiet printeri.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Kas ir drukas rinda?";

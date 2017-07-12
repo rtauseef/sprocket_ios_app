@@ -10,20 +10,33 @@
 // the license agreement.
 //
 
-#import "HPPRPituLoginProvider.h"
+#import "HPPRPartyFolderPhotoProvider.h"
+#import "NSBundle+HPPRLocalizable.h"
 
-@implementation HPPRPituLoginProvider
+@implementation HPPRPartyFolderPhotoProvider
 
 #pragma mark - Initialization
 
-+ (HPPRPituLoginProvider *)sharedInstance
++ (instancetype)sharedInstance
 {
     static dispatch_once_t once;
-    static HPPRPituLoginProvider *sharedInstance;
+    static HPPRPartyFolderPhotoProvider *sharedInstance;
     dispatch_once(&once, ^{
-        sharedInstance = [[HPPRPituLoginProvider alloc] init];
+        sharedInstance = [[HPPRPartyFolderPhotoProvider alloc] init];
     });
     return sharedInstance;
+}
+
+#pragma mark - Properties
+
+- (NSString *)name
+{
+    return @"sprocket-party";
+}
+
+- (NSString *)localizedName
+{
+    return HPPRLocalizedString(@"sprocket-party", @"Name of the Sprocket Party camera roll folder");
 }
 
 @end

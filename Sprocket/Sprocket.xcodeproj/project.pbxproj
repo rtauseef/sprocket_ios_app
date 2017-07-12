@@ -2571,7 +2571,7 @@
 		F24DA7D31EAEA13800C24AAB /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */; };
 		F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */; };
 		F24DA7D51EAEA13800C24AAB /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */; };
-		F24DA7D71EAEA13800C24AAB /* (null) in Sources */ = {isa = PBXBuildFile; };
+		F24DA7D71EAEA13800C24AAB /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		F254DDE91EF9E7F600A0FE87 /* PGFrameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82362A171D59408E0019F024 /* PGFrameItem.m */; };
 		F27256FD1E95ACA3009E553D /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
 		F27256FF1E96B2A6009E553D /* imgly_license in Resources */ = {isa = PBXBuildFile; fileRef = F27256FE1E96B2A6009E553D /* imgly_license */; };
@@ -9619,13 +9619,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sprocket-cal-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		502EED59CEC201E8990249C8 /* [CP] Check Pods Manifest.lock */ = {
@@ -9634,13 +9637,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sprocket Print-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		658DF9D81EDF898600F0EBCB /* Copy proper Urban Airship configuration */ = {
@@ -9716,13 +9722,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sprocket-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8271DCD81D46D07B00B21549 /* ShellScript */ = {
@@ -9744,9 +9753,43 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket Print/Pods-Sprocket Print-resources.sh",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPActiveCircle@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPArrow@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPCheck@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPDoNoEnter.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPDoNoEnter@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPDownload@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPGear@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPInactiveCircle@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMagnify@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowDown@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowLeft@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowRight@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowUp@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMultipageWire.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrint@2x~ipad.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrint@2x~iphone.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrintLater@2x~ipad.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrintLater@2x~iphone.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPSelected@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPSelected@3x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPUnselected@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPUnselected@3x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPWaste@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPX@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/Manta/MPBTProgressView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPMultiPageView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPPageRangeView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPPageView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPPrintJobsActionView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPRuleView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/MP.storyboard",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -9759,9 +9802,80 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket/Pods-Sprocket-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check_Inactive1.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check_Inactive1@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check_Inactive1@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRBack@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRCameraCell.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRCameraCell@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRCameraCell@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRMyFeedOn@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRRetry@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRSearch@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Loading_Image@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Video.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Video@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Video@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPRAlertStripView.xib",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionMessageView.xib",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionRetryView.xib",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPRSegmentedControlView.xib",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPR.storyboard",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/HPPhotoProviderLocalizable.bundle",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/TencentOpenApi_IOS_Bundle.bundle",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPActiveCircle@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPArrow@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPCheck@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPDoNoEnter.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPDoNoEnter@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPDownload@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPGear@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPInactiveCircle@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMagnify@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowDown@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowLeft@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowRight@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowUp@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMultipageWire.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrint@2x~ipad.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrint@2x~iphone.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrintLater@2x~ipad.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrintLater@2x~iphone.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPSelected@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPSelected@3x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPUnselected@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPUnselected@3x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPWaste@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPX@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/Manta/MPBTProgressView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPMultiPageView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPPageRangeView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPPageView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPPrintJobsActionView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPRuleView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/MP.storyboard",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle",
+				"$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -9885,9 +9999,80 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-Sprocket-cal/Pods-Sprocket-cal-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+				"${PODS_ROOT}/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Album_Placeholder@1x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Album_Placeholder@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Album_Placeholder@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check_Inactive1.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check_Inactive1@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Check_Inactive1@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRBack@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRCameraCell.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRCameraCell@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRCameraCell@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRFacebookNoPhotoAlbum@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRMyFeedOff@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRMyFeedOn@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRRetry@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/HPPRSearch@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Loading_Image@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Video.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Video@2x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Assets/Video@3x.png",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPRAlertStripView.xib",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionMessageView.xib",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPRNoInternetConnectionRetryView.xib",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPRSegmentedControlView.xib",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/Classes/HPPR.storyboard",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/HPPhotoProviderLocalizable.bundle",
+				"${PODS_ROOT}/HPPhotoProvider/Pod/TencentOpenApi_IOS_Bundle.bundle",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPActiveCircle@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPArrow@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPCheck@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPDoNoEnter.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPDoNoEnter@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPDownload@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPGear@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPInactiveCircle@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMagnify@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowDown@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowLeft@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowRight@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMeasurementArrowUp@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPMultipageWire.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrint@2x~ipad.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrint@2x~iphone.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrintLater@2x~ipad.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPPrintLater@2x~iphone.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPSelected@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPSelected@3x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPUnselected@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPUnselected@3x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPWaste@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Assets/MPX@2x.png",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/Manta/MPBTProgressView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPMultiPageView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPPageRangeView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPPageView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPPrintJobsActionView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/Private/MPRuleView.xib",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/Classes/MP.storyboard",
+				"${PODS_ROOT}/MobilePrintSDK/Pod/MobilePrintSDKLocalizable.bundle",
+				"$PODS_CONFIGURATION_BUILD_DIR/UrbanAirship-iOS-SDK-Pods-Sprocket-cal/AirshipResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -10068,7 +10253,7 @@
 				826BE96D1E85B693000BE3FA /* PGFrameManager.m in Sources */,
 				656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
-				F24DA7D71EAEA13800C24AAB /* (null) in Sources */,
+				F24DA7D71EAEA13800C24AAB /* BuildFile in Sources */,
 				F20630211F03291A00A369EB /* PGCloudAssetCategory.m in Sources */,
 				F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
 				8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,

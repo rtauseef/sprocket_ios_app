@@ -10,10 +10,10 @@
 // the license agreement.
 //
 
-#import "HPPRCameraRollPhotoProvider.h"
+#import "HPPRFolderPhotoProvider.h"
 
-@interface HPPRPituPhotoProvider : HPPRCameraRollPhotoProvider
+@interface HPPRPituPhotoProvider : HPPRFolderPhotoProvider
 
-+ (HPPRPituPhotoProvider *)sharedInstance;
++ (instancetype)sharedInstance;
 
 @end

@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Σφάλμα";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Σφάλμα αποστολής εικόνας";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Ολοκλήρωση αναβάθμισης υλικολογισμικού σε εξέλιξη";
 
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Φωτογραφικό χαρτί";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Η φωτογραφία δεν υποστηρίζεται";
-
 /* The color pink */
 "Pink" = "Ροζ";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Εκτύπωση";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Η εκτύπωση είναι απενεργοποιημένη έως ότου επιτευχθεί υψηλότερη θερμοκρασία. Αναμονή για αποστολή επόμενης φωτογραφίας.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Η εκτύπωση είναι απενεργοποιημένη έως ότου επιτευχθεί χαμηλότερη θερμοκρασία. Αναμονή για αποστολή επόμενης φωτογραφίας.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Για να γίνει εκτύπωση, η φορητή συσκευή και ο εκτυπωτής πρέπει να έχουν συνδεθεί στο ίδιο δίκτυο Wi-Fi. Ελέγξτε τις ρυθμίσεις Wi-Fi.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Η εκτύπωση θα συνεχιστεί μόλις ζεσταθεί ο sprocket.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Η εκτύπωση θα συνεχιστεί μόλις κρυώσει ο sprocket.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Επεξεργασία...";
 
 /* The color purple */
 "Purple" = "Μωβ";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Ο sprocket επεξεργάζεται ήδη μια εικόνα. Περιμένετε για να στείλετε περισσότερες.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Ο sprocket είναι κρύος";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Ο sprocket είναι ζεστός";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Ο sprocket πρέπει να κρυώσει πριν από την εκτύπωση άλλης εργασίας. Αναμονή για αποστολή επόμενης φωτογραφίας.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Ο εκτυπωτής sprocket χρησιμοποιείται";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Η συσκευή δεν αναγνωρίζεται.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Ο εκτυπωτής sprocket επεξεργάζεται ήδη μια εργασία. Περιμένετε για να επαναληφθεί η αποστολή της φωτογραφίας.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Σφάλμα κατά την αποστολή της φωτογραφίας σας. Αυτή η μορφή φωτογραφίας ενδεχομένως να μην υποστηρίζεται σε αυτόν τον εκτυπωτή. Επιλέξτε άλλη εικόνα. ";
+"There was an error while sending your image to the printer." = "Παρουσιάστηκε σφάλμα κατά την αποστολή της εικόνας στον εκτυπωτή.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Αυτό το σύμβολο σημαίνει ότι δεν πρέπει να απορρίπτετε το προϊόν μαζί με τα υπόλοιπα οικιακά απορρίμματα. Αντίθετα θα πρέπει να προστατεύετε τη δημόσια υγεία και το περιβάλλον παραδίδοντας τον άχρηστο εξοπλισμό σας στα ειδικά σημεία περισυλλογής για την ανακύκλωση του άχρηστου ηλεκτρικού και ηλεκτρονικού εξοπλισμού. Για περισσότερες πληροφορίες, επικοινωνήστε με την υπηρεσία της περιοχής σας που ασχολείται με την απόρριψη των οικιακών απορριμάτων ή επισκεφτείτε τη διεύθυνση http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Αποεπιλογή όλων";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Χρησιμοποιήστε φωτογραφικό χαρτί ZINK της HP. Τοποθετήστε το μπλε Smartsheet, με τον γραμμοκώδικα προς τα κάτω, και επανεκκινήστε τον εκτυπωτή. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Χρησιμοποιήστε φωτογραφικό χαρτί ZINK της HP. Τοποθετήστε το μπλε Smartsheet, με τον γραμμοκώδικα προς τα κάτω, και επανεκκινήστε τον εκτυπωτή.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Τι είναι η ουρά εκτύπωσης;";

@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Errore";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Errore Invio Immagine";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Aggiornamento firmware in corso";
 
@@ -230,7 +233,7 @@
 "MAC Address" = "Indirizzo MAC";
 
 /* Message given when the printer can't be contacted. */
-"Make sure the sprocket printer is on and bluetooth connected." = "Assicurarsi che la stampante sprocket sia accesa e collegata con bluetooth.";
+"Make sure the sprocket printer is on and bluetooth connected." = "Make sure the sprocket printer is on and bluetooth connected.";
 
 /* Body for firmware download error dialog */
 "Make sure you are connected to the internet and try again." = "Verificare il collegamento a Internet e riprovare.";
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Carta fotografica";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Carta fotografica non supportata";
-
 /* The color pink */
 "Pink" = "Rosa";
 
@@ -336,7 +336,7 @@
 "Print Buffer Full" = "Buffer di stampa pieno";
 
 /* Activity title of the print queue when the share button is tapped */
-"Print Queue" = "Coda stampa";
+"Print Queue" = "Coda di stampa";
 
 /* No comment provided by engineer. */
 "Print queue is empty" = "Coda di stampa vuota";
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "In stampa";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "La stampa è disabilitata finché non è raggiunta una temperatura più alta. Attendere per inviare un'altra foto.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "La stampa è disabilitata finché non è raggiunta una temperatura più bassa. Attendere per inviare un'altra foto.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Per stampare è necessario che il dispositivo mobile e la stampante siano collegati alla stessa rete Wi-Fi. Controllare le impostazioni di Wi-Fi.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "La stampa riprenderà dopo il riscaldamento della stampante Sprocket.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "La stampa riprenderà dopo il raffreddamento della stampante Sprocket.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Elaborazione in corso...";
 
 /* The color purple */
 "Purple" = "Viola";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket sta già elaborando un'immagine. Attendere prima di inviare altro.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Stampante Sprocket fredda";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Stampante Sprochet calda";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "La stampante deve raffreddarsi prima di stampare un altro lavoro. Attendere per inviare un'altra foto.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Stampante Sprocket in uso";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Il dispositivo non è riconosciuto.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "La stampante sprocket sta già elaborando un lavoro. Attendere prima di inviare nuovamente la foto.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Si è verificato un errore durante l'invio della foto. Il formato della foto potrebbe non essere supportato da questa stampante. Scegliere un'altra immagine. ";
+"There was an error while sending your image to the printer." = "Si è verificato un errore durante l'invio dell'immagine alla stampante.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Questo simbolo indica il divieto di smaltire il prodotto insieme ai rifiuti domestici. È responsabilità dell'utente salvaguardare la salute dell'uomo e dell'ambiente, consegnando le apparecchiature dismesse al punto di raccolta designato per il riciclaggio dei rifiuti elettrici o elettronici. Per ulteriori informazioni, contattare il servizio locale di smaltimento rifiuti, o visitare http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Deseleziona tutto";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Usare Carta fotografica marchio ZINK HP. Caricare lo smartsheet azzurro, con il codice a barre in basso e riavviare la stampante. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Usare Carta fotografica marchio ZINK HP. Caricare lo Smartsheet azzurro, con il codice a barre in basso e riavviare la stampante.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Che cosa è la Coda di stampa?";

@@ -74,13 +74,13 @@
 "Add a print to the Print Queue and receive a notification when you are near your printer.  Tap your notification or simply come back to this app to print your projects." = "Legg en utskrift til utskriftskøen og motta en melding når du er i nærheten av skriveren din.  Trykk på meldingene dine eller kom rett og slett tilbake til dette programmet for å skrive ut prosjektene dine.";
 
 /* Title of the Add Print to the Print Later Queue Screen */
-"Add Print" = "Legg til skriver";
+"Add Print" = "Legg til utskrift";
 
 /* Add image to print queue button label */
-"Add to Print Queue" = "Legg til skriverkø";
+"Add to Print Queue" = "Legg til utskriftskø";
 
 /* Text used on a button that selects all pages for printing */
-"ALL" = "Alle";
+"ALL" = "ALLE";
 
 /* No comment provided by engineer. */
 "All" = "Alle";
@@ -146,7 +146,7 @@
 "Copies" = "Kopier";
 
 /* copy label in job summary */
-"Copy" = "Kopier";
+"Copy" = "Kopi";
 
 /* The cover is open */
 "Cover Open" = "Åpent deksel";
@@ -167,37 +167,40 @@
 "Done" = "Ferdig";
 
 /* Title for firmware download error dialog */
-"Downloading Firmware Error" = "Feil ved nedlasting av firmware";
+"Downloading Firmware Error" = "Feil ved nedlasting av fastvare";
 
 /* Indicates that the firmware upgrade is being downloaded from the internet */
-"Downloading Firmware Upgrade" = "Nedlasting av firmwareoppgradering";
+"Downloading Firmware Upgrade" = "Nedlasting av fastvareoppgradering";
 
 /* Message given when sprocket cannot print due to a system error */
-"Due to a system error, restart sprocket to continue printing." = "På grunn av en systemfeil, start om sprocket for å fortsette utskriften.";
+"Due to a system error, restart sprocket to continue printing." = "På grunn av en systemfeil, start sprocket på nytt for å fortsette utskriften.";
 
 /* Text used to give an example of how to enter a page range */
 "e.g. 1,3-5" = "f.eks. 1,3-5";
 
 /* Message given when sprocket cannot print due to not recognizing data from our app */
-"Error" = ":Feil";
+"Error" = "Feil";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Feil ved sending av bilde";
 
 /* Indicates that a firmware upgrade has started */
-"Finishing Firmware Upgrade" = "Avslutter firmwareoppgradering";
+"Finishing Firmware Upgrade" = "Avslutter fastvareoppgradering";
 
 /* Title for dialog given after a successful firmware update */
-"Firmware Updated" = "Firmware oppdatert";
+"Firmware Updated" = "Fastvare oppdatert";
 
 /* Indicates that a firmware upgrade has completed */
-"Firmware Upgrade Complete" = "Firmwareoppgradering fullført";
+"Firmware Upgrade Complete" = "FFastvareoppgradering fullført";
 
 /* Message given when sprocket cannot be reached */
-"Firmware Upgrade Error" = "Feil ved firmwareoppgradering";
+"Firmware Upgrade Error" = "Feil ved fastvareoppgradering";
 
 /* Indicates that a firmware update has failed */
-"Firmware Upgrade Failed" = "Firmwareoppgradering mislyktes";
+"Firmware Upgrade Failed" = "Fastvareoppgradering mislyktes";
 
 /* Title of field displaying the printer's firmware version */
-"Firmware Version" = "Firmwareversjon:";
+"Firmware Version" = "Fastvareversjon";
 
 /* The color green */
 "Green" = "Grønn";
@@ -206,7 +209,7 @@
 "Grey" = "Grå";
 
 /* Title of field displaying the printer's hardware version */
-"Hardware Version" = "Hardwareversjon";
+"Hardware Version" = "Maskinvareversjon";
 
 /* Description */
 "HP encourages customers to recycle used electronic hardware, HP original print cartridges, and rechargeable batteries. For more information about recycling programs, go to www.hp.com/recycle." = "HP oppfordrer kunder til å gjenvinne elektronisk utstyr, originale HP-skriverkassetter og oppladbare batterier. Du finner flere opplysninger om gjenvinningsprogrammer ved å gå til www.hp.com/recycle.";
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Fotopapir";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Foto ikke støttet";
-
 /* The color pink */
 "Pink" = "Rosa";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Skriver ut";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Utskriften er deaktivert til en høyere temperatur blir nådd. Vent med å sende et annet bilde.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Utskriften deaktivert til en lavere temperatur blir nådd. Vent med å sende et annet bilde.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Utskrift krever at mobilenheten og skriveren skal være på samme Wi-Fi-nettverk. Sjekk Wi-Fi-innstillingene dine.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Utskriften vil fortsette når Sprocket har varmet opp.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Utskriften vil fortsette når Sprocket har kjølt seg ned.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Behandler …";
 
 /* The color purple */
 "Purple" = "Lilla";
@@ -400,7 +404,7 @@
 "Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Valg av skriver krever at mobilenheten og skriveren skal være på samme Wi-Fi-nettverk. Sjekk Wi-Fi-innstillingene dine.";
 
 /* Indicates that the firmware upgrade is being sent to the printer */
-"Sending Firmware Upgrade\nto Sprocket Printer" = "Sending av firmwareoppgradering\nto Sprocket-skriver";
+"Sending Firmware Upgrade\nto Sprocket Printer" = "Sending av fastvareoppgradering\nto Sprocket-skriver";
 
 /* Indicates that the phone is sending an image to the printer */
 "Sending to sprocket printer" = "Sender til sprocket-skriver";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket behandler allerede et bilde. Vent med å sende flere.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket er kald";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket er varm";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Sprocket trenger å kjøle seg ned før du skriver ut en ny jobb. Vent med å sende et annet bilde.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Sprocket-skriver i bruk";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Enheten gjenkjennes ikke:";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Sprocket-skriveren behandler allerede en jobb. Vent med å sende bilder.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Det oppstod en feil ved sending av bildet ditt. Bildetformat støttes kanskje ikke på denne skriveren. Velg et annet bilde. ";
+"There was an error while sending your image to the printer." = "En feil oppstod ved sending av bilde til skriver.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Dette symbolet betyr at det ikke skal kastes sammen med annet husholdningsavfall. I stedet er det ditt ansvar å beskytte helse og miljø ved å levere det kasserte utstyret til et angitt innsamlingssted for resirkulering av kassert elektrisk og elektronisk utstyr. For mer informasjon, vennligst kontakt renovasjonstjenesten din, eller gå til http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Fjern all avmerking";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Bruk HP-merket SINK-fotopapir. Last inn blå Smartsheet med strekkode ned, og start skriveren på nytt. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Bruk HP-merket SINK-fotopapir. Last inn blå Smartsheet med strekkode ned, og start skriveren på nytt.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Hva er utskriftskø?";

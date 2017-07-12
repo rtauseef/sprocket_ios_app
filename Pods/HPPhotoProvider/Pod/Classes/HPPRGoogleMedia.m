@@ -71,9 +71,17 @@
             }
         }
         
+        HPPRGoogleLoginProvider *provider = [HPPRGoogleLoginProvider sharedInstance];
+
         self.userName = [attributes objectForKey:@"userName"];
+        if (self.userName.length == 0) {
+            self.userName = [provider.user objectForKey:@"userName"];
+        }
         
         self.userProfilePicture = [attributes objectForKey:@"userThumbnail"];
+        if (self.userProfilePicture.length == 0) {
+            self.userProfilePicture = [provider.user objectForKey:@"imageURL"];
+        }
         
         // NOTE: Don't localize this date, it comes from the API always in the same format regardless the language.
         /*NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -81,7 +89,7 @@
         NSString *dateString = [attributes objectForKey:@"updated"];
         self.createdTime = [dateFormatter dateFromString:dateString];*/
         
-        self.text = [attributes objectForKey:@"title"];
+        self.text = [attributes objectForKey:@"media:description"];
         
         self.objectID = self.standardUrl;
         

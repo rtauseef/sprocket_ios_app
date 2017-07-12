@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu φωτογραφίες)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu βίντεο)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 φωτογραφία)";
+
+/* No comment provided by engineer. */
+" (1 video)" = " (1 βίντεο)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "Πρόσβαση στο %@";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "%lu φωτογραφίες";
 
+/* Number of videos */
+"%lu videos" = "%lu βίντεο";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 φωτογραφία";
+
+/* No comment provided by engineer. */
+"1 video" = "1 βίντεο";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Το άλμπουμ έχει διαγραφεί";
@@ -76,6 +88,9 @@
 /* No comment provided by engineer. */
 "Qzone" = "Qzone";
 
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "Πρόσφατες φωτογραφίες";
+
 /* Button caption */
 "Retry" = "Επανάληψη";
 
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "Για να επιλέξετε μια φωτογραφία, πρέπει πρώτα να εξουσιοδοτήσετε αυτή την εφαρμογή ώστε να έχει πρόσβαση στη συλλογή φωτογραφιών.";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "Βίντεο";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Wikipedia";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "Φαίνεται ότι δεν έχετε συνδεθεί";
