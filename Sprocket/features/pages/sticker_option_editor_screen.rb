@@ -10,10 +10,6 @@ class StickerOptionEditorScreen < Calabash::IBase
         "label marked:'sticker-options-tool-screen'"
     end
     
-    def close
-        "UIButton marked:'Discard changes'"
-    end
-
     def save
       "UIButton marked:'sticker-options-tool-apply-btn'"
     end

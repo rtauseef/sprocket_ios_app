@@ -18,7 +18,7 @@ Feature: Verify multiselect feature
     Then I tap on the multi selected number  
     Then I should see the "CameraRoll Preview" screen
     And I could see "cancel" option
-    And I could see "edit" option
+    And I should see "Edit" 
     Then I could see "print" option
     And I could see "share" option
     And I could see "download" option

@@ -17,7 +17,7 @@ Feature: Verify embellishment metrics
     Then I select "sticker_0" sticker
     Then I touch "Delete"
     Then I should see the "Edit" screen
-    Then I choose "sticker" option
+    Then I touch "Sticker"
     And I select "Face Category" tab
     Then I select "sticker_11" sticker
     #Then I should see the "StickerOptionEditor" screen
@@ -29,8 +29,7 @@ Feature: Verify embellishment metrics
     And I should see the photo with the "sticker_3" sticker from "Decorative Category" tab
     And I should see the photo with the "sticker_7" sticker from "Summer Category" tab
     And I should see the photo with the "sticker_11" sticker from "Face Category" tab
-    Then I choose "check" option
-    And I wait for some seconds
+    Then I choose "save" option
     And I wait for some seconds
 	And I wait for some seconds
 	And I wait for some seconds   
@@ -58,7 +57,7 @@ Feature: Verify embellishment metrics
     Then I am on the "StickerOptionEditor" screen
     Then I choose "save" option
     Then I should see the "Edit" screen
-    And I choose "frame" option
+    And I touch "Frame"
     Then I select "frame_1" frame
     Then I should see the photo with the "frame_1" frame
     Then I am on the "Frame Editor" screen
@@ -67,7 +66,7 @@ Feature: Verify embellishment metrics
     And I wait for some seconds
     Then I select "autofix"
     Then I wait for some seconds
-    Then I choose "check" option
+    Then I choose "save" option
     And I wait for some seconds
     And I wait for some seconds
     And I wait for some seconds
@@ -95,9 +94,7 @@ Feature: Verify embellishment metrics
     And I should see the photo with the sticker from "Decorative Category" tab
     Then I choose "save" option
     Then I should see the "Edit" screen
-    Then I choose "check" option
-    And I wait for some seconds
-    And I wait for some seconds
+    Then I choose "save" option
     And I wait for some seconds
     And I wait for some seconds  
     And I wait for some seconds

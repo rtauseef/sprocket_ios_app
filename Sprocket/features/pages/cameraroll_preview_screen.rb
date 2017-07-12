@@ -16,10 +16,6 @@ class CameraRollPreviewScreen < Calabash::IBase
       
   end
 
-  def edit
-         "view marked:'Edit'"
-  end
-
   def print
           "* id:'printButton'"
   end

@@ -9,11 +9,7 @@ class FrameEditorScreen < Calabash::IBase
     def title
         "label marked:'frame-tool-screen'"
     end
-    
-    def close
-        "UIButton marked:'Discard changes'"
-    end
-
+  
     def save
        "UIButton marked:'frame-tool-apply-btn'"
     end

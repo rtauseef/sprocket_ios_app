@@ -37,22 +37,22 @@ Given(/^I am on the "(.*?)" screen for "(.*?)"$/) do |screen_name, photo_source|
             macro %Q|I am on the "CameraRoll Preview" screen|        
         end  
     end    
-    macro %Q|I choose "edit" option|
+    macro %Q|I touch "Edit"|
     macro %Q|I should see the "Edit" screen|
     if screen_name =="TextEdit"
         macro %Q|I choose "text" option|
         macro %Q|I should see the "TextEdit" screen|
     else
         if screen_name =="FrameEditor"
-            macro %Q|I choose "frame" option|
+            macro %Q|I touch "Frame"|
             macro %Q|I should see the "FrameEditor" screen|
 		else
 			if screen_name =="StickerEditor"
-				macro %Q|I choose "sticker" option|
+				macro %Q|I touch "Sticker"|
 				macro %Q|I should see the "StickerEditor" screen|
 			else
 				if screen_name =="FilterEditor"
-					macro %Q|I choose "filter" option|
+					macro %Q|I touch "Filter"|
 					macro %Q|I should see the "FilterEditor" screen|
                 else
                     if screen_name =="BrushEditor"
@@ -267,7 +267,7 @@ Then(/^I verify that all the "(.*?)" are applied successfully$/) do |option|
                     macro %Q|I should see the photo with the "#{sticker_id}" sticker from "#{$sticker_tab}" tab|
                     macro %Q|I touch "Delete"|
                     macro %Q|I should see the "Edit" screen|
-                    macro %Q|I choose "sticker" option|
+                    macro %Q|I touch "Sticker"|
                     macro %Q|I should see the "StickerEditor" screen|
                     i= i + 1
                     sleep(SLEEP_SCREENLOAD)
