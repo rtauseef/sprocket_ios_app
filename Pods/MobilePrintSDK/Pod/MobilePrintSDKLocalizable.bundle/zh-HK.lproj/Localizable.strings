@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "錯誤";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "傳送影像時發生錯誤";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "正在完成韌體升級";
 
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "相紙";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "不支援的相片";
-
 /* The color pink */
 "Pink" = "粉色";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "列印";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "溫度上升前會停止列印。 等候傳送另一張相片。";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "溫度下降前會停止列印。 等候傳送另一張相片。";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "行動裝置和印表機必須在同一個 Wi-Fi 網路才能列印。 請檢查您的 Wi-Fi 設定。";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "列印將在 Sprocket 暖機後繼續進行。";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "列印將在 Sprocket 降溫後繼續進行。";
+
+/* No comment provided by engineer. */
+"Processing..." = "正在處理...";
 
 /* The color purple */
 "Purple" = "紫色";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket 已經在處理影像。 請等候傳送更多。";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket 已冷卻";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket 暖機完成";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Sprocket 需要冷卻，才能列印其他工作。 等候傳送另一張相片。";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Sprocket 印表機使用中";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "無法辨識裝置。";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Sprocket 印表機已經在處理工作。 請等候重新傳送相片。";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "傳送相片時發生錯誤。 本印表機可能不支援此相片格式。 選擇其他影像。 ";
+"There was an error while sending your image to the printer." = "將影像傳送到印表機時發生錯誤。";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "此符號代表不能將您的產品與其他家庭廢棄物一起丟棄。 您應該將廢棄設備送至指定的電子電機設備回收點，以保護人類健康與環境。 如需更多資料，請與您的家庭廢棄物棄置服務處聯絡，或者造訪 http://www.hp.com/recycle。";
@@ -471,7 +472,7 @@
 "Unselect All" = "全部取消選取";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "使用 HP 品牌 ZINK 相紙。 放入藍色 Smartsheet，條碼朝下，並重新啟動印表機。 ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "使用 HP 品牌 ZINK 相紙。 放入藍色 Smartsheet，條碼朝下，並重新啟動印表機。";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "什麼是列印佇列？";

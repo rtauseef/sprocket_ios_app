@@ -1,0 +1,494 @@
+/* No comment provided by engineer. */
+"%d Print" = "%d مطبوع";
+
+/* No comment provided by engineer. */
+"%d Prints" = "%d من المطبوعات";
+
+/* No comment provided by engineer. */
+"%d/%d Print" = "%1$d/%2$d مطبوع";
+
+/* No comment provided by engineer. */
+"%d/%d Prints" = "%1$d/%2$d من المطبوعات";
+
+/* Number of copies */
+"%ld Copies" = "%ld من النسخ";
+
+/* page range label in job summary */
+"%ld of %ld Pages" = "%1$ld من %2$ld من الصفحات";
+
+/* No comment provided by engineer. */
+"1 Copy" = "نسخة واحدة";
+
+/* The printer will shut off after 10 minutes */
+"10 minutes" = "10 دقائق";
+
+/* Option for paper size */
+"10x13cm" = "10×13 سم";
+
+/* Option for paper size */
+"10x15cm" = "10×15 سم";
+
+/* Option for paper size */
+"13x18cm" = "13×18 سم";
+
+/* Option for paper size */
+"2 x 3" = "2 × 3";
+
+/* The printer will shut off after 3 minutes */
+"3 minutes" = "3 دقائق";
+
+/* Option for paper size */
+"4 x 5" = "4 × 5";
+
+/* Option for paper size */
+"4 x 6" = "4 × 6";
+
+/* The printer will shut off after 5 minutes */
+"5 minutes" = "5 دقائق";
+
+/* Option for paper size */
+"5 x 7" = "5 × 7";
+
+/* Option for paper size */
+"8.5 x 11" = "8.5 × 11";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"A battery error has occured. Restart Sprocket to continue printing." = "قد حدث في البطارية. أعد تشغيل Sprocket لمتابعة الطباعة.";
+
+/* Option for paper size */
+"A4" = "A4";
+
+/* Option for paper size */
+"A5" = "A5";
+
+/* Option for paper size */
+"A6" = "A6";
+
+/* Add multipage pdf to print queue button label */
+"Add %ld Pages" = "إضافة %ld من الصفحات";
+
+/* Add single pdf doc to print queue button label */
+"Add 1 Page" = "إضافة صفحة واحدة";
+
+/* fotter text describing print queue */
+"Add a print to the Print Queue and receive a notification when you are near your printer.  Tap your notification or simply come back to this app to print your projects." = "أضف مطبوعًا إلى \"قائمة انتظار الطباعة\" وتمكن من تلقي إعلام عندما تكون بالقرب من طابعتك.  انقر فوق الإعلام الخاص بك أو عد إلى هذا التطبيق لطباعة مشروعاتك.";
+
+/* Title of the Add Print to the Print Later Queue Screen */
+"Add Print" = "إضافة مطبوع";
+
+/* Add image to print queue button label */
+"Add to Print Queue" = "إضافة إلى قائمة انتظار الطباعة";
+
+/* Text used on a button that selects all pages for printing */
+"ALL" = "الكل";
+
+/* No comment provided by engineer. */
+"All" = "الكل";
+
+/* The printer will never shut off */
+"Always On" = "نشط دومًا";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete %d Prints?" = "هل تريد بالتأكيد حذف %d من المطبوعات؟";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete 1 Print?" = "هل تريد بالتأكيد حذف مطبوع واحد؟";
+
+/* Title of field displaying how many minutes the device is on before it automatically powers off */
+"Auto Off" = "إيقاف التشغيل التلقائي";
+
+/* Let's the user know their job will be printed in black-and-white */
+"B&W" = "أبيض وأسود";
+
+/* Message given when sprocket cannot print due to having an error related to the battery. */
+"Battery Error" = "خطأ في البطارية";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Battery Low" = "البطارية منخفضة";
+
+/* Title of field displaying battery level */
+"Battery Status" = "حالة البطارية";
+
+/* The color black */
+"Black" = "أسود";
+
+/* No comment provided by engineer. */
+"Black & White mode" = "وضع الأبيض والأسود";
+
+/* The color blue */
+"Blue" = "أزرق";
+
+/* The color brown */
+"Brown" = "بني";
+
+/* Title */
+"California Rechargeable Battery Take-back Notice" = "إشعار استرجاع البطارية القابلة لإعادة الشحن في كاليفورنيا";
+
+/* button bar cancel button */
+"Cancel" = "إلغاء الأمر";
+
+/* Title */
+"Chemical substances" = "مواد كيميائية";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Clear paper jam and restart the printer by pressing and holding the power button." = "نظّف انحشار الورق وأعد تشغيل الطابعة بالضغط مع الاستمرار على زر الطاقة.";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Close the cover to proceed." = "أغلق الغطاء للمتابعة.";
+
+/* Message given when sprocket cannot print due to having a low battery */
+"Connect your sprocket to a power source to continue use." = "وصّل طابعة sprocket الخاصة بك بمصدر طاقة لمتابعة الاستخدام.";
+
+/* Message given when sprocket cannot print due to bing in a cooling mode */
+"Cooling Down..." = "جارٍ التبريد..";
+
+/* copies label in job summary */
+"Copies" = "نُسخ";
+
+/* copy label in job summary */
+"Copy" = "نسخ";
+
+/* The cover is open */
+"Cover Open" = "الغطاء مفتوح";
+
+/* No comment provided by engineer. */
+"Default printer not currently available" = "الطابعة الافتراضية غير متوفرة حاليًا";
+
+/* No comment provided by engineer. */
+"Delete" = "حذف";
+
+/* No comment provided by engineer. */
+"Delete Print from Print Queue" = "حذف مطبوع قائمة انتظار الطباعة";
+
+/* Title */
+"Disposal of waste equipment by users" = "التخلص من الأجهزة التالفة من قبل المستخدمين";
+
+/* Used on a button for closing the dialog */
+"Done" = "تم";
+
+/* Title for firmware download error dialog */
+"Downloading Firmware Error" = "خطأ في تنزيل البرنامج الثابت";
+
+/* Indicates that the firmware upgrade is being downloaded from the internet */
+"Downloading Firmware Upgrade" = "تنزيل ترقية البرنامج الثابت";
+
+/* Message given when sprocket cannot print due to a system error */
+"Due to a system error, restart sprocket to continue printing." = "نتيجة لخطأ في النظام، أعد تشغيل sprocket لمتابعة الطباعة.";
+
+/* Text used to give an example of how to enter a page range */
+"e.g. 1,3-5" = "مثال، 1 و 3 إلى 5";
+
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"Error" = "خطأ";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "خطأ في إرسال الصورة";
+
+/* Indicates that a firmware upgrade has started */
+"Finishing Firmware Upgrade" = "إنهاء ترقية البرنامج الثابت";
+
+/* Title for dialog given after a successful firmware update */
+"Firmware Updated" = "تم تحديث البرنامج الثابت";
+
+/* Indicates that a firmware upgrade has completed */
+"Firmware Upgrade Complete" = "اكتمل تحديث البرنامج الثابت";
+
+/* Message given when sprocket cannot be reached */
+"Firmware Upgrade Error" = "خطأ في ترقية البرنامج الثابت";
+
+/* Indicates that a firmware update has failed */
+"Firmware Upgrade Failed" = "فشلت ترقية البرنامج الثابت";
+
+/* Title of field displaying the printer's firmware version */
+"Firmware Version" = "إصدار البرنامج الثابت";
+
+/* The color green */
+"Green" = "أخضر";
+
+/* The color grey */
+"Grey" = "رمادي";
+
+/* Title of field displaying the printer's hardware version */
+"Hardware Version" = "إصدار الجهاز";
+
+/* Description */
+"HP encourages customers to recycle used electronic hardware, HP original print cartridges, and rechargeable batteries. For more information about recycling programs, go to www.hp.com/recycle." = "تشجع شركة HP عملائها على إعادة تدوير الأجهزة الإلكترونية وخراطيش الطباعة الأصلية من HP والبطاريات القابلة لإعادة الشحن المستخدمة. للمزيد من المعلومات حول برامج إعادة التدوير، تفضل بزيارة www.hp.com/recycle.";
+
+/* Description */
+"HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "تلتزم شركة HP بتقديم معلومات لعملائنا بشأن المواد الكيميائية في منتجاتنا حسب الضرورة للتوافق مع المتطلبات القانونية مثل REACH‏ (تنظيم EC رقم 1907/لعام 2006 الخاص بالبرلمان والمجلس الأوروبي). يمكن العثور على تقرير المعلومات الكيميائية لهذا المنتج على الموقع: www.hp.com/go/reach";
+
+/* Description */
+"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "تطرح شركة HP عددًا متزايدًا من برامج مرتجعات المنتجات وإعادة التصنيع في العديد من الدول/المناطق، بالإضافة إلى الشركاء الذين يملكون عددًا من أكبر مراكز إعادة تصنيع المنتجات الإلكترونية على مستوى العالم. وتحافظ HP على الموارد عن طريق إعادة بيع بعض منتجاتها الأكثر شيوعًا. للحصول على المزيد من المعلومات المتعلقة بإعادة تدوير منتجات HP، يُرجى زيارة موقع: www.hp.com/recycle";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Incorrect Paper Type" = "نوع ورق غير صحيح";
+
+/* Option of the push notification to send another push notification later */
+"Later" = "لاحقًا";
+
+/* Message given when sprocket cannot print due to having no paper */
+"Load paper with the included Smartsheet to continue printing." = "حمّل الورق باستخدام \"الورقة الذكية\" لمتابعة الطباعة.";
+
+/* Title of field displaying the printer's mac address */
+"MAC Address" = "عنوان MAC";
+
+/* Message given when the printer can't be contacted. */
+"Make sure the sprocket printer is on and bluetooth connected." = "تأكد من تشغيل طابعة sprocket وتوصيل تقنية bluetooth.";
+
+/* Body for firmware download error dialog */
+"Make sure you are connected to the internet and try again." = "تأكد من أنك متصل بإنترنت، ثم أعد المحاولة.";
+
+/* Monitoring of regions (location) not available */
+"Monitoring not available" = "لا تتوفر المراقبة";
+
+/* job name label */
+"Name" = "الاسم";
+
+/* Indicates that the device will never power off */
+"Never" = "مطلقًا";
+
+/* No comment provided by engineer. */
+"Next" = "التالي";
+
+/* Indicates that no sprocket printers are connected */
+"No sprockets Connected" = "لا توجد أجهزة sprocket متصلة";
+
+/* No comment provided by engineer. */
+"No Wi-Fi connection" = "لا يوجد اتصال Wi-Fi";
+
+/* Printer details not available */
+"Not Available" = "غير متوفر";
+
+/* Used to denote a page range.  IE: x 'of' y pages */
+"of" = "من";
+
+/* Dismisses dialog without taking action */
+"OK" = "موافق";
+
+/* The color orange */
+"Orange" = "برتقالي";
+
+/* Table heading for list of all available printers, except for the most recently used printer */
+"Other Printers" = "طابعات أخرى";
+
+/* Message given when sprocket cannot print due to having no paper
+   The printer is out of paper */
+"Out of Paper" = "نفد الورق";
+
+/* Used to specify that a range of pages can be displayed */
+"Page Range" = "نطاق الصفحة";
+
+/* Title of the Page Settings Screen */
+"Page Settings" = "إعدادات الصفحة";
+
+/* Instructions for pairing a printer */
+"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "قم بإقران طابعة sprocket المزوّدة بتقنية bluetooth لديك بهذا الجهاز. تأكد من تشغيل طابعة sprocket وتوصيل تقنية bluetooth.";
+
+/* Message given when sprocket cannot print due to the cover being open */
+"Paper Cover Open" = "غطاء الورق مفتوح";
+
+/* Message given when sprocket cannot print due to having a paper jam */
+"Paper has Jammed" = "انحشر الورق";
+
+/* There is a paper jam in the printer */
+"Paper Jam" = "انحشار الورق";
+
+/* Title of the Paper Size screen */
+"Paper Size" = "حجم الورق";
+
+/* Title of the Paper Type screen */
+"Paper Type" = "نوع الورق";
+
+/* Default job name of the print send to the printer */
+"Photo" = "صورة فوتوغرافية";
+
+/* Option for paper type */
+"Photo Paper" = "ورق صور فوتوغرافية";
+
+/* The color pink */
+"Pink" = "وردي";
+
+/* Option for paper type */
+"Plain Paper" = "ورق عادي";
+
+/* Title of the Preview pane in any print or add-to-queue screen */
+"Preview" = "معاينة";
+
+/* Print button label */
+"Print" = "طباعة";
+
+/* Print button label with multiple pages */
+"Print %ld Pages" = "طباعة %ld من الصفحات";
+
+/* Print button label single page */
+"Print 1 Page" = "طباعة صفحة واحدة";
+
+/* Print button label for printing multiple jobs */
+"Print All" = "طباعة الكل";
+
+/* Caption of the button for printing */
+"Print all %lu" = "طباعة جميع %lu";
+
+/* Caption of the button for printing */
+"Print both" = "طباعة كليهما";
+
+/* The print buffer is full */
+"Print Buffer Full" = "ذاكرة التخزين المؤقت للطباعة ممتلئة";
+
+/* Activity title of the print queue when the share button is tapped */
+"Print Queue" = "قائمة انتظار الطباعة";
+
+/* No comment provided by engineer. */
+"Print queue is empty" = "قائمة انتظار الطباعة فارغة";
+
+/* Title of the print settings screen */
+"Print Settings" = "إعدادات الطباعة";
+
+/* Bluetooth print button label */
+"Print to sprocket" = "طباعة إلى sprocket";
+
+/* No comment provided by engineer. */
+"Printer" = "الطابعة";
+
+/* The printer is available and there are print later jobs in the print queue */
+"Printer nearby. Projects waiting to be printed..." = "طابعة قريبة. جارٍ انتظار طباعة المشروعات...";
+
+/* The printer is printing */
+"Printing" = "طباعة";
+
+/* No comment provided by engineer. */
+"Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "تتطلب الطباعة أن يكون جهازك المحمول وطابعتك على شبكة Wi-Fi نفسها. يُرجى التحقق من إعدادات Wi-Fi لديك.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "سيتم استئناف الطباعة بعد تدفئة جهاز Sprocket لديك.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "سيتم استئناف الطباعة بعدما يبرد جهاز Sprocket لديك.";
+
+/* No comment provided by engineer. */
+"Processing..." = "جارٍ المعالجة...";
+
+/* The color purple */
+"Purple" = "بنفسجي";
+
+/* Message given when sprocket has no known error
+   The printer is ready to print */
+"Ready" = "استعداد";
+
+/* Table heading for the printer that has most recently been printed to */
+"Recent Printer" = "الطابعة الحالية";
+
+/* No comment provided by engineer. */
+"Recent printer not currently available" = "الطابعة الحالية غير متوفرة حاليًا";
+
+/* Title */
+"Recycling program" = "برنامج إعادة التدوير";
+
+/* The color red */
+"Red" = "أحمر";
+
+/* Title */
+"Safety data sheets" = "أوراق بيانات السلامة";
+
+/* Description */
+"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "تتوفر كل من أوراق بيانات السلامة والمعلومات الوقائية عن المنتج والمعلومات البيئية على موقع www.hp.com/go/ecodata أو حسب الطلب.";
+
+/* No comment provided by engineer. */
+"Select All" = "تحديد الكل";
+
+/* Title for screen listing all available sprocket printers */
+"Select Printer" = "تحديد طابعة";
+
+/* No comment provided by engineer. */
+"Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "يتطلب تحديد طباعة أن يكون جهازك المحمول وطابعتك على شبكة Wi-Fi نفسها. يُرجى التحقق من إعدادات Wi-Fi لديك.";
+
+/* Indicates that the firmware upgrade is being sent to the printer */
+"Sending Firmware Upgrade\nto Sprocket Printer" = "إرسال ترقية البرنامج الثابت\nإلى طابعة Sprocket";
+
+/* Indicates that the phone is sending an image to the printer */
+"Sending to sprocket printer" = "إرسال إلى طابعة sprocket";
+
+/* No comment provided by engineer. */
+"Settings" = "الإعدادات";
+
+/* Title for screen listing all available sprocket printers */
+"sprocket" = "sprocket";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "تجري طابعة Sprocket معالجة بالفعل. يرجى الانتظار لإرسال المزيد.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Sprocket is Cold" = "طابعة Sprocket باردة";
+
+/* Message given when sprocket has no known error */
+"Sprocket is ready to print." = "طابعة Sprocket جاهزة للطباعة.";
+
+/* Message given when sprocket cannot print due to being too hot */
+"Sprocket is Warm" = "طابعة Sprocket دافئة";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket Printer in Use" = "طابعة Sprocket قيد الاستخدام";
+
+/* Message given when sprocket cannot be reached */
+"Sprocket Printer Not Connected" = "طابعة Sprocket غير متصلة";
+
+/* Title of field displaying latest errors */
+"Status" = "الحالة";
+
+/* Title of a table section */
+"SUPPORT:" = "الدعم:";
+
+/* Message given when sprocket cannot print due to a system error */
+"System Error Occured" = "حدث خطأ في النظام";
+
+/* Title of field for displaying the technical infomration
+   Title of table view cell used for displaying technical information
+   Title of Technical Information screen */
+"Technical Information" = "المعلومات الفنية";
+
+/* Message given when sprocket cannot print due to not recognizing data from our app */
+"The device is not recognized." = "تعذر التعرف على الجهاز.";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"There was an error while sending your image to the printer." = "حدث خطأ أثناء إرسال صورتك إلى الطابعة.";
+
+/* Description */
+"This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "يشير هذا الرمز إلى أنه يجب عدم التخلص من منتجك مع النفايات المنزلية الأخرى. وبدلاً من ذلك، يقع على عاتقك مسؤولية المحافظة على الصحة البشرية والبيئة عن طريق التخلص من نفايات الأجهزة التي تستهلكها بتسليمها لأحد مراكز جمع النفايات المخصصة لأغراض إعادة تدوير نفايات الأجهزة الكهربائية والإلكترونية المستهلكة. للحصول على مزيدٍ من المعلومات، يُرجى الاتصال بخدمة جمع النفايات المنزلية، أو زيارة موقع الويب http://www.hp.com/recycle.";
+
+/* Body for firmware upgrade error where the reason for the error is unknown */
+"Unknown status" = "حالة غير معروفة";
+
+/* A color we don't recognize */
+"Unrecognized Color" = "لون غير معروف";
+
+/* Message given when sprocket has an unrecgonized error */
+"Unrecognized Error" = "خطأ غير معروف";
+
+/* A status we don't recognize */
+"Unrecognized Status" = "حالة غير متعرف عليها";
+
+/* No comment provided by engineer. */
+"Unselect All" = "إلغاء تحديد الكل";
+
+/* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "استخدم ورق الصور الفوتوغرافية HP ZINK. حمّل \"الورقة الذكية\" التجريبية واجعل الرمز الشريطي لأسفل وأعد تشغيل الطابعة.";
+
+/* footer heading describing print queue */
+"What is Print Queue?" = "ما المقصود \"بقائمة انتظار الطباعة\"؟";
+
+/* The color white */
+"White" = "أبيض";
+
+/* No comment provided by engineer. */
+"Wi-Fi Required" = "يلزم Wi-Fi";
+
+/* The color yellow */
+"Yellow" = "أصفر";
+
+/* No comment provided by engineer. */
+"Your device does not support the region monitoring, it is not possible to fire alarms base on position" = "جهازك لا يدعم مراقبة المنطقة، فلا يمكن لتنبيهات الحريق أن تستند إلى الموضع";
+
+/* Body of dialog giving instructions on how to proceed after a firmware upgrade */
+"Your sprocket printer will shut down now. Turn your sprocket back on and continue the fun!" = "سيتم إيقاف تشغيل طابعة sprocket الخاصة بك الآن. شغل طابعة sprocket الخاصة بك مرة أخرى وواصل المرح!";
+

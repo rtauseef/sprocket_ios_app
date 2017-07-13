@@ -2,8 +2,8 @@
 "CFBundleDisplayName" = "PushNotificationExtension";
 
 /* (No Commment) */
-"CFBundleName" = "$(PRODUCT NAME)";
+"CFBundleName" = "${PRODUCT_NAME}";
 
 /* (No Commment) */
-"CFBundleShortVersionString" = "1.0";
+"CFBundleShortVersionString" = "1 0";
 

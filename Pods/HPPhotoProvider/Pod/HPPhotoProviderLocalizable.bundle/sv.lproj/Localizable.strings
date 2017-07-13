@@ -1,20 +1,26 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu foton)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu videor)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 foto)";
 
+/* No comment provided by engineer. */
+" (1 video)" = " (1 video)";
+
 /* Title of an alert indicates the specified social network login is not longer valid */
-"%@ Access" = "%@ Åtkomst";
+"%@ Access" = "%@-åtkomst";
 
 /* Albums of the specified social network */
-"%@ Albums" = "%@ Album";
+"%@ Albums" = "%@-album";
 
 /* Photos of the specified social network */
-"%@ Photos" = "Foton från %@";
+"%@ Photos" = "%@-foton";
 
 /* Number of posts */
-"%@ posts" = "%@ poster";
+"%@ posts" = "%@-poster";
 
 /* Number of photos */
 "%li photos" = "%li foton";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "%lu foton";
 
+/* Number of videos */
+"%lu videos" = "%lu videor";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 foto";
+
+/* No comment provided by engineer. */
+"1 video" = "1 video";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Album raderat";
@@ -76,6 +88,9 @@
 /* No comment provided by engineer. */
 "Qzone" = "Qzone";
 
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "Senaste foton";
+
 /* Button caption */
 "Retry" = "Försök igen";
 
@@ -83,7 +98,7 @@
 "Settings" = "Inställningar";
 
 /* Message of an alert requesting authorization to access the Instagram photos */
-"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "%1$@ appen använder Instagram-foton för att skapa snygga ögonblicksbilder. Ge %2$@ åtkomst till dina Instagram-foton för att fortsätta.";
+"The %@ app uses Instagram photos to create awesome snapshots. Please allow %@ to access your Instagram photos in order to continue." = "%1$@-appen använder Instagram-foton för att skapa snygga ögonblicksbilder. Ge %2$@ åtkomst till dina Instagram-foton för att fortsätta.";
 
 /* Indicates that a user's photo album was deleted */
 "The album was deleted" = "Albumet raderades";
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "För att välja ett foto måste du först godkänna att den här appen får tillgång till ditt fotobibliotek.";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "Videor";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Wikipedia";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "Det verkar som att du är offline";

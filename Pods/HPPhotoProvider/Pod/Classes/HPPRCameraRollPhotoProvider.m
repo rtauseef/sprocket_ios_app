@@ -71,23 +71,23 @@ int const kPhotosPerRequest = 50;
 {
     NSMutableString *text = [NSMutableString stringWithFormat:@"%@", self.album.name];
     NSUInteger photoCount = self.album.photoCount;
-    
+
     if (1 == photoCount) {
         [text appendString:HPPRLocalizedString(@" (1 photo)", nil)];
     } else {
         [text appendFormat:HPPRLocalizedString(@" (%lu photos)", @"Number of photos"), (unsigned long)photoCount];
     }
-    
+
     if (self.displayVideos) {
         NSUInteger videoCount = self.album.videoCount;
-    
+
         if (1 == videoCount) {
             [text appendString:HPPRLocalizedString(@" (1 video)", nil)];
         } else {
             [text appendFormat:HPPRLocalizedString(@" (%lu videos)", @"Number of videos"), (unsigned long)videoCount];
         }
     }
-    
+
     return [NSString stringWithString:text];
 }
 
@@ -108,7 +108,7 @@ int const kPhotosPerRequest = 50;
 - (void)refreshAlbumWithCompletion:(void (^)(NSError *error))completion
 {
     [self getThumbnailPhotosFromCameraRoll];
-    
+
     completion(nil);
 }
 
@@ -116,42 +116,42 @@ int const kPhotosPerRequest = 50;
 {
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
     fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"localizedTitle" ascending:YES],];
-    
+
     PHFetchResult *cameraRollAlbum = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:fetchOptions];
-    
+
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAny options:fetchOptions];
-    
+
     PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:fetchOptions];
-    
+
     NSMutableArray *albums = [NSMutableArray array];
     [cameraRollAlbum enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
         [self addAlbum:collection toArray:albums];
     }];
-    
+
     [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
         if (collection.assetCollectionSubtype != PHAssetCollectionSubtypeSmartAlbumUserLibrary) {
             [self addAlbum:collection toArray:albums];
         }
     }];
-    
+
     [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
         [self addAlbum:collection toArray:albums];
     }];
-    
+
     completion(albums, nil);
 }
 
 - (void)addAlbum:(PHAssetCollection *)collection toArray:(NSMutableArray *)albums
 {
     PHFetchResult *fetchPhotosResult = [PHAsset fetchAssetsInAssetCollection:collection options:nil];
-    
+
     HPPRAlbum *album = [[HPPRAlbum alloc] init];
     album.assetCollection = collection;
     album.photoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeImage];
     if (self.displayVideos) {
         album.videoCount = [fetchPhotosResult countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
     }
-    
+
     if (album.photoCount > 0 || album.videoCount > 0) {
         [albums addObject:album];
     }
@@ -177,15 +177,15 @@ int const kPhotosPerRequest = 50;
     } else {
         result = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
     }
-    
+
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:result.count];
-    
+
     for (PHAsset *asset in result) {
         [images addObject:[[HPPRCameraRollMedia alloc] initWithAsset:asset]];
     }
-    
+
     [self replaceImagesWithRecords:images];
-    
+
     return images;
 }
 

@@ -114,8 +114,8 @@
         
         if (url != nil) {
             NSError *error = nil;
-            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"s([0-9]+)(\\-c)?/" options:NSRegularExpressionCaseInsensitive error:&error];
-            NSString *modifiedString = [regex stringByReplacingMatchesInString:url options:0 range:NSMakeRange(0, [url length]) withTemplate:@"s$1-c-no/"];
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"/s([0-9]+)(\\-c)?/" options:NSRegularExpressionCaseInsensitive error:&error];
+            NSString *modifiedString = [regex stringByReplacingMatchesInString:url options:0 range:NSMakeRange(0, [url length]) withTemplate:@"/s$1-c-no/"];
             [mutDict setValue:modifiedString forKey:attributeName];
         }
     }

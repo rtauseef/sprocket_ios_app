@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu fotoattēli)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu videoklipi)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 fotoattēls)";
+
+/* No comment provided by engineer. */
+" (1 video)" = " (1 videoklips)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "%@ piekļuve";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "%lu fotoattēli";
 
+/* Number of videos */
+"%lu videos" = "%lu videoklipi";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 fotoattēls";
+
+/* No comment provided by engineer. */
+"1 video" = "1 videoklips";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Albums izdzēsts";
@@ -76,6 +88,9 @@
 /* No comment provided by engineer. */
 "Qzone" = "Qzone";
 
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "Jaunākie fotoattēli";
+
 /* Button caption */
 "Retry" = "Mēģināt atkārtoti";
 
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "Lai atlasītu fotoattēlu, jums vispirms jāatļauj šai programmai piekļūt jūsu fotoattēlu bibliotēkai.";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "Videoklipi";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Enciklopēdija Vikipēdija";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "Šķiet, ka esat bezsaistes režīmā";

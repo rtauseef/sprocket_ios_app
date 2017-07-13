@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu 張相片)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu 個視訊)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 張相片)";
+
+/* No comment provided by engineer. */
+" (1 video)" = " (1 個視訊)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "%@ 存取權";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "%lu 張相片";
 
+/* Number of videos */
+"%lu videos" = "%lu 個視訊";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 張相片";
+
+/* No comment provided by engineer. */
+"1 video" = "1 個視訊";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "已刪除相簿";
@@ -76,6 +88,9 @@
 /* No comment provided by engineer. */
 "Qzone" = "Qzone";
 
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "最近相片";
+
 /* Button caption */
 "Retry" = "重試";
 
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "若要選取相片，您必須先授權此應用程式存取您的相片媒體櫃。";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "視訊";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Wikipedia";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "您似乎已離線";

@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu fénykép)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu videó)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 fénykép)";
+
+/* No comment provided by engineer. */
+" (1 video)" = " (1 videó)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "%@ hozzáférés";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "%lu fénykép";
 
+/* Number of videos */
+"%lu videos" = "%lu videó";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 fénykép";
+
+/* No comment provided by engineer. */
+"1 video" = "1 videó";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Album törölve";
@@ -76,6 +88,9 @@
 /* No comment provided by engineer. */
 "Qzone" = "Qzone";
 
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "Legújabb fényképek";
+
 /* Button caption */
 "Retry" = "Újra";
 
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "Egy fénykép kiválasztásához először engedélyeznie kell, hogy ez az alkalmazás hozzáférhessen a fényképek könyvtárához.";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "Videók";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Wikipédia";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "Úgy tűnik, hogy offline módban van";

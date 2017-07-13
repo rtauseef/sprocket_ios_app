@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu fotografias)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu vídeos)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 fotografia)";
+
+/* No comment provided by engineer. */
+" (1 video)" = " (1 vídeo)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "Acesso %@";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "%lu fotografias";
 
+/* Number of videos */
+"%lu videos" = "%lu vídeos";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 fotografia";
+
+/* No comment provided by engineer. */
+"1 video" = "1 vídeo";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Álbum eliminado";
@@ -76,6 +88,9 @@
 /* No comment provided by engineer. */
 "Qzone" = "Qzone";
 
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "Fotografias recentes";
+
 /* Button caption */
 "Retry" = "Tentar novamente";
 
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "Para selecionar uma fotografia tem de primeiro autorizar esta aplicação de modo a aceder à sua biblioteca de imagens.";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "Vídeos";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Wikipedia";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "Parece estar offline";

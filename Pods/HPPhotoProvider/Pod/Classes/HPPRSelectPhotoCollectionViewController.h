@@ -26,6 +26,9 @@ typedef NS_ENUM(NSUInteger, HPPRSelectPhotoCollectionViewMode) {
 @property (nonatomic, weak) id<HPPRSelectPhotoCollectionViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *customNoPhotosMessage;
 @property (assign, nonatomic) BOOL allowMultiSelect;
+@property (strong, nonatomic) UIViewController *childViewController;
+
+extern NSString * const kHPPRSelectPhotoRefreshImagesNotification;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 

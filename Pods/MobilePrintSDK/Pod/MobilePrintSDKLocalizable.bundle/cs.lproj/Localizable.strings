@@ -104,7 +104,7 @@
 "Battery Error" = "Chyba baterie";
 
 /* Message given when sprocket cannot print due to having a low battery */
-"Battery Low" = "Battery Low";
+"Battery Low" = "Nízké nabití baterie";
 
 /* Title of field displaying battery level */
 "Battery Status" = "Stav baterie";
@@ -128,7 +128,7 @@
 "Cancel" = "Storno";
 
 /* Title */
-"Chemical substances" = "Chemical substances";
+"Chemical substances" = "Chemické látky";
 
 /* Message given when sprocket cannot print due to having a paper jam */
 "Clear paper jam and restart the printer by pressing and holding the power button." = "Uvolněte uvíznutý papír a restartujte tiskárnu stisknutím a podržením tlačítka napájení.";
@@ -137,13 +137,13 @@
 "Close the cover to proceed." = "Pokračujte zavřením krytu.";
 
 /* Message given when sprocket cannot print due to having a low battery */
-"Connect your sprocket to a power source to continue use." = "Connect your sprocket to a power source to continue use.";
+"Connect your sprocket to a power source to continue use." = "Pro další používání připojte tiskárnu sprocket ke zdroji napájení.";
 
 /* Message given when sprocket cannot print due to bing in a cooling mode */
 "Cooling Down..." = "Chlazení…";
 
 /* copies label in job summary */
-"Copies" = "Počet kopií:";
+"Copies" = "Kopie";
 
 /* copy label in job summary */
 "Copy" = "Kopie";
@@ -176,10 +176,13 @@
 "Due to a system error, restart sprocket to continue printing." = "Došlo k chybě systému, restartujte tiskárnu sprocket pro pokračování v tisku.";
 
 /* Text used to give an example of how to enter a page range */
-"e.g. 1,3-5" = "např. 1,3-5";
+"e.g. 1,3-5" = "např. 1,3–5";
 
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Chyba";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Chyba při posílání obrázku";
 
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Dokončování upgradu firmwaru";
@@ -212,10 +215,10 @@
 "HP encourages customers to recycle used electronic hardware, HP original print cartridges, and rechargeable batteries. For more information about recycling programs, go to www.hp.com/recycle." = "Společnost HP podporuje recyklaci použité elektroniky, originálních tiskových kazet HP a dobíjecích baterií. Další informace o recyklačních programech naleznete na adrese www.hp.com/recycle.";
 
 /* Description */
-"HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). Zprávu o chemikáliích v tomto produktu naleznete na adrese: www.hp.com/go/reach";
+"HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "Společnost HP cítí povinnost informovat své zákazníky o chemických látkách v našich produktech tak, jak je to nutné pro vyhovění požadavkům předpisů, jako je například REACH (Směrnice Evropského parlamentu a Rady EU č. 1907/2006). Zprávu o chemikáliích v tomto produktu naleznete na adrese: www.hp.com/go/reach";
 
 /* Description */
-"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. Společnost HP šetří zdroje opakovaným prodejem některých nejoblíbenějších produktů. Více informací o recyklaci výrobků společnosti HP naleznete na stránce: www.hp.com/recycle";
+"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "Společnost HP nabízí stále více programů pro zpětný odběr a recyklaci produktů v mnoha zemích/oblastech a spolupracuje s některými velkými centry pro recyklaci elektroniky po celém světě. Společnost HP šetří zdroje opakovaným prodejem některých nejoblíbenějších produktů. Více informací o recyklaci výrobků společnosti HP naleznete na stránce: www.hp.com/recycle";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
 "Incorrect Paper Type" = "Nesprávný typ papíru";
@@ -230,7 +233,7 @@
 "MAC Address" = "Adresa MAC";
 
 /* Message given when the printer can't be contacted. */
-"Make sure the sprocket printer is on and bluetooth connected." = "Make sure the sprocket printer is on and bluetooth connected.";
+"Make sure the sprocket printer is on and bluetooth connected." = "Ujistěte se, že je tiskárna sprocket zapnutá a připojená k rozhraní Bluetooth.";
 
 /* Body for firmware download error dialog */
 "Make sure you are connected to the internet and try again." = "Ujistěte se, že jste připojeni k internetu a opakujte akci.";
@@ -248,7 +251,7 @@
 "Next" = "Další";
 
 /* Indicates that no sprocket printers are connected */
-"No sprockets Connected" = "No sprockets Connected";
+"No sprockets Connected" = "Nejsou připojeny žádné tiskárny sprocket";
 
 /* No comment provided by engineer. */
 "No Wi-Fi connection" = "Bez připojení k síti Wi-Fi";
@@ -279,7 +282,7 @@
 "Page Settings" = "Nastavení stránky";
 
 /* Instructions for pairing a printer */
-"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected.";
+"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Připojte tiskárnu sprocket k tomuto zařízení pomocí Bluetooth připojení. Ujistěte se, že je tiskárna sprocket zapnutá a připojená k rozhraní Bluetooth.";
 
 /* Message given when sprocket cannot print due to the cover being open */
 "Paper Cover Open" = "Otevřený kryt papíru";
@@ -301,9 +304,6 @@
 
 /* Option for paper type */
 "Photo Paper" = "Fotografický papír";
-
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Fotografie nepodporována";
 
 /* The color pink */
 "Pink" = "Růžová";
@@ -336,7 +336,7 @@
 "Print Buffer Full" = "Tisková vyrovnávací paměť je plná";
 
 /* Activity title of the print queue when the share button is tapped */
-"Print Queue" = "Tisková Fronta";
+"Print Queue" = "Tisková fronta";
 
 /* No comment provided by engineer. */
 "Print queue is empty" = "Tisková Fronta je prázdná";
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Tisk";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Tisk je zakázán, dokud nebude dosaženo vyšší teploty. Vyčkejte pro odeslání další fotografie.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Tisk je zakázán, dokud nebude dosaženo nižší teploty. Vyčkejte pro odeslání další fotografie.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Aby bylo možné tisknout, musí být tiskárna i mobilní zařízení připojeny ke stejné síti Wi-Fi. Zkontrolujte nastavení sítě Wi-Fi.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Tisk bude pokračovat po zahřátí tiskárny Sprocket.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Tisk bude pokračovat po ochlazení tiskárny Sprocket.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Probíhá zpracování...";
 
 /* The color purple */
 "Purple" = "Fialová";
@@ -379,16 +383,16 @@
 "Recent printer not currently available" = "Nedávno použitá tiskárna není v tuto chvíli k dispozici.";
 
 /* Title */
-"Recycling program" = "Recycling program";
+"Recycling program" = "Program recyklace";
 
 /* The color red */
 "Red" = "Červená";
 
 /* Title */
-"Safety data sheets" = "Safety data sheets";
+"Safety data sheets" = "Bezpečnostní katalogové listy";
 
 /* Description */
-"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request.";
+"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "Bezpečnostní katalogové listy, informace o bezpečnosti produktu a o ochraně životního prostředí jsou k dispozici na adrese www.hp.com/go/ecodata nebo na vyžádání.";
 
 /* No comment provided by engineer. */
 "Select All" = "Vybrat vše";
@@ -403,13 +407,16 @@
 "Sending Firmware Upgrade\nto Sprocket Printer" = "Odesílání upgradu firmwaru\ndo tiskárny sprocket";
 
 /* Indicates that the phone is sending an image to the printer */
-"Sending to sprocket printer" = "Sending to sprocket printer";
+"Sending to sprocket printer" = "Odesílání na tiskárnu sprocket";
 
 /* No comment provided by engineer. */
 "Settings" = "Nastavení";
 
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Tiskárna Sprocket již zpracovává obrázek. Před dalším odesláním chvíli počkejte.";
 
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Tiskárna sprocket je studená";
@@ -420,14 +427,11 @@
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Tiskárna sprocket je zahřátá";
 
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Než bude možné vytisknout další úlohu, je třeba nechat tiskárnu sprocket vychladnout. Vyčkejte pro odeslání další fotografie.";
-
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Používaná tiskárna sprocket";
 
 /* Message given when sprocket cannot be reached */
-"Sprocket Printer Not Connected" = "Sprocket Printer Not Connected";
+"Sprocket Printer Not Connected" = "Tiskárna sprocket není připojena";
 
 /* Title of field displaying latest errors */
 "Status" = "Stav";
@@ -441,16 +445,13 @@
 /* Title of field for displaying the technical infomration
    Title of table view cell used for displaying technical information
    Title of Technical Information screen */
-"Technical Information" = "Technical Information";
+"Technical Information" = "Technické informace";
 
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Zařízení nebylo rozpoznáno.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Tiskárna sprocket již provádí zpracování úlohy. Počkejte prosím na opakované odeslání fotografie.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Během odesílání fotografie došlo k chybě. Formát fotografie nemusí být na této tiskárně podporován. Vyberte jiný obrázek. ";
+"There was an error while sending your image to the printer." = "Během posílání obrázku do tiskárny došlo k chybě.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Tento symbol značí, že tento produkt nepatří do běžného domácího odpadu. Pro ochranu zdraví osob a životního prostředí je nutné zařízení určené k likvidaci odevzdat na sběrné místo určené k recyklaci elektrických a elektronických zařízení. Další informace získáte od poskytovatele služby likvidace domácího odpadu nebo na stránce http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Zrušit výběr všech";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Použijte značkový papír HP ZINK Photo Paper. Vložte modrý list Smartsheet čárovým kódem dolů a restartujte tiskárnu. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Použijte značkový papír HP ZINK Photo Paper. Vložte modrý list Smartsheet čárovým kódem dolů a restartujte tiskárnu.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Co je Tisková Fronta?";

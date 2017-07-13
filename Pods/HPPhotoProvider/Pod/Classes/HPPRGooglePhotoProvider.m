@@ -233,10 +233,10 @@ static const NSInteger GOOGLE_FIRST_PHOTO_INDEX = 1;
     
     // We need to sub the %5B and %5D for [ and ] in order to string compare
     //  on the query returned by our NSURLRequest...
-    NSString *searchFields = @"entry%5Bmedia:group/media:content/@medium%5D(gphoto:timestamp,title,content,media:group/media:content,media:group/media:thumbnail,georss:where,exif:tags)";
+    NSString *searchFields = @"entry%5Bmedia:group/media:content/@medium%5D(gphoto:timestamp,title,content,media:group/media:content,media:group/media:thumbnail,media:group/media:description,georss:where,exif:tags)";
     
     if (!self.displayVideos) {
-        searchFields =  @"entry%5Bmedia:group/media:content/@medium!='video'%5D(title,content,media:group/media:content,media:group/media:thumbnail)";
+        searchFields =  @"entry%5Bmedia:group/media:content/@medium!='video'%5D(gphoto:timestamp,title,content,media:group/media:content,media:group/media:thumbnail,media:group/media:description,georss:where)";
     }
     
     NSString *url = [NSString stringWithFormat:@"https://picasaweb.google.com/data/feed/api/user/default?kind=photo&fields=openSearch:totalResults,gphoto:thumbnail,gphoto:nickname,%@", searchFields];

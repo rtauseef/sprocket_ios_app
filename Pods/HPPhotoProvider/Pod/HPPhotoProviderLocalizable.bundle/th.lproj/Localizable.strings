@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu ภาพ)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu วิดีโอ)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 ภาพ)";
+
+/* No comment provided by engineer. */
+" (1 video)" = " (1 วิดีโอ)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "%@ การเข้าถึง";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "%lu ภาพ";
 
+/* Number of videos */
+"%lu videos" = "%lu วิดีโอ";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 ภาพ";
+
+/* No comment provided by engineer. */
+"1 video" = "1 วิดีโอ";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "อัลบั้มถูกลบแล้ว";
@@ -59,7 +71,7 @@
 "No Photos Found" = "ไม่พบรูปภาพ";
 
 /* Button caption */
-"OK" = "OK";
+"OK" = "ตกลง";
 
 /* Message of an alert when the application is not authorized to access photo data. */
 "Photo access is restricted on this device. Please check your settings." = "ไม่สามารถดูรูปภาพได้บนอุปกรณ์นี้ กรุณาตรวจสอบการตั้งค่าของคุณ";
@@ -75,6 +87,9 @@
 
 /* No comment provided by engineer. */
 "Qzone" = "Qzone";
+
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "รูปภาพล่าสุด";
 
 /* Button caption */
 "Retry" = "ลองอีกครั้ง";
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "คุณต้องอนุญาตให้แอปพลิเคชันนี้เข้าถึงคลังรูปภาพของคุณก่อนจึงจะสามารถเลือกรูปได้";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "วิดีโอ";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Wikipedia";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "คุณออฟไลน์อยู่";

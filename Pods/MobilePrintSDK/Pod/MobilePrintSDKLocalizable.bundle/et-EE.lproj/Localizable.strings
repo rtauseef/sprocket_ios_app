@@ -53,7 +53,7 @@
 "8.5 x 11" = "8,5×11";
 
 /* Message given when sprocket cannot print due to having an error related to the battery. */
-"A battery error has occured. Restart Sprocket to continue printing." = "Ilmnes aku tõrge. Printimise jätkamiseks taaskäivitage Sprocket.";
+"A battery error has occured. Restart Sprocket to continue printing." = "Ilmnes aku tõrge. Printimise jätkamiseks taaskäivitage sprocket.";
 
 /* Option for paper size */
 "A4" = "A4";
@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Tõrge";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Pildi saatmise tõrge";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Püsivara täiendamise lõpuleviimine";
 
@@ -215,7 +218,7 @@
 "HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "HP annab klientidele asjakohast teavet oma toodetes kasutatud keemiliste ainete kohta kemikaalimäärusega REACH (Euroopa Parlamendi ja nõukogu määrus EÜ nr 1907/2006) kehtestatud ametlike nõuete kohaselt. Käesolevas tootes kasutatud keemiliste ainete raport asub aadressil: www.hp.com/go/reach";
 
 /* Description */
-"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "HP pakub paljudes riikides/piirkondades üha rohkem toodete tagastamise ja ringlussevõtu võimalusi ning teeb koostööd mitmete maailma suurimate elektroonikaseadmete ümbertöötamiskeskustega. HP säästab ressursse, müües osa oma kõige populaarsematest toodetest edasi.  Lisateavet HP toodete ümbertöötlemise kohta leiate aadressilt www.hp.com/recycle";
+"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "HP pakub paljudes riikides/piirkondades üha rohkem toodete tagastamise ja ringlussevõtu võimalusi ning teeb koostööd mitmete maailma suurimate elektroonikaseadmete ümbertöötamiskeskustega. HP säästab ressursse, müües osa oma kõige populaarsematest toodetest edasi. Lisateavet HP toodete ümbertöötlemise kohta leiate aadressilt www.hp.com/recycle";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
 "Incorrect Paper Type" = "Vale paberi tüüp";
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Fotopaber";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Fotot ei toetata";
-
 /* The color pink */
 "Pink" = "Roosa";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Printimine";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Printimine pole lubatud, kuni kõrgem temperatuur on saavutatud. Oodake enne uue foto saatmist.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Printimine pole lubatud, kuni madalam temperatuur on saavutatud. Oodake enne uue foto saatmist.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Printimiseks peavad teie mobiilsideseade ja printer olema samas Wi-Fi-võrgus. Kontrollige Wi-Fi-ühendust.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Printimine jätkub, kui teie sprocket on soojenenud.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Printimine jätkub, kui teie sprocket on jahtunud.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Töötlemine ...";
 
 /* The color purple */
 "Purple" = "Lilla";
@@ -400,7 +404,7 @@
 "Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Printeri valimiseks peavad teie mobiilsideseade ja printer olema samas Wi-Fi-võrgus. Kontrollige Wi-Fi-ühendust.";
 
 /* Indicates that the firmware upgrade is being sent to the printer */
-"Sending Firmware Upgrade\nto Sprocket Printer" = "Püsivara täienduse saatmine Sprocketi printerisse";
+"Sending Firmware Upgrade\nto Sprocket Printer" = "Püsivara täienduse saatmine sprocketi printerisse";
 
 /* Indicates that the phone is sending an image to the printer */
 "Sending to sprocket printer" = "Sprocketi printerisse saatmine";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket töötleb juba pilti. Oodake enne järgmise pildi saatmist.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket on külm";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket on soe";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Sprocket peab enne järgmist printimist jahtuma. Oodake enne uue foto saatmist.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Sprocketi printer kasutuses";
@@ -446,14 +450,11 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Seadet ei tuvastata.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Sprocketi printer töötleb juba prinditööd. Oodake foto uuesti saatmiseks.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Foto uuesti saatmisel ilmnes tõrge. Foto vormingut ei pruugita sellel printeril toetada. Valige teine pilt. ";
+"There was an error while sending your image to the printer." = "Pildi saatmisel printerile ilmnes tõrge.";
 
 /* Description */
-"This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "See märk tähendab, et toodet ei tohi panna olmejäätmete hulka.  Selle asemel peate kaitsma inimeste tervist ja keskkonda ning viima oma seadmeromud selleks ette nähtud elektroonikaromude kogumispunkti. Kui soovite lisateavet, võtke ühendust oma olmejäätmete kõrvaldamisteenust pakkuva ettevõttega või minge aadressile http://www.hp.com/recycle.";
+"This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "See märk tähendab, et toodet ei tohi panna olmejäätmete hulka. Selle asemel peate kaitsma inimeste tervist ja keskkonda ning viima oma seadmeromud selleks ette nähtud elektroonikaromude kogumispunkti. Kui soovite lisateavet, võtke ühendust oma olmejäätmete kõrvaldamisteenust pakkuva ettevõttega või minge aadressile http://www.hp.com/recycle.";
 
 /* Body for firmware upgrade error where the reason for the error is unknown */
 "Unknown status" = "Teadmata olek";
@@ -471,7 +472,7 @@
 "Unselect All" = "Tühista valitud";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Kasutage HP kaubamärgiga fotopaberit ZINK. Laadige sinine Smartsheet, vöötkood suunaga alla, ja taaskäivitage printer. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Kasutage HP kaubamärgiga fotopaberit ZINK. Laadige sinine Smartsheet, vöötkood suunaga alla, ja taaskäivitage printer.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Mis on prindijärjekord?";

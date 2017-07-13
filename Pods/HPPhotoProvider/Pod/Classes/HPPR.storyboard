@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -123,7 +123,7 @@
                                         <rect key="frame" x="138.5" y="0.0" width="98" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="98" height="98"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="99" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVZ-o6-3fn">
@@ -198,6 +198,13 @@
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLt-HO-H5P">
+                                <rect key="frame" x="0.0" y="503" width="375" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Yc0-bY-aJk"/>
+                                </constraints>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -206,6 +213,7 @@
                             <constraint firstAttribute="centerY" secondItem="0Fv-hU-KtF" secondAttribute="centerY" id="Cju-81-SMl"/>
                             <constraint firstAttribute="trailing" secondItem="0Fv-hU-KtF" secondAttribute="trailing" id="DNe-gR-d9A"/>
                             <constraint firstItem="KDP-Ka-xEI" firstAttribute="leading" secondItem="jAx-bQ-6cK" secondAttribute="leading" id="Ezf-vC-BZE"/>
+                            <constraint firstItem="hb1-ST-9Ac" firstAttribute="top" secondItem="iLt-HO-H5P" secondAttribute="bottom" id="Iua-l8-a1Z"/>
                             <constraint firstAttribute="centerX" secondItem="p6q-do-DUT" secondAttribute="centerX" id="JBh-KM-809"/>
                             <constraint firstAttribute="trailing" secondItem="mp6-Z4-5jW" secondAttribute="trailing" id="MVw-y3-Ald"/>
                             <constraint firstItem="hb1-ST-9Ac" firstAttribute="top" secondItem="KDP-Ka-xEI" secondAttribute="bottom" constant="-44" id="PdV-QD-qCP"/>
@@ -216,7 +224,9 @@
                             <constraint firstAttribute="centerY" secondItem="sZH-Av-Kfr" secondAttribute="centerY" id="Zoc-pc-mFf"/>
                             <constraint firstAttribute="trailing" secondItem="KDP-Ka-xEI" secondAttribute="trailing" id="aTu-gJ-RPW"/>
                             <constraint firstItem="mp6-Z4-5jW" firstAttribute="top" secondItem="epH-Q6-qGl" secondAttribute="bottom" constant="55" id="bLx-8c-qdD"/>
+                            <constraint firstAttribute="trailing" secondItem="iLt-HO-H5P" secondAttribute="trailing" id="dD6-ud-M6B"/>
                             <constraint firstAttribute="trailing" secondItem="sZH-Av-Kfr" secondAttribute="trailing" id="eXy-tA-pGe"/>
+                            <constraint firstItem="iLt-HO-H5P" firstAttribute="leading" secondItem="jAx-bQ-6cK" secondAttribute="leading" id="jWp-I2-Wjz"/>
                             <constraint firstAttribute="centerX" secondItem="0Fv-hU-KtF" secondAttribute="centerX" id="tgy-7U-B46"/>
                             <constraint firstItem="KDP-Ka-xEI" firstAttribute="top" secondItem="epH-Q6-qGl" secondAttribute="bottom" constant="5" id="x0j-iT-CRP"/>
                         </constraints>
@@ -245,6 +255,7 @@
                     <connections>
                         <outlet property="backgroundView" destination="jAx-bQ-6cK" id="F8E-Ia-qzj"/>
                         <outlet property="collectionView" destination="KDP-Ka-xEI" id="PV9-qs-ElF"/>
+                        <outlet property="containerView" destination="iLt-HO-H5P" id="Xej-1X-FQs"/>
                         <outlet property="noInternetConnectionMessageView" destination="mp6-Z4-5jW" id="Jhu-YQ-d1k"/>
                         <outlet property="noInternetConnectionRetryView" destination="p6q-do-DUT" id="9lR-gi-Wp1"/>
                         <outlet property="noPhotosLabel" destination="sZH-Av-Kfr" id="z5Z-6V-2N6"/>
@@ -270,7 +281,7 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NaS-UR-KSc" id="Ilx-zy-FSg">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCx-vM-oe9" userLabel="Cover Photo Image View">
@@ -693,6 +704,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AHn-do-4mD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3474" y="4399"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XRU-rj-y9I">
+            <objects>
+                <viewController id="lUp-6S-Mqp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gpm-I4-xml"/>
+                        <viewControllerLayoutGuide type="bottom" id="q1p-5E-c0P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LGC-lE-2xJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avO-u1-xIq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

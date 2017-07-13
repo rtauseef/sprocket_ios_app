@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (%lu nuotrauk.)";
 
+/* Number of videos */
+" (%lu videos)" = " (%lu vaizdo įraš.)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (1 nuotrauka)";
+
+/* No comment provided by engineer. */
+" (1 video)" = " (1 vaizdo įrašas)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "%@ prieiga";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "%lu nuotrauk.";
 
+/* Number of videos */
+"%lu videos" = "%lu vaizdo įraš.";
+
 /* No comment provided by engineer. */
 "1 photo" = "1 nuotrauka";
+
+/* No comment provided by engineer. */
+"1 video" = "1 vaizdo įrašas";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Albumas panaikintas";
@@ -76,6 +88,9 @@
 /* No comment provided by engineer. */
 "Qzone" = "„QZone“";
 
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "Naujausios nuotraukos";
+
 /* Button caption */
 "Retry" = "Kartoti";
 
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "Norėdami pasirinkti nuotrauką, visų pirma turite leisti šiai programai pasiekti jūsų nuotraukų biblioteką.";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "Vaizdo įrašai";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Vikipedija";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "Atrodo, kad nesate prisijungę";

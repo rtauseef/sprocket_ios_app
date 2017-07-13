@@ -35,7 +35,7 @@
 "2 x 3" = "2 x 3";
 
 /* The printer will shut off after 3 minutes */
-"3 minutes" = "3 minúty";
+"3 minutes" = "3 minút";
 
 /* Option for paper size */
 "4 x 5" = "4 x 5";
@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Chyba";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Chyba odosielania obrázka";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Dokončuje sa inovácia firmvéru";
 
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Fotografický papier";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Nepodporovaná fotografia";
-
 /* The color pink */
 "Pink" = "Ružová";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Tlač";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Tlač je deaktivovaná, kým sa nedosiahne vyššia teplota. Pred odoslaním ďalšej fotografie počkajte.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Tlač je deaktivovaná, kým sa nedosiahne nižšia teplota. Pred odoslaním ďalšej fotografie počkajte.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Tlač vyžaduje, aby mobilné zariadenie a tlačiareň boli v rovnakej sieti Wi-Fi. Skontrolujte nastavenia siete Wi-Fi.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Tlač sa obnoví po zahriatí tlačiarne sprocket.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Tlač sa obnoví po vychladnutí tlačiarne sprocket.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Spracováva sa...";
 
 /* The color purple */
 "Purple" = "Purpurová";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket už spracováva obrázok. Pred odoslaním ďalších obrázkov počkajte.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Tlačiareň sprocket je studená";
 
@@ -418,10 +425,7 @@
 "Sprocket is ready to print." = "Tlačiareň sprocket je pripravená na tlač.";
 
 /* Message given when sprocket cannot print due to being too hot */
-"Sprocket is Warm" = "Tlačiareň sprocket je teplá";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Tlačiareň sprocket sa pred tlačou ďalšej úlohy musí ochladiť. Pred odoslaním ďalšej fotografie počkajte.";
+"Sprocket is Warm" = "Tlačiareň sprocket je zahriata";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Používaná tlačiareň sprocket";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Zariadenie nie je rozpoznané.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "V tlačiarni sprocket už prebieha spracovanie úlohy. Pred opätovným odoslaním fotografie počkajte.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Počas odosielania fotografie sa vyskytla chyba. Táto tlačiareň nemusí podporovať používanie tohto formátu fotografie. Vyberte iný obrázok. ";
+"There was an error while sending your image to the printer." = "Pri odosielaní obrázka do tlačiarne sa vyskytla chyba.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Tento symbol znamená, že produkt sa nesmie likvidovať spoločne s bežným komunálnym odpadom. Je dôležité, aby ste chránili zdravie ľudí a životné prostredie a odovzdali vyradené zariadenia na určené zberné miesta na recykláciu odpadu z elektrických a elektronických zariadení. Ďalšie informácie vám poskytne oddelenie služieb likvidácie komunálneho odpadu alebo ich nájdete na adrese http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Zrušiť výber všetkého";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Používajte značkový fotopapier HP ZINK. Vložte modrý hárok Smartsheet čiarovým kódom nadol a reštartujte tlačiareň. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Používajte značkový fotopapier HP ZINK. Vložte modrý hárok Smartsheet čiarovým kódom nadol a reštartujte tlačiareň.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Čo je to tlačový front?";

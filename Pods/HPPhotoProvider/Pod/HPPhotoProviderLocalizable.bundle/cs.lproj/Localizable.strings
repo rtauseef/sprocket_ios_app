@@ -1,8 +1,14 @@
 /* Number of photos */
 " (%lu photos)" = " (počet fotografií: %lu)";
 
+/* Number of videos */
+" (%lu videos)" = " (počet videí: %lu)";
+
 /* No comment provided by engineer. */
 " (1 photo)" = " (počet fotografií: 1)";
+
+/* No comment provided by engineer. */
+" (1 video)" = " (počet videí: 1)";
 
 /* Title of an alert indicates the specified social network login is not longer valid */
 "%@ Access" = "Přístup: %@";
@@ -22,8 +28,14 @@
 /* Number of photos */
 "%lu photos" = "Počet fotografií: %lu";
 
+/* Number of videos */
+"%lu videos" = "Počet videí: %lu";
+
 /* No comment provided by engineer. */
 "1 photo" = "Počet fotografií: 1";
+
+/* No comment provided by engineer. */
+"1 video" = "Počet videí: 1";
 
 /* Indicates that a user's photo album was deleted */
 "Album deleted" = "Album odstraněno";
@@ -41,7 +53,7 @@
 "Authorize" = "Autorizovat";
 
 /* Name of the camera roll app of the device */
-"Camera Roll" = "Camera Roll";
+"Camera Roll" = "Z fotoaparátu";
 
 /* Button caption */
 "Cancel" = "Storno";
@@ -76,6 +88,9 @@
 /* No comment provided by engineer. */
 "Qzone" = "Qzone";
 
+/* Indicates that recent photos will be displayed */
+"Recent Photos" = "Nedávné fotografie";
+
 /* Button caption */
 "Retry" = "Opakovat";
 
@@ -96,6 +111,12 @@
 
 /* Message shown when the user tries to access the Photos of the device before the authorization was requested */
 "To select a photo you must first authorize this app to access your photo library." = "Aby bylo možné vybrat fotografii, musíte nejprve autorizovat aplikaci pro přístup ke knihovně fotografií.";
+
+/* Indicates that all videos will be displayed */
+"Videos" = "Videa";
+
+/* No comment provided by engineer. */
+"Wikipedia" = "Wikipedia";
 
 /* Message show to the user when there is no internet connection */
 "You appear to be offline" = "Zdá se, že jste offline.";

@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Galat";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Galat Mengirim Gambar";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Menyelesaikan Peningkatan Firmware";
 
@@ -230,10 +233,10 @@
 "MAC Address" = "MAC Address (Alamat MAC)";
 
 /* Message given when the printer can't be contacted. */
-"Make sure the sprocket printer is on and bluetooth connected." = "Pastikan printer sprocket menyala dan bluetooth terhubung.";
+"Make sure the sprocket printer is on and bluetooth connected." = "Pastikan printer sprocket menyala dan bluetooth tersambung.";
 
 /* Body for firmware download error dialog */
-"Make sure you are connected to the internet and try again." = "Pastikan Anda sudah terhubung ke internet, lalu coba lagi.";
+"Make sure you are connected to the internet and try again." = "Pastikan Anda sudah tersambung ke internet, lalu coba lagi.";
 
 /* Monitoring of regions (location) not available */
 "Monitoring not available" = "Pemantauan tidak tersedia";
@@ -248,10 +251,10 @@
 "Next" = "Selanjutnya";
 
 /* Indicates that no sprocket printers are connected */
-"No sprockets Connected" = "Tidak ada sprocket yang Terhubung";
+"No sprockets Connected" = "Tidak ada sprocket yang Tersambung";
 
 /* No comment provided by engineer. */
-"No Wi-Fi connection" = "Tidak ada koneksi Wi-Fi";
+"No Wi-Fi connection" = "Tidak ada sambungan Wi-Fi";
 
 /* Printer details not available */
 "Not Available" = "Tidak Tersedia";
@@ -279,7 +282,7 @@
 "Page Settings" = "Pengaturan Halaman";
 
 /* Instructions for pairing a printer */
-"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Pasangkan printer sprocket bluetooth Anda dengan perangkat ini. Pastikan printer sprocket menyala dan bluetooth terhubung.";
+"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Pasangkan printer sprocket bluetooth Anda dengan perangkat ini. Pastikan printer sprocket menyala dan bluetooth tersambung.";
 
 /* Message given when sprocket cannot print due to the cover being open */
 "Paper Cover Open" = "Penutup Kertas Terbuka";
@@ -301,9 +304,6 @@
 
 /* Option for paper type */
 "Photo Paper" = "Kertas Foto";
-
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Foto Tidak Didukung";
 
 /* The color pink */
 "Pink" = "Pink (Merah Muda)";
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Mencetak";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Pencetakan dinonaktifkan hingga tercapai suhu yang lebih tinggi. Tunggu untuk mengirim foto lain.";
+/* No comment provided by engineer. */
+"Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Mencetak memerlukan perangkat seluler dan printer harus berada di jaringan Wi-Fi yang sama. Harap periksa pengaturan Wi-Fi Anda.";
 
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Pencetakan dinonaktifkan hingga tercapai suhu yang lebih rendah. Tunggu untuk mengirim foto lain.";
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Pencetakan akan dilanjutkan setelah Sprocket agak hangat.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Pencetakan akan dilanjutkan setelah Sprocket agak dingin.";
 
 /* No comment provided by engineer. */
-"Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Mencetak memerlukan perangkat seluler dan printer harus berada di jaringan Wi-Fi yang sama. Harap periksa pengaturan Wi-Fi Anda";
+"Processing..." = "Memproses...";
 
 /* The color purple */
 "Purple" = "Purple (Ungu)";
@@ -385,10 +389,10 @@
 "Red" = "Red (Merah)";
 
 /* Title */
-"Safety data sheets" = "Lembar data keamanan";
+"Safety data sheets" = "Lembar data keselamatan";
 
 /* Description */
-"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "Lembar Data Keamanan serta informasi terkait keamanan produk dan lingkungan tersedia di www.hp.com/go/ecodata atau atas permintaan.";
+"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "Lembar Data Keselamatan serta informasi terkait keamanan produk dan lingkungan tersedia di www.hp.com/go/ecodata atau atas permintaan.";
 
 /* No comment provided by engineer. */
 "Select All" = "Pilih Semua";
@@ -397,19 +401,22 @@
 "Select Printer" = "Pilih Printer";
 
 /* No comment provided by engineer. */
-"Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Memilih printer memerlukan perangkat seluler dan printer harus berada di jaringan Wi-Fi yang sama. Harap periksa pengaturan Wi-Fi Anda";
+"Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Memilih printer memerlukan perangkat seluler dan printer harus berada di jaringan Wi-Fi yang sama. Harap periksa pengaturan Wi-Fi Anda.";
 
 /* Indicates that the firmware upgrade is being sent to the printer */
 "Sending Firmware Upgrade\nto Sprocket Printer" = "Mengirim Peningkatan Firmware\nke Printer Sprocket";
 
 /* Indicates that the phone is sending an image to the printer */
-"Sending to sprocket printer" = "Mengirimkan ke printer sprocket";
+"Sending to sprocket printer" = "Mengirim ke printer sprocket";
 
 /* No comment provided by engineer. */
 "Settings" = "Pengaturan";
 
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket sudah memproses gambar. Harap tunggu untuk mengirim foto lainnya.";
 
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket dalam Kondisi Dingin";
@@ -420,14 +427,11 @@
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket dalam Kondisi Panas";
 
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Sprocket harus didinginkan dulu sebelum mencetak pekerjaan lain. Tunggu untuk mengirim foto lain.";
-
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Printer Sprocket sedang Digunakan";
 
 /* Message given when sprocket cannot be reached */
-"Sprocket Printer Not Connected" = "Printer Sprocket Tidak Terhubung";
+"Sprocket Printer Not Connected" = "Printer Sprocket Tidak Tersambung";
 
 /* Title of field displaying latest errors */
 "Status" = "Status";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Perangkat tidak dikenali.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Printer sprocket sedang memproses pekerjaan. Harap tunggu untuk mengirim ulang foto.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Ada galat saat mengirimkan foto Anda. Format foto mungkin tidak didukung printer ini. Pilih gambar lainnya. ";
+"There was an error while sending your image to the printer." = "Ada galat saat mengirimkan gambar Anda ke printer.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Simbol ini berarti jangan buang produk Anda bersamaan dengan limbah rumah tangga lainnya. Alih-alih, Anda harus melindungi kesehatan masyarakat dan lingkungan dengan menyerahkan peralatan limbah ke titik pengumpulan yang ditentukan untuk pendaurulangan peralatan limbah listrik dan elektronik. Untuk informasi lebih lanjut, silakan hubungi layanan pembuangan limbah rumah tangga Anda, atau buka http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Batal Pilih Semua";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Gunakan Kertas Foto HP bermerek ZINK. Masukkan Smartsheet biru dengan barcode menghadap ke bawah, lalu mulai ulang printer. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Gunakan Kertas Foto HP bermerek ZINK. Masukkan Smartsheet biru dengan barcode menghadap ke bawah, lalu mulai ulang printer.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Apa itu Antrean Pencetakan?";
@@ -489,5 +490,5 @@
 "Your device does not support the region monitoring, it is not possible to fire alarms base on position" = "Perangkat Anda tidak mendukung pemantauan wilayah, alarm kebakaran tidak dapat dibunyikan berdasarkan posisi";
 
 /* Body of dialog giving instructions on how to proceed after a firmware upgrade */
-"Your sprocket printer will shut down now. Turn your sprocket back on and continue the fun!" = "Printer sprocket Anda akan dimatikan sekarang. Nyalakan sprocket Anda kembali dan bersenang-senanglah lagi!";
+"Your sprocket printer will shut down now. Turn your sprocket back on and continue the fun!" = "Printer sprocket Anda akan dimatikan sekarang. Nyalakan sprocket Anda lagi dan bersenang-senanglah kembali!";
 

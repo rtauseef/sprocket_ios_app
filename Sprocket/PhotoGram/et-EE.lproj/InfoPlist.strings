@@ -1,0 +1,15 @@
+/* (No Commment) */
+"CFBundleDisplayName" = "sprocket";
+
+/* (No Commment) */
+"CFBundleName" = "sprocket";
+
+/* (No Commment) */
+"NSBluetoothPeripheralUsageDescription" = "Sprocket vajab HP Sprocketi printeriga ühenduse loomiseks Bluetoothi juurdepääsu.";
+
+/* (No Commment) */
+"NSCameraUsageDescription" = "Lubage juurdepääs pildistamiseks ja fotode printimiseks.";
+
+/* (No Commment) */
+"NSPhotoLibraryUsageDescription" = "Fotode printimiseks ja salvestamiseks lubage juurdepääs.";
+

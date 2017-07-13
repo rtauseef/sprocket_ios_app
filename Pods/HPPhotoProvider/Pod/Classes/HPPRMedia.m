@@ -62,8 +62,8 @@
 
 - (HPPRSelectPhotoProvider *)photoProvider {
     NSAssert(NO, @"Must override in the subclass");
+    return nil;
 }
-
 
 - (void)clearCachedImages
 {

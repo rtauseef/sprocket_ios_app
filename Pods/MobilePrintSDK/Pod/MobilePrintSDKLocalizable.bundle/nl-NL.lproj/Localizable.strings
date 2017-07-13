@@ -143,10 +143,10 @@
 "Cooling Down..." = "Bezig met afkoelen...";
 
 /* copies label in job summary */
-"Copies" = "Kopieën";
+"Copies" = "kopieën";
 
 /* copy label in job summary */
-"Copy" = "Kopie";
+"Copy" = "kopie";
 
 /* The cover is open */
 "Cover Open" = "Klep open";
@@ -180,6 +180,9 @@
 
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Fout";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Fout bij het verzenden van afbeelding";
 
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Firmware-upgrade wordt voltooid";
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Fotopapier";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Niet ondersteunde foto";
-
 /* The color pink */
 "Pink" = "Roze";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Printen";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Printen is uitgeschakeld totdat een hogere temperatuur is bereikt. Wacht met het sturen van een volgende foto.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Printen is uitgeschakeld totdat een lagere temperatuur is bereikt. Wacht met het sturen van een volgende foto.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Om te printen moeten je mobiele device en de printer op hetzelfde Wi-Fi-netwerk zijn aangesloten. Controleer je Wi-Fi-instellingen.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Het printen wordt hervat wanneer de Sprocket opgewarmd is.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Het printen wordt hervat wanneer de Sprocket afgekoeld is.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Bezig met verwerken...";
 
 /* The color purple */
 "Purple" = "Paars";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket is al een foto aan het verwerken. Wacht met het zenden van meer foto's.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket is koud";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket is warm";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Sprocket moet afkoelen voordat je een volgende opdracht kunt printen. Wacht met het sturen van een volgende foto.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Sprocket printer in gebruik";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Het apparaat wordt niet herkend.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "De sprocket printer is al bezig met een taak. Wacht met het opnieuw zenden van de foto.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Er is een fout opgetreden bij het verzenden van de foto. Mogelijk wordt het fotoformaat niet door de printer ondersteund. Kies een andere foto. ";
+"There was an error while sending your image to the printer." = "Er ging iets fout bij het naar de printer zenden van de afbeelding.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Dit symbool geeft aan dat dit product niet bij het gewone huishoudafval mag worden gedeponeerd. In plaats hiervan dient u de gezondheid en het milieu te beschermen door afgedankte apparatuur in te leveren bij een inzamelingspunt voor recycling van elektrische en elektronische apparatuur. Neem voor meer informatie contact op met uw afvalverwerkingsbedrijf voor huishoudelijk afval of ga naar http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Alles deselecteren";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Gebruik ZINK-fotopapier van het merk HP. Laad de blauwe Smartsheet met de barcode onder en start de printer opnieuw op. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Gebruik ZINK-fotopapier van het merk HP. Laad de blauwe Smartsheet met de barcode onder en start de printer opnieuw op.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Wat is de printwachtrij?";

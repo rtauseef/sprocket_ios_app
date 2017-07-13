@@ -1,35 +1,35 @@
 /* No comment provided by engineer. */
-"%d Print" = "%d Utskrift";
+"%d Print" = "%d utskrift";
 
 /* No comment provided by engineer. */
-"%d Prints" = "%d Utskrifter";
+"%d Prints" = "%d utskrifter";
 
 /* No comment provided by engineer. */
-"%d/%d Print" = "%1$d / %2$d Utskrift";
+"%d/%d Print" = "%1$d/%2$d utskrift";
 
 /* No comment provided by engineer. */
-"%d/%d Prints" = "%1$d / %2$d Utskrifter";
+"%d/%d Prints" = "%1$d/%2$d utskrifter";
 
 /* Number of copies */
 "%ld Copies" = "%ld kopior";
 
 /* page range label in job summary */
-"%ld of %ld Pages" = "%1$ld of %2$ld Sidor";
+"%ld of %ld Pages" = "%1$ld av %2$ld sidor";
 
 /* No comment provided by engineer. */
-"1 Copy" = "1 Kopia";
+"1 Copy" = "1 kopia";
 
 /* The printer will shut off after 10 minutes */
 "10 minutes" = "10 minuter";
 
 /* Option for paper size */
-"10x13cm" = "10x13cm";
+"10x13cm" = "10 x 13 cm";
 
 /* Option for paper size */
-"10x15cm" = "10x15cm";
+"10x15cm" = "10 x 15 cm";
 
 /* Option for paper size */
-"13x18cm" = "13x18cm";
+"13x18cm" = "13 x 18 cm";
 
 /* Option for paper size */
 "2 x 3" = "2 x 3";
@@ -80,7 +80,7 @@
 "Add to Print Queue" = "Lägg till i utskriftskön";
 
 /* Text used on a button that selects all pages for printing */
-"ALL" = "Alla";
+"ALL" = "ALLA";
 
 /* No comment provided by engineer. */
 "All" = "Alla";
@@ -89,10 +89,10 @@
 "Always On" = "Alltid på";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete %d Prints?" = "Är du säker på att du vill ta bort %d utskrifter?";
+"Are you sure you want to delete %d Prints?" = "Vill du ta bort %d utskrifter?";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete 1 Print?" = "Är du säker på att du vill ta bort 1 utskrift?";
+"Are you sure you want to delete 1 Print?" = "Vill du ta bort 1 utskrift?";
 
 /* Title of field displaying how many minutes the device is on before it automatically powers off */
 "Auto Off" = "Automatisk avstängning";
@@ -104,7 +104,7 @@
 "Battery Error" = "Batterifel";
 
 /* Message given when sprocket cannot print due to having a low battery */
-"Battery Low" = "Battery Low";
+"Battery Low" = "Lågt batteri";
 
 /* Title of field displaying battery level */
 "Battery Status" = "Batteristatus";
@@ -113,7 +113,7 @@
 "Black" = "Svart";
 
 /* No comment provided by engineer. */
-"Black & White mode" = "Svartvit läge";
+"Black & White mode" = "Svartvitt läge";
 
 /* The color blue */
 "Blue" = "Blå";
@@ -137,16 +137,16 @@
 "Close the cover to proceed." = "Stäng locket för att fortsätta.";
 
 /* Message given when sprocket cannot print due to having a low battery */
-"Connect your sprocket to a power source to continue use." = "Connect your sprocket to a power source to continue use.";
+"Connect your sprocket to a power source to continue use." = "Anslut sprocket-enheten till en strömkälla för fortsatt användning.";
 
 /* Message given when sprocket cannot print due to bing in a cooling mode */
-"Cooling Down..." = "Svalnar ...";
+"Cooling Down..." = "Svalnar ...";
 
 /* copies label in job summary */
-"Copies" = "Kopior";
+"Copies" = "kopior";
 
 /* copy label in job summary */
-"Copy" = "Kopia";
+"Copy" = "kopia";
 
 /* The cover is open */
 "Cover Open" = "Lock öppet";
@@ -180,6 +180,9 @@
 
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Fel";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Fel uppstod när bilden skickades";
 
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Avslutar uppgradering av inbyggd programvara";
@@ -230,7 +233,7 @@
 "MAC Address" = "MAC-adress";
 
 /* Message given when the printer can't be contacted. */
-"Make sure the sprocket printer is on and bluetooth connected." = "Make sure the sprocket printer is on and bluetooth connected.";
+"Make sure the sprocket printer is on and bluetooth connected." = "Kontrollera att sprocket-skrivaren är på och att Bluetooth är anslutet.";
 
 /* Body for firmware download error dialog */
 "Make sure you are connected to the internet and try again." = "Kontrollera att du är ansluten till internet och försök igen.";
@@ -248,7 +251,7 @@
 "Next" = "Nästa";
 
 /* Indicates that no sprocket printers are connected */
-"No sprockets Connected" = "No sprockets Connected";
+"No sprockets Connected" = "Ingen sprocket ansluten";
 
 /* No comment provided by engineer. */
 "No Wi-Fi connection" = "Ingen Wi-Fi-anslutning";
@@ -279,7 +282,7 @@
 "Page Settings" = "Sidinställningar";
 
 /* Instructions for pairing a printer */
-"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected.";
+"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Koppla sprocket-skrivaren med Bluetooth till den här enheten. Kontrollera att sprocket-skrivaren är på och att Bluetooth är anslutet.";
 
 /* Message given when sprocket cannot print due to the cover being open */
 "Paper Cover Open" = "Öppen papperslucka";
@@ -301,9 +304,6 @@
 
 /* Option for paper type */
 "Photo Paper" = "Fotopapper";
-
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Foto stöds inte";
 
 /* The color pink */
 "Pink" = "Rosa";
@@ -333,7 +333,7 @@
 "Print both" = "Skriv ut båda";
 
 /* The print buffer is full */
-"Print Buffer Full" = "Utskrivsbufferten är full";
+"Print Buffer Full" = "Utskriftsbufferten är full";
 
 /* Activity title of the print queue when the share button is tapped */
 "Print Queue" = "Utskriftskö";
@@ -345,25 +345,29 @@
 "Print Settings" = "Utskriftsinställningar";
 
 /* Bluetooth print button label */
-"Print to sprocket" = "Skriv ut med Sprocket";
+"Print to sprocket" = "Skriv ut med sprocket";
 
 /* No comment provided by engineer. */
 "Printer" = "Skrivare";
 
 /* The printer is available and there are print later jobs in the print queue */
-"Printer nearby. Projects waiting to be printed..." = "Skrivare är nära Projekt väntas på att skrivas ut ...";
+"Printer nearby. Projects waiting to be printed..." = "Skrivare är nära Projekt väntas på att skrivas ut ...";
 
 /* The printer is printing */
 "Printing" = "Utskrift";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Utskrift är avstängt tills en högre temperatur har nåtts. Vänta för att se ett annat foto.";
+/* No comment provided by engineer. */
+"Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "För utskrift krävs att din mobila enhet och skrivaren är på samma Wi-Fi-nät. Kontrollera dina Wi-Fi-inställningar.";
 
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Utskrift är avstängt tills en lägre temperatur har nåtts. Vänta för att se ett annat foto.";
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Utskrift kommer att fortsätta efter att din sprocket värmt upp.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Utskrift kommer att fortsätta efter att din sprocket svalnat.";
 
 /* No comment provided by engineer. */
-"Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "För utskrift krävs att din mobila enhet och skrivaren är på samma WiFi-nät. Kontrollera dina WiFi-inställningar.";
+"Processing..." = "Bearbetar ...";
 
 /* The color purple */
 "Purple" = "Lila";
@@ -397,19 +401,22 @@
 "Select Printer" = "Välj Skrivare";
 
 /* No comment provided by engineer. */
-"Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "För att välja en skrivare krävs att din mobila enhet och skrivaren är på samma WiFi-nät. Kontrollera dina WiFi-inställningar.";
+"Selecting a printer requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "För att välja en skrivare krävs att din mobila enhet och skrivaren är på samma Wi-Fi-nät. Kontrollera dina Wi-Fi-inställningar.";
 
 /* Indicates that the firmware upgrade is being sent to the printer */
-"Sending Firmware Upgrade\nto Sprocket Printer" = "Skickar uppgradering av inbyggd programvara\nto sprocket-fotoskrivare";
+"Sending Firmware Upgrade\nto Sprocket Printer" = "Skickar uppgradering av inbyggd programvara\ntill sprocket-fotoskrivare";
 
 /* Indicates that the phone is sending an image to the printer */
-"Sending to sprocket printer" = "Sending to sprocket printer";
+"Sending to sprocket printer" = "Skickar till sprocket-skrivare";
 
 /* No comment provided by engineer. */
 "Settings" = "Inställningar";
 
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket bearbetar redan en bild. Vänta med att skicka en ny.";
 
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket är sval";
@@ -420,14 +427,11 @@
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket är varm";
 
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Sprocket behöver svalna innan nästa utskrift. Vänta för att se ett annat foto.";
-
 /* Message given when sprocket cannot print due to being in use. */
-"Sprocket Printer in Use" = "Sprocket-fotoskrivare används";
+"Sprocket Printer in Use" = "Sprocket-skrivare används";
 
 /* Message given when sprocket cannot be reached */
-"Sprocket Printer Not Connected" = "Sprocket Printer Not Connected";
+"Sprocket Printer Not Connected" = "Sprocket-skrivare ej ansluten";
 
 /* Title of field displaying latest errors */
 "Status" = "Status";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Enheten kan inte identifieras.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Sprocket-fotoskrivaren behandlar redan ett jobb. Vänta med att skicka fotot på nytt.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Det uppstod ett fel när din bild skulle skickas. Fotoformatet kanske inte stöds av den här skrivaren. Välj en annan bild. ";
+"There was an error while sending your image to the printer." = "Ett fel uppstod när du skickade bilden till skrivaren.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Den här symbolen betyder att du inte får kasta produkten tillsammans med övrigt hushållsavfall. För att skydda hälsa och miljö har du i stället ansvar för att lämna den på ett för ändamålet avsett uppsamlingsställe för återvinning av elektrisk och elektronisk utrustning. För mer information, vänd dig till närmaste avfallshanteringsanläggning eller gå till http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Avmarkera alla";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Använd äkta HP ZINK Sticky-Backed-fotopapper Lägg i den blåa Smartsheet, med streckkoden nedåt, och starta om skrivaren. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Använd äkta HP ZINK Sticky-Backed-fotopapper Lägg i den blåa Smartsheet, med streckkoden nedåt, och starta om skrivaren.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Vad är utskriftskö?";
@@ -480,7 +481,7 @@
 "White" = "Vit";
 
 /* No comment provided by engineer. */
-"Wi-Fi Required" = "WiFi krävs";
+"Wi-Fi Required" = "Wi-Fi krävs";
 
 /* The color yellow */
 "Yellow" = "Gul";

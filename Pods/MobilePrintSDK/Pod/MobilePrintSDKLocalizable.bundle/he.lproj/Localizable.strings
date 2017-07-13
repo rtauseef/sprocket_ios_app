@@ -146,7 +146,7 @@
 "Copies" = "עותקים";
 
 /* copy label in job summary */
-"Copy" = "העתקה";
+"Copy" = "העתק";
 
 /* The cover is open */
 "Cover Open" = "המכסה פתוח";
@@ -180,6 +180,9 @@
 
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "שגיאה";
+
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "שגיאה בשליחת תמונה";
 
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "מסיים שדרוג קושחה";
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "נייר צילום";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "צילום לא נתמך";
-
 /* The color pink */
 "Pink" = "ורוד";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "הדפסה";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "ההדפסה מושבתת עד שתושג טמפרטורה גבוהה יותר. המתן לפני שליחת תמונה נוספת.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "ההדפסה מושבתת עד שתושג טמפרטורה נמוכה יותר. המתן לפני שליחת תמונה נוספת.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "הדפסה דורשת שהמכשיר הנייד שלך והמדפסת יהיו באותה רשת Wi-Fi. בדוק את הגדרות ה- Wi-Fi";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "ההדפסה תופעל מחדש אחרי שמדפסת Sprocket תתחמם.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "ההדפסה תופעל מחדש אחרי שמדפסת Sprocket תתקרר.";
+
+/* No comment provided by engineer. */
+"Processing..." = "מעבד...";
 
 /* The color purple */
 "Purple" = "סגול";
@@ -409,7 +413,10 @@
 "Settings" = "הגדרות";
 
 /* Title for screen listing all available sprocket printers */
-"sprocket" = "sprocket";
+"sprocket" = "Sprocket";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "מדפסת Sprocket כבר מעבדת תמונה. המתן לפני שתשלח עוד.";
 
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket קרה";
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket חמה";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "מדפסת Sprocket צריכה להתקרר לפני שתדפיס עבודה נוספת. המתן לפני שליחת תמונה נוספת.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "מדפסת Sprocket בשימוש";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "ההתקן לא מזוהה.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "מדפסת sprocket כבר מעבדת עבודה. המתן לפני שליחת התמונה מחדש.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "אירעה שגיאה בעת שליחת התמונה. ייתכן שתבנית התמונה אינה נתמכת במדפסת זו. בחר תמונה אחרת. ";
+"There was an error while sending your image to the printer." = "אירעה שגיאה בעת שליחת התמונה שלך למדפסת.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "המשמעות של סמל זה היא שאין להשליך את המוצר ביחד עם הפסולת הביתית האחרת שלך. במקום זאת, עליך להגן על בריאות האנשים ועל הסביבה על-ידי מסירת ציוד הפסולת שלך לנקודת איסוף ייעודית לצורך מיחזור פסולת של ציוד אלקטרוני וחשמלי. לקבלת מידע נוסף, צור קשר עם השירות להשלכת פסולת ביתית, או עבור אל הכתובת http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "בטל את כל הבחירות";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "השתמש בנייר צילום ZINK של מותג HP. טען את הגיליון החכם הכחול, כשהברקוד למטה, והפעל מחדש את המדפסת. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "השתמש בנייר צילום ZINK של מותג HP. טען את הגיליון החכם הכחול, כשהברקוד למטה, והפעל מחדש את המדפסת.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "מהו תור הדפסה?";

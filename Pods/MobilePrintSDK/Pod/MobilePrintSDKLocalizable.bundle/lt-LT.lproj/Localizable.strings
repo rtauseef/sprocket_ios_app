@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Klaida";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Klaida siunčiant paveikslėlį";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Baigiamas programinės aparatinės įrangos naujovinimas";
 
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Fotopopierius";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Nuotrauka nepalaikoma";
-
 /* The color pink */
 "Pink" = "Rožinė";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Spausdinimas";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "Spausdinimas išjungtas, kol bus pasiekta aukštesnė temperatūra. Palaukite, kad galėtumėte išsiųsti kitą nuotrauką.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "Spausdinimas išjungtas, kol bus pasiekta žemesnė temperatūra. Palaukite, kad galėtumėte išsiųsti kitą nuotrauką.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "Norint spausdinti, reikia, kad mobilusis įrenginys ir spausdintuvas būtų prijungti prie to paties „Wi-Fi“ tinklo. Patikrinkite savo „Wi-Fi“ nustatymus.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "Spausdinimas vėl prasidės, kai „Sprocket“ spausdintuvas sušils.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "Spausdinimas vėl prasidės, kai „Sprocket“ spausdintuvas atvės.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Apdorojama...";
 
 /* The color purple */
 "Purple" = "Violetinė";
@@ -411,6 +415,9 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "„Sprocket“";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "„Sprocket“ spausdintuvas jau apdoroja vaizdą. Palaukite, kad galėtumėte siųsti daugiau.";
+
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "„Sprocket“ yra šaltas";
 
@@ -419,9 +426,6 @@
 
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "„Sprocket“ yra šiltas";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "„Sprocket“ turi atvėsti prieš spausdinant kitą užduotį. Palaukite, kad galėtumėte išsiųsti kitą nuotrauką.";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "„Sprocket“ spausdintuvas naudojamas";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "Įrenginys neatpažįstamas.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "„Sprocket“ spausdintuvas jau vykdo užduotį. Palaukite, kad galėtumėte iš naujo siųsti nuotrauką.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "Klaida siunčiant jūsų nuotrauką. Nuotraukos formatas gali būti nesuderinamas su šiuo spausdintuvu. Pasirinkite kitą vaizdą. ";
+"There was an error while sending your image to the printer." = "Siunčiant jūsų paveikslėlį į spausdintuvą įvyko klaida.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Šis simbolis reiškia, kad produkto negalima išmesti kartu su buitinėmis atliekomis. Vietoje to reikia saugoti aplinką ir žmonių sveikatą ir pasenusią įrangą reikia nunešti į nurodytą surinkimo vietą, kurioje perdirbama pasenusi elektrinė ir elektroninė įranga. Jei reikia daugiau informacijos, susisiekite su savo buitinių atliekų išvežimo įmone arba apsilankykite adresu http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Panaikinti visų žymėjimą";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Naudokite HP ženklo ZINK fotopopierių. Įdėkite mėlyną „Smartsheet“ brūkšniniu kodu žemyn ir iš naujo paleiskite spausdintuvą. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Naudokite HP ženklo ZINK fotopopierių. Įdėkite mėlyną „Smartsheet“ brūkšniniu kodu žemyn ir iš naujo paleiskite spausdintuvą.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Kas yra spausdinimo eilė?";

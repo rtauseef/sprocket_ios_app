@@ -14,7 +14,7 @@
 "%ld Copies" = "%ld másolat";
 
 /* page range label in job summary */
-"%ld of %ld Pages" = "%1$ld of %2$ld oldal";
+"%ld of %ld Pages" = "%1$ld / %2$ld oldal";
 
 /* No comment provided by engineer. */
 "1 Copy" = "1 másolat";
@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "Hiba";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "Hiba a kép elküldésekor";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "Belső vezérlőprogram frissítésének befejezése";
 
@@ -302,9 +305,6 @@
 /* Option for paper type */
 "Photo Paper" = "Fotópapír";
 
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "Nem támogatott fényképformátum";
-
 /* The color pink */
 "Pink" = "Rózsaszín";
 
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "Nyomtatás";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "A nyomtatás magasabb hőmérséklet eléréséig letiltva. Várakozás másik fénykép küldésére.";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "A nyomtatás alacsonyabb hőmérséklet eléréséig letiltva. Várakozás másik fénykép küldésére.";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "A nyomtatáshoz a mobileszközének és a nyomtatónak azonos Wi-Fi hálózatban kell lenniük. Ellenőrizze a Wi-Fi beállításait.";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "A nyomtatás a Sprocket felmelegedése után folytatódik.";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "A nyomtatás a Sprocket lehűlése után folytatódik.";
+
+/* No comment provided by engineer. */
+"Processing..." = "Feldolgozás...";
 
 /* The color purple */
 "Purple" = "Lila";
@@ -411,17 +415,17 @@
 /* Title for screen listing all available sprocket printers */
 "sprocket" = "sprocket";
 
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "A Sprocket már a képfeldolgozást végzi. Várjon a további fényképek küldésére.";
+
 /* Message given when sprocket cannot print due to being too cold */
-"Sprocket is Cold" = "A sprocket hideg";
+"Sprocket is Cold" = "A Sprocket hideg";
 
 /* Message given when sprocket has no known error */
-"Sprocket is ready to print." = "A sprocket nyomtatásra kész.";
+"Sprocket is ready to print." = "A Sprocket nyomtatásra kész.";
 
 /* Message given when sprocket cannot print due to being too hot */
-"Sprocket is Warm" = "A sprocket meleg";
-
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "Újabb nyomtatási feladat elvégzése előtt a Sprocket nyomtatónak le kell hűlnie. Várakozás másik fénykép küldésére.";
+"Sprocket is Warm" = "A Sprocket meleg";
 
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Sprocket nyomtató használatban";
@@ -446,11 +450,8 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "A készülék nem felismerhető.";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "A sprocket nyomtató jelenleg egy nyomtatási feladatot hajt végre. Várjon a fénykép újraküldésére.";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "A fénykép küldése közben hiba lépett fel. Lehetséges, hogy a nyomtató nem támogatja ezt a fényképformátumot. Válasszon másik képet. ";
+"There was an error while sending your image to the printer." = "Hiba történt a kép nyomtatóra küldésekor.";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "Ez a szimbólum azt jelzi, hogy a termék nem helyezhető a háztartási hulladékba. Az egészség és a környezet védelme érdekében kérjük, hogy a leselejtezett terméket adja le egy olyan gyűjtőhelyen, amely gondoskodik az elektromos és elektronikus termékek újrahasznosításáról. További információért kérjük, forduljon a háztartási hulladékok kezelését végző vállalathoz, vagy látogasson el a következő webhelyre: http://www.hp.com/recycle.";
@@ -471,7 +472,7 @@
 "Unselect All" = "Az összes kijelölés megszüntetése";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "Használja a HP ZINK fotópapírját. Helyezze be a kék Smartsheet lapot vonalkóddal lefelé, és indítsa újra a nyomtatót. ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "Használja a HP ZINK fotópapírját. Helyezze be a kék Smartsheet lapot vonalkóddal lefelé, és indítsa újra a nyomtatót.";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "Mi az a nyomtatási sor?";
