@@ -449,26 +449,34 @@ int const kCustomButtonTag = 9999;
                     PGAurasmaMagicFrame *magicFrame = [PGMagicFrameManager magicFramesDictionary][frame.accessibilityLabel];
                     if (magicFrame) {
                         NSLog(@"frame uuid is %@ and name is %@", magicFrame.auraId, magicFrame.name);
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                            PGImglyManager *strongSelf = weakSelf;
-                            if (!strongSelf) {
-                                return;
-                            }
-                            CGSize triggerSize = CGSizeMake(600, 900);
-                            NSError *error = nil;
-                            AURAuraPreviewController *controller = [AURAuraPreviewController controllerWithContext:[PGAurasmaGlobalContext instance].context
-                                                                                                         andAuraId:magicFrame.auraId
-                                                                                                    andTriggerSize:triggerSize
-                                                                                                             error:&error];
+                        
+                        AURCachedContentServiceErrorHandler callback = ^(NSError *error){
                             if (error) {
-                                NSLog(@"error getting preview controller: %@", error);
+                                NSLog(@"error getting Magic Frame preview: %@", error);
                                 return;
                             }
-                            strongSelf.aurView = [AURView viewWithFrame:strongSelf.magicFrameController.workspaceView.frame andController:controller];
-                            strongSelf.aurView.userInteractionEnabled = NO; //tapping on the preview dismisses
-                            [strongSelf.magicFrameController.workspaceView addSubview:strongSelf->_aurView];
-                        });
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                
+                                PGImglyManager *strongSelf = weakSelf;
+                                if (!strongSelf) {
+                                    return;
+                                }
+                                CGSize triggerSize = CGSizeMake(600, 900);
+                                NSError *error = nil;
+                                AURAuraPreviewController *controller = [AURAuraPreviewController controllerWithContext:[PGAurasmaGlobalContext instance].context
+                                                                                                             andAuraId:magicFrame.auraId
+                                                                                                        andTriggerSize:triggerSize
+                                                                                                                 error:&error];
+                                if (error) {
+                                    NSLog(@"error getting preview controller: %@", error);
+                                    return;
+                                }
+                                strongSelf.aurView = [AURView viewWithFrame:strongSelf.magicFrameController.workspaceView.frame andController:controller];
+                                strongSelf.aurView.userInteractionEnabled = NO; //tapping on the preview dismisses
+                                [strongSelf.magicFrameController.workspaceView addSubview:strongSelf->_aurView];
+                            });
+                        };
+                        [[AURCachedContentService getServiceWithContext:[PGAurasmaGlobalContext instance].context] cacheAura:magicFrame.auraId withCallback:callback];
                     }
                 }
             };
