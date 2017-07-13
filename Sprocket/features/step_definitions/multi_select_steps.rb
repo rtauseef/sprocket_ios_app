@@ -1,6 +1,6 @@
 Then(/^I should see the multiselect option enabled$/) do
     check_element_exists(@current_page.multi_select 1)
-    sleep(STEP_PAUSE)
+    #sleep(STEP_PAUSE)
 end
 
 Then(/^I select "(.*?)" photos$/) do |number|
@@ -12,10 +12,10 @@ Then(/^I select "(.*?)" photos$/) do |number|
 end
 
 And(/^I should see the number of photos selected as "(.*?)"$/) do |number|
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
     check_element_exists(@current_page.number_of_photos number)
     $number = number
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
 end
 
 Then(/^I tap on the multi selected number$/) do
@@ -24,7 +24,8 @@ Then(/^I tap on the multi selected number$/) do
 end
 
 Then(/^I should see the count of images and checkmark circle in each page when swipe "(.*?)"$/) do |side|
-    sleep(WAIT_SCREENLOAD)
+   # sleep(WAIT_SCREENLOAD)
+    sleep(STEP_PAUSE)
     if side == "left"
         i = 1
         while i < $number.to_i

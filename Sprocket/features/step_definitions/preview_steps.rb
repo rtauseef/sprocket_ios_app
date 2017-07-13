@@ -1,5 +1,6 @@
 Then(/^I should see "(.*?)" button$/) do |element_id|
-  sleep(MIN_TIMEOUT)
+  #sleep(MIN_TIMEOUT)
+    sleep(STEP_PAUSE)
   if element_id == "Grid mode"
     check_element_exists @current_page.grid_mode_check_button
   else
@@ -20,16 +21,19 @@ Then(/^I should see "(.*?)" button$/) do |element_id|
 end
 
 When(/^I double tap on the picture$/) do
-  sleep(MIN_TIMEOUT)
+ # sleep(MIN_TIMEOUT)
+    sleep(STEP_PAUSE)
   close_camera_popup
-  sleep(WAIT_SCREENLOAD)
+  #sleep(WAIT_SCREENLOAD)
+    sleep(STEP_PAUSE)
   $curr_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
   $curr_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
   double_tap "* id:'GestureImageView'"
 end
 
 Then(/^I should see margins on top and bottom$/) do
-  sleep(WAIT_SCREENLOAD)
+  #sleep(WAIT_SCREENLOAD)
+    sleep(STEP_PAUSE)
   $post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
   $post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
   raise "Margins not found" unless $post_img_frame_width < $curr_img_frame_width && $post_img_frame_height < $curr_img_frame_height
@@ -42,7 +46,8 @@ Then(/^I should see the original image without margins$/) do
   raise "Original Image not found" unless $post_img_frame_width > $curr_img_frame_width && $post_img_frame_height > $curr_img_frame_height
 end
 Then(/^I should not see margins on top and bottom$/) do
-  sleep(WAIT_SCREENLOAD)
+ # sleep(WAIT_SCREENLOAD)
+    sleep(STEP_PAUSE)
   $post_img_frame_width = query("* id:'GestureImageView'").first["frame"]["width"]
   $post_img_frame_height = query("* id:'GestureImageView'").first["frame"]["height"]
   raise "Margins not found" unless $post_img_frame_width > $curr_img_frame_width && $post_img_frame_height > $curr_img_frame_height
@@ -82,7 +87,7 @@ And(/^I should see "(.*?)" with "(.*?)" items and a right arrow$/) do |print_que
     check_element_exists(@current_page.printqueue)
     check_element_exists("view marked:'#{number}'")
     check_element_exists("* id:'Arrow_Right'")
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
 end
 
 Then(/^I should see "([^"]*)" mark with "([^"]*)" button enabled$/) do |copy, change_copy|
@@ -91,7 +96,7 @@ Then(/^I should see "([^"]*)" mark with "([^"]*)" button enabled$/) do |copy, ch
     if change_copy == "Increment"
         check_element_exists "* id:'+ButtonEnabled'"
     end
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
 end
 
 Then(/^I should see the number of copies "(.*?)"$/) do |copies|

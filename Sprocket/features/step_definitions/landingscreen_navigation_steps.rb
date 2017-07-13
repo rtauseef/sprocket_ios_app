@@ -39,7 +39,7 @@ Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
             swipe(:left)
            # check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}")
             check_element_exists("view marked:'#{$list_loc[screen_name]}")
-            sleep(STEP_PAUSE)
+            #sleep(STEP_PAUSE)
         end
     else
         if screen_name == "Camera Roll"
@@ -51,14 +51,14 @@ Then /^I swipe to see "(.*?)" screen$/ do |screen_name|
             end
             #check_element_exists("UINavigationBar marked:'#{$list_loc[screen_name]}")
             check_element_exists("view marked:'#{$list_loc[screen_name]}")
-            sleep(STEP_PAUSE)
+            #sleep(STEP_PAUSE)
         else
             if screen_name == "Google"
-                sleep(STEP_PAUSE)
+                #sleep(STEP_PAUSE)
                 swipe(:right)
                 sleep(STEP_PAUSE)
                 check_element_exists("view marked:'#{$list_loc['google']}'")
-                sleep(STEP_PAUSE)
+                #sleep(STEP_PAUSE)
             else
                 if screen_name == "facebook"
                     sleep(STEP_PAUSE)

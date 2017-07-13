@@ -286,6 +286,7 @@ Given(/^I should see the photo with the "([^"]*)" sticker from "([^"]*)" tab$/) 
     raise "Wrong sticker selected!" unless flag == 1
 end       
 Then(/^I could see "([^"]*)" option$/) do |option|
+    sleep(STEP_PAUSE)
     i = 0
     method_name = option
     if (element_exists "view marked:'#{method_name}'")
@@ -335,6 +336,7 @@ Then(/^I select "(.*?)"$/) do |option|
             touch @current_page.send(method_name)
         end
     end
+     sleep(STEP_PAUSE)
 end
 Then(/^I set the value for "([^"]*)"$/) do |method_name|
     $slider_val = @current_page.send(method_name)

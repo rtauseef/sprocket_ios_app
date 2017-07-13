@@ -4,26 +4,30 @@ Then(/^I open cameraroll$/) do
     if ENV['LANGUAGE'] == "Dutch"
         if element_exists("UIButtonLabel")
             touch query("UIButtonLabel")
-            sleep(STEP_PAUSE)
+            #sleep(STEP_PAUSE)
         end
     end
     
         if element_exists("button marked:'#{$list_loc['photos_button']}'")
-            sleep(WAIT_SCREENLOAD)
+            #sleep(WAIT_SCREENLOAD)
+            sleep(STEP_PAUSE)
             touch "button marked:'#{$list_loc['photos_button']}'"
         end
     
     if element_exists("view marked:'#{$list_loc['auth']}' index:0")
-        sleep(WAIT_SCREENLOAD)
+        #sleep(WAIT_SCREENLOAD)
+        sleep(STEP_PAUSE)
         touch("view marked:'#{$list_loc['auth']}' index:0")
     end
-    sleep(WAIT_SCREENLOAD)
+    #sleep(WAIT_SCREENLOAD)
+    sleep(STEP_PAUSE)
 end
 
 Then(/^I verify photos screen title$/) do
     screen_title=query("view marked:'#{$list_loc['photo_screen']}'")
     raise "not found!" unless screen_title.length > 0
-    sleep(WAIT_SCREENLOAD)
+   # sleep(WAIT_SCREENLOAD)
+    sleep(STEP_PAUSE)
 end
 
 Then(/^I touch the option "(.*?)"$/) do |option|
@@ -33,7 +37,7 @@ Then(/^I touch the option "(.*?)"$/) do |option|
             touch "UILabel index:5"
         else
             touch ("view marked:'#{$list_loc[option]}'")
-            sleep(STEP_PAUSE)
+            #sleep(STEP_PAUSE)
         end
     else
         if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French"
@@ -50,7 +54,7 @@ Then(/^I touch the option "(.*?)"$/) do |option|
                             puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                         else
                             touch ("view marked:'#{$list_loc[option]}'")
-                            sleep(STEP_PAUSE)
+                            #sleep(STEP_PAUSE)
                         end
                     end
                 end
@@ -67,14 +71,14 @@ Then(/^I touch the option "(.*?)"$/) do |option|
                 if option == "Tweet Support"
                     if ENV['LANGUAGE'] == "English-US" || ENV['LANGUAGE'] == "English-UK"
                         touch ("view marked:'#{$list_loc[option]}'")
-                        sleep(STEP_PAUSE)
+                        #sleep(STEP_PAUSE)
                     else
                         puts "#{option} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                     end
                 else
                     sleep(STEP_PAUSE)
                     touch ("view marked:'#{$list_loc[option]}'")
-                    sleep(STEP_PAUSE)
+                   # sleep(STEP_PAUSE)
                 end
             end
         end
@@ -88,7 +92,7 @@ end
 
 
 And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
     if social_media == "Instagram"
         if ENV['LANGUAGE'] == "Danish"
           link_text = query("PGTermsAttributedLabel", :text)[0] 
@@ -96,7 +100,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
         else
            terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_instagram']}'")
         raise "not found!" unless terms_of_service_link.length > 0
-        sleep(STEP_PAUSE)
+       # sleep(STEP_PAUSE)
         end
     else
         if social_media == "Camera Roll"
@@ -106,7 +110,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
             else
                 terms_of_service_link=query("PGTermsAttributedLabel marked:'#{$list_loc['terms_of_service_cameraroll']}'")
                 raise "not found!" unless terms_of_service_link.length > 0
-                sleep(STEP_PAUSE)
+                #sleep(STEP_PAUSE)
             end
         else
             if social_media == "facebook"
@@ -117,10 +121,10 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                     terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_facebook']}'")
                     raise "not found!" unless terms_of_service_link.length > 0
                 end
-                     sleep(STEP_PAUSE)
+                    # sleep(STEP_PAUSE)
             else
                 if social_media == "Google"
-                    sleep(STEP_PAUSE)
+                  #  sleep(STEP_PAUSE)
                     if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                         puts "#{social_media} - Not Applicable for Chinese language!".blue
                     else
@@ -130,7 +134,7 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                         else
                             terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_google']}'")
                             raise "not found!" unless terms_of_service_link.length > 0
-                            sleep(STEP_PAUSE)
+                         #   sleep(STEP_PAUSE)
                         end
                     end
                 else
@@ -141,14 +145,14 @@ And(/^I verify the Terms of Service link for "(.*?)"$/) do |social_media|
                             sleep(STEP_PAUSE)
                         else
                             puts "#{social_media} - Applicable only for Chinese language!".blue
-                            sleep(STEP_PAUSE)
+                           # sleep(STEP_PAUSE)
                         end
                     else
                         if social_media == "pitu"
                             if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
                                 terms_of_service_link=query("view marked:'#{$list_loc['terms_of_service_pitu']}'")
                                 raise "not found!" unless terms_of_service_link.length > 0
-                                sleep(STEP_PAUSE)
+                               # sleep(STEP_PAUSE)
                             else
                                 puts "#{social_media} - Applicable only for Chinese language!".blue
                             end
@@ -168,7 +172,7 @@ end
     
 Then /^I should see the below listed (?:.*):$/ do |table|
     check_options_exist table.raw
-    sleep(STEP_PAUSE)
+    #sleep(STEP_PAUSE)
 end
 
 def check_options_exist item
@@ -261,7 +265,7 @@ end
 Then /^I touch "(.*?)" option in the screen$/ do |option|
     if option == "sprocket"
         touch "view marked:'#{$list_loc['side_menu']}'" 
-        sleep(STEP_PAUSE)
+        #sleep(STEP_PAUSE)
     else
         touch "view marked:'#{$list_loc[option]}'" 
         sleep(STEP_PAUSE)
@@ -276,7 +280,7 @@ Then /^I should see the popup message for the "(.*?)"$/ do |option|
         else
             check_element_exists "view marked:'#{$list_loc['camera_access']}'"
         end
-        sleep(STEP_PAUSE)
+        #sleep(STEP_PAUSE)
     else
         #if element_exists("view marked:'#{$list_loc['auth']}' index:0")
             #sleep(WAIT_SCREENLOAD)
@@ -285,6 +289,7 @@ Then /^I should see the popup message for the "(.*?)"$/ do |option|
            # touch @current_page.download
            # sleep(STEP_PAUSE)
        # end
+        sleep(STEP_PAUSE)
         check_element_exists "view marked:'#{$list_loc['Save_to_CameraRoll']}'"
         sleep(STEP_PAUSE)
     end
@@ -322,18 +327,20 @@ Then /^I verify the "(.*?)" button text$/ do |button|
         raise "localization failed!" unless button_name == $list_loc[button]
     else
         check_element_exists "view marked:'#{$list_loc[button]}'"
-        sleep(STEP_PAUSE)
+        #sleep(STEP_PAUSE)
     end
 end
 When(/^I touch hamburger button on navigation bar$/) do
   selenium.find_element(:name, "hamburger").click
-  sleep(SLEEP_SCREENLOAD)
+ # sleep(SLEEP_SCREENLOAD)
+    sleep(STEP_PAUSE)
 end
 
 When(/^I select "([^"]*)" option$/) do |option|
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
     selenium.find_element(:name, "#{$list_loc[option]}").click
-    sleep(SLEEP_SCREENLOAD)
+    #sleep(SLEEP_SCREENLOAD)
+    sleep(STEP_PAUSE)
 end
 Then(/^I verify "([^"]*)" url$/) do |option|
     case 

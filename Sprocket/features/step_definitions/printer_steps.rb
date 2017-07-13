@@ -1,39 +1,39 @@
 Then(/^I should see the message to pair the device with the bluetooth printer$/) do
     check_element_exists @current_page.message_title
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
 end
 
 And(/^I should see the modal screen title$/) do
     check_element_exists @current_page.modal_title
-    sleep(STEP_PAUSE)
+    #sleep(STEP_PAUSE)
 end
 
 And(/^I should see the modal screen content$/) do
     check_element_exists @current_page.modal_content
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
 end
 And(/^I should see the technical information$/) do
     check_element_exists @current_page.technical_info
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
 end
 
 And(/^I should see the button "(.*?)"$/) do |button|
     check_element_exists("label {text CONTAINS '#{button}'}")
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
 end
 
 And(/^I tap the "(.*?)" button$/) do |button|
     if button == "OK"
         touch "label {text CONTAINS 'OK'}"
-        sleep(STEP_PAUSE)
+       # sleep(STEP_PAUSE)
     else
         if button == "Edit"
             touch "view marked:'#{$list_loc['Edit']}'"
-            sleep(STEP_PAUSE)
+         #   sleep(STEP_PAUSE)
         else
             if element_exists("PGSignInButton")
                 touch "PGSignInButton"
-                sleep(STEP_PAUSE)
+           #     sleep(STEP_PAUSE)
             end
         end
     end
@@ -41,7 +41,7 @@ end
 
 Then(/^I should not see the modal screen$/) do
     check_element_does_not_exist @current_page.modal_title
-    sleep(STEP_PAUSE)
+    #sleep(STEP_PAUSE)
 end
 
 And(/^I should see the list of two printers conneceted$/) do
@@ -63,7 +63,8 @@ Then(/^I tap the "(.*?)"$/) do |printer|
         touch @current_page.printer_2    
     end
     $printer_name = printer
-    sleep(WAIT_SCREENLOAD)
+    #sleep(WAIT_SCREENLOAD)
+    sleep(STEP_PAUSE)
  end
 
 And(/^I check the screen title with the corresponding printer name$/) do
@@ -109,5 +110,5 @@ end
 
 Then(/^I should see the message for No sprockets$/) do 
     check_element_exists @current_page.modal_title
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
 end

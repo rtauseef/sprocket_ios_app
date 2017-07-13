@@ -51,7 +51,8 @@ Then(/^I tap "(.*?)"$/) do |social_source|
 end
 
 And(/^I should see social source authentication text$/) do
-  sleep(MIN_TIMEOUT)
+  #sleep(MIN_TIMEOUT)
+    sleep(STEP_PAUSE)
   exp_auth_text="By authenticating with social sources you also agree to HP Terms of Service."
   compare = (@current_page.social_source_auth_text == exp_auth_text) ? true : false
   raise "Authentication text mismatch" unless compare==true
@@ -59,7 +60,8 @@ end
 
 When(/^I touch the Terms of Service link$/) do
   @current_page.terms_of_service_link
-  sleep(WAIT_SCREENLOAD)
+  #sleep(WAIT_SCREENLOAD)
+    sleep(STEP_PAUSE)
 end
 
 Then(/^I verify the instructions to "(.*?)"$/) do |instruction|
@@ -76,5 +78,5 @@ end
 
 Then(/^I should see "(.*?)" page$/) do |page|
     check_element_exists("label marked:'How To & Help'")
-    sleep(STEP_PAUSE)
+   # sleep(STEP_PAUSE)
 end

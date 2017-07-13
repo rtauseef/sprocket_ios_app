@@ -100,7 +100,7 @@ def select_sticker item
     i=0
     while i<2 do
       scroll("UICollectionView",:down)
-        slee(STEP_PAUSE)
+        sleep(STEP_PAUSE)
       i=i+1
 
       if (element_exists "view marked:'#{item.to_s}'")
