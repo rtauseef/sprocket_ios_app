@@ -59,4 +59,8 @@ typedef enum
 - (void)handleLongPress:(PGGesturesView *)gesturesView;
 - (void)imageEdited:(PGGesturesView *)gesturesView;
 
+@optional
+- (void)gesturesViewWillTakeScreenshot:(PGGesturesView *)gesturesView;
+- (void)gesturesViewDidTakeScreenshot:(PGGesturesView *)gesturesView;
+
 @end

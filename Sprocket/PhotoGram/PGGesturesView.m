@@ -77,7 +77,7 @@ static CGFloat const kMarginOfSquare = 2.0f;
     self.isMultiSelectImage = NO;
     
     self.embellishmentMetricManager = [[PGEmbellishmentMetricsManager alloc] init];
-    
+
     [self enableGestures];
 }
 
@@ -201,9 +201,16 @@ static CGFloat const kMarginOfSquare = 2.0f;
     if (self.image) {
         BOOL isCheckmarkHidden = self.checkmark.hidden;
         self.checkmark.hidden = YES;
+        if ([self.delegate respondsToSelector:@selector(gesturesViewWillTakeScreenshot:)]) {
+            [self.delegate gesturesViewWillTakeScreenshot:self];
+        }
         
         UIImage *image = [super screenshotImage];
+        
         self.checkmark.hidden = isCheckmarkHidden;
+        if ([self.delegate respondsToSelector:@selector(gesturesViewDidTakeScreenshot:)]) {
+            [self.delegate gesturesViewDidTakeScreenshot:self];
+        }
         
         return image;
     }
