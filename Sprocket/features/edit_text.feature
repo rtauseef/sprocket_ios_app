@@ -183,7 +183,6 @@ Scenario: Verify all the colors are applied successfully
     Then I verify that all the "colors" are applied successfully
 
 @done
-@111
 Scenario: Verify text background
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text
@@ -199,7 +198,6 @@ Scenario: Verify text background
     Then I should see the text with selected "Background Color"
       
 @regression
-@11
 Scenario: Verify background color list
     Given I am on the "TextEdit" screen for "CameraRoll Preview" 
     And I enter unique text

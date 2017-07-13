@@ -109,6 +109,9 @@ Then(/^I should see the number of copies "(.*?)"$/) do |copies|
         raise "Copies not incremented" unless incr_num == copies_incr
     end
 end
-
+Then(/^I should see "([^"]*)" tiles applied$/) do |tile_count|
+  raise "Wrong number of tiles!" unless @current_page.tile_view.length == tile_count.to_i
+  raise "Wrong number of checks!" unless @current_page.tile_check_mark.length == tile_count.to_i
+end
 
 

@@ -59,7 +59,12 @@ end
     def decrement
         "* id:'-ButtonEnabled'"
     end
-    
+    def tile_view
+      query("PGTilingOverlayTile")
+    end
+    def tile_check_mark
+      query("view marked:'Check Inactive1'")
+    end
 def close
     "button"
   end

@@ -96,7 +96,7 @@ def terms_of_service_link
                   if ENV['LANGUAGE'] == "Canada-French" || ENV['LANGUAGE'] == "French"
                       touch(nil, :offset => {:x => xcoord-20.to_i, :y => ycoord+20.to_i})
                   else
-                      touch(nil, :offset => {:x => xcoord+40.to_i, :y => ycoord+10.to_i})
+                      touch(nil, :offset => {:x => xcoord+30.to_i, :y => ycoord+10.to_i})
                     #touch(nil, :offset => {:x => xcoord+50.to_i, :y => ycoord+20.to_i})
                   end
               end

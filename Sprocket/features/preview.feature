@@ -103,6 +103,35 @@ Scenario: Verify preview -Drawer
     Then I should see the preview-drawer "closes"
     
 
+  @TA18675
+  Scenario: Verify tile option
+    Given I am on the "CameraRoll Preview" screen
+    Then I could see "preview_bar_dots" option
+    Then I select "preview_bar_dots" 
+    Then I should see the preview-drawer "slides up"
+    And I should see "1 Copy" mark with "Increment" button enabled
+    And I should see the following options:
+    |Tiles 1  |
+    |Tiles 2  |
+    |Tiles 3  |
+
+
+  @TA18675
+  Scenario Outline: Verify tile option
+    Given I am on the "CameraRoll Preview" screen
+    Then I could see "preview_bar_dots" option
+    Then I select "preview_bar_dots" 
+    Then I should see the preview-drawer "slides up"
+    And I should see "1 Copy" mark with "Increment" button enabled
+    And I touch "<tile_name>"
+    And I should see "<tile_count>" tiles applied
+    Examples:
+    |tile_name|tile_count|
+    |Tiles 1  |0         |
+    |Tiles 2  |4         |
+    |Tiles 3  |9         |
+    
+
     
     
     

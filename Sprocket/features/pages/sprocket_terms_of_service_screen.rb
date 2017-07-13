@@ -12,7 +12,7 @@ class SprocketTermsOfServiceScreen < BaseHtmlScreen
 
 
   def sprocket_header
-    "view marked:'HP Sprocket App Terms of Service'"
+    "view marked:'#{$list_loc['terms_of_service_title']}'"
   end
   
   def done_button

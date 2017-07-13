@@ -22,7 +22,8 @@ end
 
 Then /^I should see the side menu$/ do
     sleep(WAIT_SCREENLOAD)
-    check_element_exists("view marked:'#{$list_loc['side_menu']}'")
+    #check_element_exists("view marked:'#{$list_loc['side_menu']}'")
+    check_element_exists("* id:'HPLogo'")
     sleep(STEP_PAUSE)
 end
 

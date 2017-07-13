@@ -291,6 +291,7 @@ Then /^I should see the popup message for the "(.*?)"$/ do |option|
 end
 
 Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, button|
+  sleep(STEP_PAUSE)
     if button == "cameraLanding"
         if option == "title"
             if ENV['LANGUAGE'] == "French" || ENV['LANGUAGE'] == "Canada-French" || ENV['LANGUAGE'] == "Italian"
@@ -326,7 +327,7 @@ Then /^I verify the "(.*?)" button text$/ do |button|
     end
 end
 When(/^I touch hamburger button on navigation bar$/) do
-  selenium.find_element(:name, "hamburger").click
+  selenium.find_element(:name, "HPPRBack").click
   sleep(SLEEP_SCREENLOAD)
 end
 
