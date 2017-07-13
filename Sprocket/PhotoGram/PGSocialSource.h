@@ -22,13 +22,13 @@
 #import <HPPRCameraRollPhotoProvider.h>
 #import <HPPRPituPhotoProvider.h>
 #import <HPPRQzonePhotoProvider.h>
+#import <HPPRPartyFolderPhotoProvider.h>
 
 #import <HPPRFacebookLoginProvider.h>
 #import <HPPRInstagramLoginProvider.h>
 #import <HPPRFlickrLoginProvider.h>
 #import <HPPRGoogleLoginProvider.h>
 #import <HPPRCameraRollLoginProvider.h>
-#import <HPPRPituLoginProvider.h>
 #import <HPPRQzoneLoginProvider.h>
 
 typedef NS_ENUM(NSUInteger, PGSocialSourceType) {
@@ -39,7 +39,8 @@ typedef NS_ENUM(NSUInteger, PGSocialSourceType) {
     PGSocialSourceTypePitu,
     PGSocialSourceTypeWeiBo,
     PGSocialSourceTypeQzone,
-    PGSocialSourceTypeGoogle
+    PGSocialSourceTypeGoogle,
+    PGSocialSourceTypePartyFolder
 };
 
 extern NSString * const kSocialNetworkKey;

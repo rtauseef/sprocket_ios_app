@@ -14,6 +14,8 @@
 #import "PGAppNavigation.h"
 #import "PGInAppMessageView.h"
 #import "NSLocale+Additions.h"
+#import "PGPartyManager.h"
+#import "PGFeatureFlag.h"
 
 #import <UIKit/UIKit.h>
 
@@ -61,6 +63,28 @@ NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
     message.extra = @{kInAppMessageTypeKey: kInAppMessageTypeValueFirmwareUpgrade};
 
     [UAirship inAppMessaging].pendingMessage = message;
+}
+
+- (void)showPartyPhotoReceivedMessage
+{
+    UAInAppMessage *message = [UAInAppMessage message];
+    NSString *alert = NSLocalizedString(@"Party photo received!", @"User received a photo from a party guest");
+    NSString *queue = NSLocalizedString(@"Queued to print", @"Action description for adding to print queue");
+    NSString *save = NSLocalizedString(@"Saved to photos", @"Action description for saving to camera roll folder");
+    NSString *both = NSLocalizedString(@"Queue and saved", @"Action description for both adding to queue and saving to camera roll folder");
+    if ([PGFeatureFlag isPartySaveEnabled] && [PGFeatureFlag isPartyPrintEnabled]) {
+        alert = [NSString stringWithFormat:@"%@ %@", alert, both];
+    } else if ([PGFeatureFlag isPartySaveEnabled]) {
+        alert = [NSString stringWithFormat:@"%@ %@", alert, save];
+    } else if ([PGFeatureFlag isPartyPrintEnabled]) {
+        alert = [NSString stringWithFormat:@"%@ %@", alert, queue];
+    }
+    
+    message.alert = alert;
+    message.duration = 2.5;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UAirship inAppMessaging] displayMessage:message];
+    });
 }
 
 - (void)attemptToDisplayPendingMessage

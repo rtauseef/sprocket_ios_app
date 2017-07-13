@@ -27,6 +27,7 @@ resources-to-copy-*.*/Sprocket/features/Print_Confirmation.feature~
 /Sprocket/features/g1
 /Sprocket/features/Print_Confirmation1.feature
 Sprocket/Sprocket.xcodeproj/project.pbxproj.bak
+Sprocket/Aurasma
 
 # fastlane specific
 fastlane/report.xml

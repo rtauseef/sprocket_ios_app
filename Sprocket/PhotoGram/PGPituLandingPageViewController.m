@@ -20,7 +20,6 @@
 #import "PGPreviewViewController.h"
 #import "PGImagePickerLandscapeSupportController.h"
 #import "PGAnalyticsManager.h"
-#import "HPPRPituLoginProvider.h"
 #import "HPPRPituPhotoProvider.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIView+Animations.h"
@@ -54,7 +53,7 @@
 
 - (IBAction)signInButtonTapped:(id)sender
 {
-    [[HPPRPituLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
+    [[HPPRPituPhotoProvider sharedInstance].loginProvider loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             [self showPhotoGallery];
             [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
@@ -78,7 +77,7 @@
     PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypePitu];
     [self willSignInToSocialSource:socialSource];
 
-    [[HPPRPituLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+    [[HPPRPituPhotoProvider sharedInstance].loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             [self didSignInToSocialSource:socialSource];
 

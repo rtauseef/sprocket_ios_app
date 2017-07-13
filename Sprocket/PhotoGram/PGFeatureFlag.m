@@ -13,27 +13,74 @@
 #import "PGFeatureFlag.h"
 
 static NSString * const kEnableCloudAssetsKey = @"com.hp.hp-sprocket.enableCloudAssets";
+static NSString * const kPartyModeEnabledKey = @"com.hp.sprocket.key.party.mode.enabled";
+static NSString * const kPartySaveEnabledKey = @"com.hp.sprocket.key.party.save.enabled";
+static NSString * const kPartyPrintEnabledKey = @"com.hp.sprocket.key.party.print.enabled";
+
+NSString * const kPGFeatureFlagPartyModeEnabledNotification = @"com.hp.sprocket.notification.party.mode.enabled";
 
 @implementation PGFeatureFlag
+
+#pragma mark - Flags
 
 + (BOOL)isMultiPrintEnabled
 {
     return YES;
 }
 
-+ (void)setCloudAssetsEnabled:(BOOL)enabled
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
-    [userDefaults setBool:enabled forKey:kEnableCloudAssetsKey];
-    [userDefaults synchronize];
-}
-
 + (BOOL)isCloudAssetsEnabled
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [self getFlag:kEnableCloudAssetsKey];
+}
 
-    return [userDefaults boolForKey:kEnableCloudAssetsKey];
++ (void)setCloudAssetsEnabled:(BOOL)enabled
+{
+    [self setFlag:kEnableCloudAssetsKey enabled:enabled];
+}
+
++ (BOOL)isPartyModeEnabled {
+    return [self getFlag:kPartyModeEnabledKey];
+}
+
++ (void)setPartyModeEnabled:(BOOL)enabled {
+    [self setFlag:kPartyModeEnabledKey enabled:enabled notification:kPGFeatureFlagPartyModeEnabledNotification];
+}
+
++ (BOOL)isPartySaveEnabled {
+    return [self getFlag:kPartySaveEnabledKey];
+}
+
++ (void)setPartySaveEnabled:(BOOL)enabled {
+    [self setFlag:kPartySaveEnabledKey enabled:enabled];
+}
+
++ (BOOL)isPartyPrintEnabled {
+    return [self getFlag:kPartyPrintEnabledKey];
+}
+
++ (void)setPartyPrintEnabled:(BOOL)enabled {
+    [self setFlag:kPartyPrintEnabledKey enabled:enabled];
+}
+
+#pragma mark - Helpers
+
++ (void)setFlag:(NSString *)key enabled:(BOOL)enabled
+{
+    [self setFlag:key enabled:enabled notification:nil];
+}
+
++ (void)setFlag:(NSString *)key enabled:(BOOL)enabled notification:(NSString * _Nullable)notification
+{
+    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    if (nil != notification) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:notification object:self];
+    }
+}
+
++ (BOOL)getFlag:(NSString *)key
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
 }
 
 @end

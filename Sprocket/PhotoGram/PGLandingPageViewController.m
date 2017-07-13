@@ -21,6 +21,8 @@
 #import "PGMediaNavigation.h"
 #import "PGPhotoSelection.h"
 #import "PGInAppMessageManager.h"
+#import "PGFeatureFlag.h"
+#import "PGAppNavigation.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 
@@ -40,6 +42,8 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     self.navigationItem.leftBarButtonItem = hamburgerButtonItem;
     
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGFeatureFlagPartyModeEnabledNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -310,6 +314,13 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
 - (BOOL)allowsInAppMessages
 {
     return YES;
+}
+
+#pragma mark - Notifications
+
+- (void)handleSettingsChangedNotification:(NSNotification *)notification
+{
+    [PGAppNavigation goToLandingPage];
 }
 
 @end

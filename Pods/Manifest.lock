@@ -14,6 +14,11 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AWSCognito (2.5.8):
+    - AWSCore (= 2.5.8)
+  - AWSCore (2.5.8)
+  - AWSS3 (2.5.8):
+    - AWSCore (= 2.5.8)
   - CocoaLumberjack (2.2.0):
     - CocoaLumberjack/Default (= 2.2.0)
     - CocoaLumberjack/Extensions (= 2.2.0)
@@ -75,6 +80,8 @@ PODS:
   - UrbanAirship-iOS-SDK (8.3.3)
 
 DEPENDENCIES:
+  - AWSCognito
+  - AWSS3
   - CocoaLumberjack (= 2.2.0)
   - Google/SignIn
   - GoogleAnalytics-iOS-SDK (= 3.12)
@@ -104,6 +111,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AWSCognito: 8eb74039f4dc5f2d929999c4f531eeb4bd83e6cb
+  AWSCore: cf101c44d2cc5da32abc27d5529cddc63c010415
+  AWSS3: addf558f9cf2368e7fb520440867fea5596db0fb
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
@@ -117,13 +127,13 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
-  HPPhotoProvider: 08358b88169d402942d7a48e86446188d7c5028e
+  HPPhotoProvider: '08358b88169d402942d7a48e86446188d7c5028e'
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
   LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: 51a0deb935d0be5905473654316ad1b6f09f3353
 
-PODFILE CHECKSUM: 78d25de8385a94240d6746893bc2d006eee68ec0
+PODFILE CHECKSUM: 47e2d3e4171cd85cb38973e17af02ba5c8c101a8
 
-COCOAPODS: 1.3.0.beta.2
+COCOAPODS: 1.2.1

@@ -14,9 +14,20 @@
 
 @interface PGFeatureFlag : NSObject
 
+extern NSString * const kPGFeatureFlagPartyModeEnabledNotification;
+
 + (BOOL)isMultiPrintEnabled;
 
-+ (void)setCloudAssetsEnabled:(BOOL)enabled;
 + (BOOL)isCloudAssetsEnabled;
++ (void)setCloudAssetsEnabled:(BOOL)enabled;
+
++ (BOOL)isPartyModeEnabled;
++ (void)setPartyModeEnabled:(BOOL)enabled;
+
++ (BOOL)isPartySaveEnabled;
++ (void)setPartySaveEnabled:(BOOL)enabled;
+
++ (BOOL)isPartyPrintEnabled;
++ (void)setPartyPrintEnabled:(BOOL)enabled;
 
 @end
