@@ -104,7 +104,7 @@
 "Battery Error" = "电池故障";
 
 /* Message given when sprocket cannot print due to having a low battery */
-"Battery Low" = "Battery Low";
+"Battery Low" = "电池电量不足";
 
 /* Title of field displaying battery level */
 "Battery Status" = "电池电量";
@@ -128,7 +128,7 @@
 "Cancel" = "取消";
 
 /* Title */
-"Chemical substances" = "Chemical substances";
+"Chemical substances" = "化学物质";
 
 /* Message given when sprocket cannot print due to having a paper jam */
 "Clear paper jam and restart the printer by pressing and holding the power button." = "清理卡纸，然后长按电源键以重启打印机。";
@@ -137,7 +137,7 @@
 "Close the cover to proceed." = "合上顶盖以继续。";
 
 /* Message given when sprocket cannot print due to having a low battery */
-"Connect your sprocket to a power source to continue use." = "Connect your sprocket to a power source to continue use.";
+"Connect your sprocket to a power source to continue use." = "将您的 sprocket 接通电源以继续使用。";
 
 /* Message given when sprocket cannot print due to bing in a cooling mode */
 "Cooling Down..." = "正在冷却...";
@@ -181,6 +181,9 @@
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "Error" = "错误";
 
+/* Message given when sprocket cannot print due to an error with the image data. */
+"Error Sending Image" = "发送图像时出错";
+
 /* Indicates that a firmware upgrade has started */
 "Finishing Firmware Upgrade" = "正在完成固件升级";
 
@@ -209,13 +212,13 @@
 "Hardware Version" = "硬件版本";
 
 /* Description */
-"HP encourages customers to recycle used electronic hardware, HP original print cartridges, and rechargeable batteries. For more information about recycling programs, go to www.hp.com/recycle." = "HP 鼓励客户循环利用使用过的电子硬件、HP 原装打印墨盒和可充电电池。 For more information about recycling programs, go to www.hp.com/recycle.";
+"HP encourages customers to recycle used electronic hardware, HP original print cartridges, and rechargeable batteries. For more information about recycling programs, go to www.hp.com/recycle." = "HP 鼓励客户循环利用使用过的电子硬件、HP 原装打印墨盒和可充电电池。 有关回收计划的详细信息，请访问 www.hp.com/recycle。";
 
 /* Description */
-"HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). 可从以下网站查找有关此产品的化学物质信息报告： www.hp.com/go/reach";
+"HP is committed to providing our customers with information about the chemical substances in our products as needed to comply with legal requirements such as REACH (Regulation EC No 1907/2006 of the European Parliament and the Council). A chemical information report for this product can be found at: www.hp.com/go/reach" = "HP 会根据需要为用户提供有关产品中所含化学物质的信息，以遵从法律要求，如 REACH（欧盟执委会和欧盟理事会法规 EC 第 1907/2006 号）。 可从以下网站查找有关此产品的化学物质信息报告： www.hp.com/go/reach";
 
 /* Description */
-"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP 通过再次销售其某些受欢迎的产品来节约资源。 有关 HP 产品的详细回收信息，请访问： www.hp.com/recycle";
+"HP offers an increasing number of product return and recycling programs in many countries/regions, and partners with some of the largest electronic recycling centers throughout the world. HP conserves resources by reselling some of its most popular products. For more information regarding recycling of HP products, please visit: www.hp.com/recycle" = "HP 在许多国家/地区提供了越来越多的产品回收和循环使用计划，并与世界各地的一些大型电子回收中心结成合作伙伴关系。 HP 通过再次销售其某些受欢迎的产品来节约资源。 有关 HP 产品的详细回收信息，请访问： www.hp.com/recycle";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
 "Incorrect Paper Type" = "纸张类型不正确";
@@ -230,7 +233,7 @@
 "MAC Address" = "MAC 地址";
 
 /* Message given when the printer can't be contacted. */
-"Make sure the sprocket printer is on and bluetooth connected." = "Make sure the sprocket printer is on and bluetooth connected.";
+"Make sure the sprocket printer is on and bluetooth connected." = "确保已开启 sprocket 打印机电源并已连接蓝牙。";
 
 /* Body for firmware download error dialog */
 "Make sure you are connected to the internet and try again." = "确保已连接到互连网，然后重试。";
@@ -248,7 +251,7 @@
 "Next" = "下一页";
 
 /* Indicates that no sprocket printers are connected */
-"No sprockets Connected" = "No sprockets Connected";
+"No sprockets Connected" = "Sprocket 尚未连接";
 
 /* No comment provided by engineer. */
 "No Wi-Fi connection" = "无 Wi-Fi 连接";
@@ -279,7 +282,7 @@
 "Page Settings" = "页面设置";
 
 /* Instructions for pairing a printer */
-"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected.";
+"Pair your bluetooth sprocket printer with this device. Make sure the sprocket printer is on and bluetooth connected." = "将支持蓝牙的 sprocket 打印机与该设备配对。 确保已开启 sprocket 打印机电源并已连接蓝牙。";
 
 /* Message given when sprocket cannot print due to the cover being open */
 "Paper Cover Open" = "纸张顶盖打开";
@@ -301,9 +304,6 @@
 
 /* Option for paper type */
 "Photo Paper" = "相纸";
-
-/* Message given when sprocket cannot print due to an error with the image data. */
-"Photo Unsupported" = "不支持照片";
 
 /* The color pink */
 "Pink" = "粉色";
@@ -356,14 +356,18 @@
 /* The printer is printing */
 "Printing" = "打印";
 
-/* Message given when sprocket cannot print due to being too cold */
-"Printing is diabled until a higher temperature is reached. Wait to send another photo." = "温度过低，打印功能不可用。 稍后再发送另一张照片。";
-
-/* Message given when sprocket cannot print due to being too hot */
-"Printing is diabled until a lower temperature is reached. Wait to send another photo." = "温度过高，打印功能不可用。 稍后再发送另一张照片。";
-
 /* No comment provided by engineer. */
 "Printing requires your mobile device and printer to be on same Wi-Fi network. Please check your Wi-Fi settings." = "要进行打印，移动设备和打印机必须位于同一 Wi-Fi 网络中。 请检查您的 Wi-Fi 设置。";
+
+/* Message given when sprocket cannot print due to being too cold */
+"Printing will resume after your Sprocket warms up." = "您的 Sprocket 预热后，打印将恢复。";
+
+/* Message given when sprocket cannot print due to being too hot
+   Message given when sprocket cannot print due to bing in a cooling mode */
+"Printing will resume after your Sprocket cools down." = "您的 Sprocket 冷却后，打印将恢复。";
+
+/* No comment provided by engineer. */
+"Processing..." = "正在处理...";
 
 /* The color purple */
 "Purple" = "紫色";
@@ -379,16 +383,16 @@
 "Recent printer not currently available" = "近期使用的打印机当前不可用";
 
 /* Title */
-"Recycling program" = "Recycling program";
+"Recycling program" = "回收计划";
 
 /* The color red */
 "Red" = "红色";
 
 /* Title */
-"Safety data sheets" = "Safety data sheets";
+"Safety data sheets" = "安全说明";
 
 /* Description */
-"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request.";
+"Safety Data Sheets, product safety and environmental information are available at www.hp.com/go/ecodata or on request." = "可访问 www.hp.com/go/ecodata 获取安全说明、产品安全和环境信息或来函索取这些信息。";
 
 /* No comment provided by engineer. */
 "Select All" = "全选";
@@ -403,13 +407,16 @@
 "Sending Firmware Upgrade\nto Sprocket Printer" = "正在发送固件升级\n至 Sprocket 打印机";
 
 /* Indicates that the phone is sending an image to the printer */
-"Sending to sprocket printer" = "正在发送至 sprocket 打印机";
+"Sending to sprocket printer" = "正在发送至 sprocket 打印机，请稍候";
 
 /* No comment provided by engineer. */
 "Settings" = "设置";
 
 /* Title for screen listing all available sprocket printers */
-"sprocket" = "sprocket";
+"sprocket" = "Sprocket";
+
+/* Message given when sprocket cannot print due to being in use. */
+"Sprocket is already processing an image. Please wait to send more." = "Sprocket 已在处理图像。 请稍后再发送更多图像。";
 
 /* Message given when sprocket cannot print due to being too cold */
 "Sprocket is Cold" = "Sprocket 已冷却";
@@ -420,14 +427,11 @@
 /* Message given when sprocket cannot print due to being too hot */
 "Sprocket is Warm" = "Sprocket 已完成暖机";
 
-/* Message given when sprocket cannot print due to bing in a cooling mode */
-"Sprocket needs to cool down before printing another job. Wait to send another photo." = "在进行下一次打印前，sprocket 需要冷却。 稍后再发送另一张照片。";
-
 /* Message given when sprocket cannot print due to being in use. */
 "Sprocket Printer in Use" = "Sprocket 打印机正在使用";
 
 /* Message given when sprocket cannot be reached */
-"Sprocket Printer Not Connected" = "Sprocket Printer Not Connected";
+"Sprocket Printer Not Connected" = "Sprocket 打印机尚未连接";
 
 /* Title of field displaying latest errors */
 "Status" = "状态";
@@ -441,16 +445,13 @@
 /* Title of field for displaying the technical infomration
    Title of table view cell used for displaying technical information
    Title of Technical Information screen */
-"Technical Information" = "Technical Information";
+"Technical Information" = "技术信息";
 
 /* Message given when sprocket cannot print due to not recognizing data from our app */
 "The device is not recognized." = "设备未识别。";
 
-/* Message given when sprocket cannot print due to being in use. */
-"The sprocket printer is already processing a job. Please wait to resend photo." = "Sprocket 打印机正在处理另一项任务。 请稍后再重新发送照片。";
-
 /* Message given when sprocket cannot print due to an error with the image data. */
-"There was an error sending your photo. The photo format may not be supported on this printer. Choose another image. " = "发送照片时出现错误。 打印机可能不支持该照片格式。 选择另一张图片。 ";
+"There was an error while sending your image to the printer." = "向打印机发送图像时出错。";
 
 /* Description */
 "This symbol means do not dispose of your product with your other household waste. Instead, you should protect human health and the environment by handing over your waste equipment to a designated collection point for the recycling of waste electrical and electronic equipment. For more information, please contact your household waste disposal service, or go to http://www.hp.com/recycle." = "此符号表示请不要将您的产品与其他生活垃圾一起处理。 相反，您应该保护人类健康和环境，将废弃设备移交到指定回收点对其进行处理，以便回收废弃的电子电机设备。 有关详细信息，请联系您的生活垃圾处理服务处，或访问 http://www.hp.com/recycle。";
@@ -471,7 +472,7 @@
 "Unselect All" = "全部取消选择";
 
 /* Message given when sprocket cannot print due to being loaded with the wrong kind of paper */
-"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer. " = "使用 HP 旗下的 ZINK 相纸。 装入蓝色的 Smartsheet，条形码朝下，然后重启打印机。 ";
+"Use HP branded ZINK Photo Paper. Load the blue Smartsheet, barcode down, and restart the printer." = "使用 HP 旗下的 ZINK 相纸。 装入蓝色的 Smartsheet，条形码朝下，然后重启打印机。";
 
 /* footer heading describing print queue */
 "What is Print Queue?" = "什么是打印队列？";
