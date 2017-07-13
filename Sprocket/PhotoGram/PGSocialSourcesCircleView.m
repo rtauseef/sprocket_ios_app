@@ -12,7 +12,7 @@
 
 #import "PGSocialSourcesCircleView.h"
 #import "PGSocialSourcesManager.h"
-#import "PGPartyManager.h"
+#import "PGFeatureFlag.h"
 
 @interface PGSocialSourcesCircleView ()
 
@@ -27,7 +27,7 @@
     [super awakeFromNib];
 
     [self setupSocialSources];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGPartyManagerPartyModeEnabledNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGFeatureFlagPartyModeEnabledNotification object:nil];
 }
 
 - (void)setUserInteractionEnabled:(BOOL)userInteractionEnabled

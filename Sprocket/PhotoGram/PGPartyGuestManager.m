@@ -13,15 +13,17 @@
 #import "PGPartyGuestManager.h"
 #import "PGPartyFileInfo.h"
 #import "PGPartyAWSTransfer.h"
+#import "PGFeatureFlag.h"
 
 @interface PGPartyGuestManager() <CBPeripheralManagerDelegate>
 
 @property (strong, nonatomic) CBPeripheralManager *peripheralManager;
 @property (strong, nonatomic) CBMutableCharacteristic *characteristic;
 @property (strong, nonatomic) PGPartyFileInfo *upload;
-@property (strong, nonatomic, readonly) UIImage *image;
-@property (strong, nonatomic) void (^sendPhotoCompletion)(NSError *error);
-@property (nonatomic, copy, nullable) void(^progressBlock)(double progress);
+@property (strong, nonatomic) UIImage *image;
+@property (copy, nonatomic, nullable) void(^sendPhotoCompletion)(NSError *error);
+@property (copy, nonatomic, nullable) void(^progressBlock)(CGFloat progress);
+@property (readonly, nonatomic) dispatch_queue_t peripheralQueue;
 
 typedef NS_ENUM(NSInteger, PGPartyGuestManagerErrorCode) {
     PGPartyGuestManagerErrorSendInProgress = 2000
@@ -30,13 +32,10 @@ typedef NS_ENUM(NSInteger, PGPartyGuestManagerErrorCode) {
 @end
 
 @implementation PGPartyGuestManager
-{
-    dispatch_queue_t _peripheralQueue;
-}
 
-static float kImageCompression = 0.75;
+static CGFloat const kImageCompression = 0.75;
 
-static char *kPeripheralQueue = "com.hp.sprocket.queue.party.peripheral";
+static char * const kPeripheralQueue = "com.hp.sprocket.queue.party.peripheral";
 
 NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domain.party.guest";
 
@@ -57,7 +56,7 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
     self = [super init];
     if (self) {
         _peripheralQueue = dispatch_queue_create(kPeripheralQueue, NULL);
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGPartyManagerPartyModeEnabledNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGFeatureFlagPartyModeEnabledNotification object:nil];
     }
     return self;
 }
@@ -67,13 +66,13 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
 - (void)setAdvertising:(BOOL)advertising
 {
     @synchronized (self) {
-        NSLog(@"ADVERTISING: %@", advertising ? @"ON" : @"OFF");
+        PGLogDebug(@"ADVERTISING: %@", advertising ? @"ON" : @"OFF");
         _advertising = advertising;
         if (advertising) {
             if (nil == self.peripheralManager) {
                 [self initializePeripheral];
             }
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyGuestManagerDidStartAdvertising)]) {
+            if ([self.delegate respondsToSelector:@selector(partyGuestManagerDidStartAdvertising)]) {
                 [self.delegate partyGuestManagerDidStartAdvertising];
             }
         } else {
@@ -82,7 +81,7 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
             }
             self.peripheralManager = nil;
             self.characteristic = nil;
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyGuestManagerDidStopAdvertising)]) {
+            if ([self.delegate respondsToSelector:@selector(partyGuestManagerDidStopAdvertising)]) {
                 [self.delegate partyGuestManagerDidStopAdvertising];
             }
         }
@@ -104,12 +103,12 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
 - (void)initializePeripheral
 {
     NSDictionary *options = @{ CBPeripheralManagerOptionShowPowerAlertKey:[NSNumber numberWithBool:YES] };
-    self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:_peripheralQueue options:options];
+    self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:self.peripheralQueue options:options];
 }
 
 - (void)startAdvertising
 {
-    NSLog(@"ADVERTISING: START ADVERTISING");
+    PGLogDebug(@"ADVERTISING: START ADVERTISING");
     
     [self.peripheralManager removeAllServices];
     [self.peripheralManager addService:[self createService]];
@@ -125,8 +124,8 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
 - (void)advertisingError:(NSInteger)code description:(NSString *)description
 {
     NSError *error = [NSError errorWithDomain:kPGPartyGuestManagerErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey: description}];
-    NSLog(@"ADVERTISING: ERROR: %@", error);
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyGuestManagerAdvertisingError:)]) {
+    PGLogDebug(@"ADVERTISING: ERROR: %@", error);
+    if ([self.delegate respondsToSelector:@selector(partyGuestManagerAdvertisingError:)]) {
         [self.delegate partyGuestManagerAdvertisingError:error];
     }
     self.advertising = NO;
@@ -136,13 +135,13 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
 {
-    NSLog(@"PERIPHERAL MANAGER: STATE CHANGE: (%ld) %@", (long)peripheral.state, [self bluetoothState:peripheral.state]);
+    PGLogDebug(@"PERIPHERAL MANAGER: STATE CHANGE: (%ld) %@", (long)peripheral.state, [self bluetoothState:peripheral.state]);
     
     if (CBManagerStatePoweredOn == peripheral.state) {
         if (!self.peripheralManager.isAdvertising) {
             [self startAdvertising];
         } else {
-            NSLog(@"PERIPHERAL MANAGER: ALREADY ADVERTISING");
+            PGLogDebug(@"PERIPHERAL MANAGER: ALREADY ADVERTISING");
         }
     } else if (CBManagerStateUnsupported == peripheral.state) {
         [self advertisingError:PGPartyManagerErrorBluetoothUnsupported description:NSLocalizedString(@"The platform doesn't support the Bluetooth Low Energy Central/Client role.", nil)];
@@ -155,50 +154,50 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
 
 - (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(nullable NSError *)error
 {
-    NSLog(@"PERIPHERAL MANAGER: STARTED ADVERTISING: %@", error);
+    PGLogDebug(@"PERIPHERAL MANAGER: STARTED ADVERTISING: %@", error);
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic
 {
-    NSLog(@"PERIPHERAL MANAGER: CENTRAL SUBSCRIBED: %@", central);
+    PGLogDebug(@"PERIPHERAL MANAGER: CENTRAL SUBSCRIBED: %@", central);
     [self.peripheralManager setDesiredConnectionLatency:CBPeripheralManagerConnectionLatencyLow forCentral:central];
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyGuestManagerDidConnectCentral)]) {
+    if ([self.delegate respondsToSelector:@selector(partyGuestManagerDidConnectCentral)]) {
         [self.delegate partyGuestManagerDidConnectCentral];
     }
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request
 {
-    NSLog(@"PERIPHERAL MANAGER: RECEIVED READ REQUEST: %@", request);
+    PGLogDebug(@"PERIPHERAL MANAGER: RECEIVED READ REQUEST: %@", request);
     [self.peripheralManager respondToRequest:request withResult:CBATTErrorSuccess];
 }
 
 - (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager *)peripheral
 {
-    NSLog(@"PERIPHERAL MANAGER: READY TO UPDATE");
+    PGLogDebug(@"PERIPHERAL MANAGER: READY TO UPDATE");
     [self updateUploadStats];
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didUnsubscribeFromCharacteristic:(CBCharacteristic *)characteristic {
-    NSLog(@"PERIPHERAL MANAGER: CENTRAL UNSUBSCRIBED: %@", central);
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyGuestManagerDidDisconnectCentral)]) {
+    PGLogDebug(@"PERIPHERAL MANAGER: CENTRAL UNSUBSCRIBED: %@", central);
+    if ([self.delegate respondsToSelector:@selector(partyGuestManagerDidDisconnectCentral)]) {
         [self.delegate partyGuestManagerDidDisconnectCentral];
     }
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray<CBATTRequest *> *)requests {
-    NSLog(@"PERIPHERAL MANAGER: RECEIVED WRITE REQUESTS: %ld", (unsigned long)requests.count);
+    PGLogDebug(@"PERIPHERAL MANAGER: RECEIVED WRITE REQUESTS: %ld", (unsigned long)requests.count);
     BOOL complete = NO;
     for (CBATTRequest *request in requests) {
         self.characteristic.value = request.value;
-        NSLog(@"PERIPHERAL MANAGER: WROTE REQUESTED VALUE: %@", request.value);
+        PGLogDebug(@"PERIPHERAL MANAGER: WROTE REQUESTED VALUE: %@", request.value);
         NSUInteger size = [PGPartyFileInfo sizeFromPacket:request.value];
         NSUInteger received = [PGPartyFileInfo receivedFromPacket:request.value];
         float progress = (float)received / (float)size;
         if (nil != self.progressBlock) {
             self.progressBlock(0.5 + progress / 2.0);
         }
-        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyGuestManagerDownloadProgress:)]) {
+        if ([self.delegate respondsToSelector:@selector(partyGuestManagerDownloadProgress:)]) {
             [self.delegate partyGuestManagerDownloadProgress:progress];
         }
         if (received == size) {
@@ -207,7 +206,7 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
     }
     [self.peripheralManager respondToRequest:[requests firstObject] withResult:CBATTErrorSuccess];
     if (complete) {
-        NSLog(@"PERIPHERAL MANAGER: DOWNLOAD COMPLETE!");
+        PGLogDebug(@"PERIPHERAL MANAGER: DOWNLOAD COMPLETE!");
         [self notifySendComplete:nil];
     }
 }
@@ -220,7 +219,7 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
     [self sendImage:image progress:nil completion:nil];
 }
 
-- (void)sendImage:(UIImage *)image progress:(void(^_Nullable)(double progress))progress completion:(void (^_Nullable)(NSError *error))completion
+- (void)sendImage:(UIImage *)image progress:(void(^_Nullable)(CGFloat progress))progress completion:(void (^_Nullable)(NSError *error))completion
 {
     @synchronized (self) {
         if (nil != _image) {
@@ -231,7 +230,7 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
         }
         self.sendPhotoCompletion = completion;
         self.progressBlock = progress;
-        _image = image;
+        self.image = image;
     }
 
     NSUInteger identifier = arc4random_uniform(pow(256, 4));
@@ -240,17 +239,17 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
     [self updateUploadStats];
     [[PGPartyAWSTransfer sharedInstance] upload:self.upload progress:^(NSUInteger bytesSent) {
         if (bytesSent < self.upload.size) {
-            NSLog(@"UPLOAD: SEND PROGRESS");
+            PGLogDebug(@"UPLOAD: SEND PROGRESS");
             self.upload.sent = bytesSent;
             [self updateUploadStats];
         }
     } completion:^(NSError *error) {
         if (nil == error) {
-            NSLog(@"UPLOAD: SEND IMAGE COMPLETE");
+            PGLogDebug(@"UPLOAD: SEND IMAGE COMPLETE");
             self.upload.sent = self.upload.size;
             [self updateUploadStats];
         } else {
-            NSLog(@"UPLOAD: SEND IMAGE ERROR: %@", error);
+            PGLogError(@"UPLOAD: SEND IMAGE ERROR: %@", error);
             [self notifySendComplete:error];
         }
     }];
@@ -263,7 +262,7 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
             self.sendPhotoCompletion(error);
         }
         if (nil == error) {
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyGuestManagerHostReceivedImage:)]) {
+            if ([self.delegate respondsToSelector:@selector(partyGuestManagerHostReceivedImage:)]) {
                 [self.delegate partyGuestManagerHostReceivedImage:self.image];
             }
         }
@@ -281,12 +280,12 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
         self.characteristic.value = packet;
         BOOL result = [self.peripheralManager updateValue:packet forCharacteristic:self.characteristic onSubscribedCentrals:nil];
         if (result) {
-            NSLog(@"UPLOAD: UPDATE STATS: %lu", (unsigned long)[PGPartyFileInfo sentFromPacket:packet]);
+            PGLogDebug(@"UPLOAD: UPDATE STATS: %lu", (unsigned long)[PGPartyFileInfo sentFromPacket:packet]);
             float progress = (float)self.upload.sent / (float)self.upload.size;
             if (nil != self.progressBlock) {
                 self.progressBlock(progress / 2.0);
             }
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyGuestManagerUploadProgress:)]) {
+            if ([self.delegate respondsToSelector:@selector(partyGuestManagerUploadProgress:)]) {
                 [self.delegate partyGuestManagerUploadProgress:progress];
             }
         }
@@ -304,7 +303,7 @@ NSString * const kPGPartyGuestManagerErrorDomain = @"com.hp.sprocket.error.domai
 
 - (void)handleSettingsChangedNotification:(NSNotification *)notification
 {
-    if (![PGPartyManager isPartyModeEnabled]) {
+    if (![PGFeatureFlag isPartyModeEnabled]) {
         self.advertising = NO;
     }
 }

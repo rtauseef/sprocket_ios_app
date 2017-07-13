@@ -16,22 +16,25 @@
 
 #import "PGPartyAWSTransfer.h"
 
+@interface PGPartyAWSTransfer()
+
+@property (nonatomic, readonly) dispatch_queue_t uploadQueue;
+@property (nonatomic, readonly) dispatch_queue_t downloadQueue;
+
+@end
+
 @implementation PGPartyAWSTransfer
-{
-    dispatch_queue_t _uploadQueue;
-    dispatch_queue_t _downloadQueue;
-}
 
-static NSString *kPoolId = @"us-west-2:131f9801-8177-4c2f-be31-af753d4ee886";
-static NSString *kBucketName = @"cloud-transfer-temp";
+static NSString * const kPoolId = @"us-west-2:131f9801-8177-4c2f-be31-af753d4ee886";
+static NSString * const kBucketName = @"cloud-transfer-temp";
 
-static NSString *kUploadFile = @"upload.jpg";
-static NSString *kDownloadFile = @"download.jpg";
+static NSString * const kUploadFile = @"upload.jpg";
+static NSString * const kDownloadFile = @"download.jpg";
 
-static char *kUploadQueue = "com.hp.sprocket.queue.party.upload";
-static char *kDownloadQueue = "com.hp.sprocket.queue.party.download";
+static char * const kUploadQueue = "com.hp.sprocket.queue.party.upload";
+static char * const kDownloadQueue = "com.hp.sprocket.queue.party.download";
 
-static int kFileIdLength = 10;
+static int const kFileIdLength = 10;
 
 #pragma mark - Initialization
 
@@ -41,7 +44,6 @@ static int kFileIdLength = 10;
     static PGPartyAWSTransfer *sharedInstance;
     dispatch_once(&once, ^{
         sharedInstance = [[PGPartyAWSTransfer alloc] init];
-        [sharedInstance configure];
     });
     return sharedInstance;
 }
@@ -52,6 +54,7 @@ static int kFileIdLength = 10;
     if (self) {
         _uploadQueue = dispatch_queue_create(kUploadQueue, NULL);
         _downloadQueue = dispatch_queue_create(kDownloadQueue, NULL);
+        [self configure];
     }
     return self;
 }
@@ -65,9 +68,9 @@ static int kFileIdLength = 10;
 
 #pragma mark - Transfer
 
-- (void)upload:(PGPartyFileInfo *)info progress:(void (^)(NSUInteger bytesSent))progress completion:(void (^)(NSError *error))completion
+- (void)upload:(PGPartyFileInfo *)info progress:(void (^_Nonnull)(NSUInteger bytesSent))progress completion:(void (^_Nonnull)(NSError *error))completion
 {
-    NSLog(@"AWS UPLOAD: %lu: START", (unsigned long)info.identifier);
+    PGLogDebug(@"AWS UPLOAD: %lu: START", (unsigned long)info.identifier);
 
     AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
     
@@ -87,36 +90,25 @@ static int kFileIdLength = 10;
         progress((NSUInteger)totalBytesSent);
     };
     
-    AWSExecutor *executor = [AWSExecutor executorWithDispatchQueue:_uploadQueue];
+    AWSExecutor *executor = [AWSExecutor executorWithDispatchQueue:self.uploadQueue];
     [[transferManager upload:uploadRequest] continueWithExecutor:executor withBlock:^id(AWSTask *task) {
         if (task.error) {
             [self deleteFile:url];
-            if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
-                switch (task.error.code) {
-                    case AWSS3TransferManagerErrorCancelled:
-                    case AWSS3TransferManagerErrorPaused:
-                        break;
-                    default:
-                        NSLog(@"AWS UPLOAD: %lu: TASK ERROR: %@", (unsigned long)info.identifier, task.error);
-                        break;
-                }
-            } else {
-                NSLog(@"AWS UPLOAD: %lu: ERROR: %@", (unsigned long)info.identifier, task.error);
-            }
+            PGLogError(@"AWS UPLOAD: %lu: ERROR: %@", (unsigned long)info.identifier, task.error);
         }
         
         if (task.result) {
             [self deleteFile:url];
             completion(task.error);
-            NSLog(@"AWS UPLOAD: %lu: COMPLETE", (unsigned long)info.identifier);
+            PGLogInfo(@"AWS UPLOAD: %lu: COMPLETE", (unsigned long)info.identifier);
         }
         return nil;
     }];
 }
 
-- (void)download:(PGPartyFileInfo *)info progress:(void (^)(NSUInteger bytesReceived))progress completion:(void (^)(UIImage *image, NSError *error))completion
+- (void)download:(PGPartyFileInfo *)info progress:(void (^_Nonnull)(NSUInteger bytesReceived))progress completion:(void (^_Nonnull)(UIImage *image, NSError *error))completion
 {
-    NSLog(@"AWS DOWNLOAD: %lu: START", (unsigned long)info.identifier);
+    PGLogDebug(@"AWS DOWNLOAD: %lu: START", (unsigned long)info.identifier);
 
     AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
 
@@ -135,30 +127,18 @@ static int kFileIdLength = 10;
         progress((NSUInteger)totalBytesWritten);
     };
     
-    AWSExecutor *executor = [AWSExecutor executorWithDispatchQueue:_downloadQueue];
+    AWSExecutor *executor = [AWSExecutor executorWithDispatchQueue:self.downloadQueue];
     [[transferManager download:downloadRequest ] continueWithExecutor:executor withBlock:^id(AWSTask *task) {
         if (task.error){
             [self deleteFile:url];
-            if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
-                switch (task.error.code) {
-                    case AWSS3TransferManagerErrorCancelled:
-                    case AWSS3TransferManagerErrorPaused:
-                        break;
-                    default:
-                        NSLog(@"AWS DOWNLOAD: %lu: TASK ERROR: %@", (unsigned long)info.identifier, task.error);
-                        break;
-                }
-                
-            } else {
-                NSLog(@"AWS DOWNLOAD: %lu: ERROR: %@", (unsigned long)info.identifier, task.error);
-            }
+            PGLogError(@"AWS DOWNLOAD: %lu: ERROR: %@", (unsigned long)info.identifier, task.error);
         }
         
         if (task.result) {
             UIImage *image = [UIImage imageWithContentsOfFile:path];
             [self deleteFile:url];
             completion(image, task.error);
-            NSLog(@"AWS DOWNLOAD: %lu: COMPLETE: %@", (unsigned long)info.identifier, image);
+            PGLogInfo(@"AWS DOWNLOAD: %lu: COMPLETE: %@", (unsigned long)info.identifier, image);
         }
         
         return nil;
@@ -169,11 +149,11 @@ static int kFileIdLength = 10;
 
 - (void)deleteFile:(NSURL *)url
 {
-//    NSError *error = nil;
-//    [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
-//    if (error) {
-//        NSLog(@"DELETE FILE ERROR: %@", error);
-//    }
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtURL:url error:&error];
+    if (error) {
+        PGLogError(@"DELETE FILE ERROR: %@", error);
+    }
 }
 
 @end

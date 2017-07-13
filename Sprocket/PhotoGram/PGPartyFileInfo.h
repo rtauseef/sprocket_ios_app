@@ -12,9 +12,9 @@
 
 @interface PGPartyFileInfo : NSObject
 
-@property (assign, nonatomic, readonly) NSUInteger identifier;
-@property (assign, nonatomic, readonly) NSUInteger size;
-@property (strong, nonatomic, readonly) NSData *data;
+@property (nonatomic, readonly) NSUInteger identifier;
+@property (nonatomic, readonly) NSUInteger size;
+@property (nonatomic, readonly) NSData *data;
 @property (assign, nonatomic) NSUInteger sent;
 @property (assign, nonatomic) NSUInteger received;
 

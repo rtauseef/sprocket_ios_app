@@ -18,6 +18,8 @@
 #import "PGAnalyticsManager.h"
 #import "PGPrintQueueManager.h"
 #import "PGInAppMessageManager.h"
+#import "PGFeatureFlag.h"
+#import "PGAppNavigation.h"
 
 #import <HPPRSelectPhotoCollectionViewController.h>
 #import <MPPrintItemFactory.h>
@@ -72,17 +74,13 @@ static NSString * const kPrinterConnected = @"printer_connected";
 }
 
 - (IBAction)touchedDownInButton:(id)sender {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIButton *button = (UIButton *)sender;
-        button.backgroundColor = [UIColor whiteColor];
-    });
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = [UIColor whiteColor];
 }
 
 - (IBAction)touchedUpInButton:(id)sender {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIButton *button = (UIButton *)sender;
-        button.backgroundColor = [UIColor clearColor];
-    });
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - UI
@@ -152,7 +150,7 @@ static NSString * const kPrinterConnected = @"printer_connected";
             self.sendButton.hidden = YES;
             self.statusLabel.hidden = NO;
             self.progressView.hidden = YES;
-            self.statusLabel.text = @"Waiting for a party...";
+            self.statusLabel.text = NSLocalizedString(@"Waiting for a party...", @"Waiting for party host to start a party");
         }];
     });
 }
@@ -167,7 +165,7 @@ static NSString * const kPrinterConnected = @"printer_connected";
             self.sendButton.hidden = NO;
             self.statusLabel.hidden = NO;
             self.progressView.hidden = YES;
-            self.statusLabel.text = @"Connected";
+            self.statusLabel.text = NSLocalizedString(@"Connected", @"Party is connected");
         }];
     });
 }
@@ -214,18 +212,18 @@ static NSString * const kPrinterConnected = @"printer_connected";
 - (void)alertWithTitle:(NSString *)title message:(NSString *)message
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-    [[self topMostController] presentViewController:alert animated:YES completion:nil];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"Okay") style:UIAlertActionStyleDefault handler:nil]];
+    [[PGAppNavigation currentTopViewController] presentViewController:alert animated:YES completion:nil];
 }
 
 - (NSString *)connectionText
 {
     NSUInteger count = [PGPartyHostManager sharedInstance].connectedDevices.count;
-    NSString *text = @"Waiting for connections...";
+    NSString *text = NSLocalizedString(@"Waiting for connections...", @"Host is waiting for guests to connect");
     if (1 == count) {
-        text = @"1 connected device";
+        text = NSLocalizedString(@"1 connected device", @"Indicates that 1 device is connected");
     } else if (count > 1) {
-        text = [NSString stringWithFormat:@"%lu connected devices", (unsigned long)count];
+        text = [NSString stringWithFormat:NSLocalizedString(@"%lu connected devices", @"Indicates that multiple devices are connected"), (unsigned long)count];
     }
     return text;
 }
@@ -235,7 +233,7 @@ static NSString * const kPrinterConnected = @"printer_connected";
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    NSLog(@"IMAGE PICKER: SELECTED PHOTO %@", image);
+    PGLogDebug(@"IMAGE PICKER: SELECTED PHOTO %@", image);
     [self dismissViewControllerAnimated:YES completion:^{
         [self updateProgress:0];
         [[PGPartyGuestManager sharedInstance] sendImage:image];
@@ -251,101 +249,101 @@ static NSString * const kPrinterConnected = @"printer_connected";
 
 - (void)partyHostManagerDidStartScanning
 {
-    NSLog(@"HOST DELEGATE: SCANNING ON");
+    PGLogDebug(@"HOST DELEGATE: SCANNING ON");
 }
 
 - (void)partyHostManagerDidStopScanning
 {
-    NSLog(@"HOST DELEGATE: SCANNING OFF");
+    PGLogDebug(@"HOST DELEGATE: SCANNING OFF");
     [self stopUI];
 }
 
 - (void)partyHostManagerScanningError:(NSError *)error
 {
-    NSLog(@"HOST DELEGATE: SCANNING ERROR: %@", error);
+    PGLogDebug(@"HOST DELEGATE: SCANNING ERROR: %@", error);
     [self alertWithTitle:@"Hosting Error" message:error.localizedDescription];
 }
 
 - (void)partyHostManagerDidConnectPeripheral:(NSDictionary *)peripheral
 {
-    NSLog(@"HOST DELEGATE: CONNECTED PERIPHERAL: %@", peripheral);
+    PGLogDebug(@"HOST DELEGATE: CONNECTED PERIPHERAL: %@", peripheral);
     [self updateConnectedCount];
 }
 
 - (void)partyHostManagerDidDisconnectPeripheral:(NSDictionary *)peripheral error:(NSError *)error
 {
-    NSLog(@"HOST DELEGATE: DISCONNECTED PERIPHERAL: %@: %@", peripheral, error);
+    PGLogDebug(@"HOST DELEGATE: DISCONNECTED PERIPHERAL: %@: %@", peripheral, error);
     [self updateConnectedCount];
 }
 
 - (void)partyHostManagerPeripheralError:(NSDictionary *)peripheral error:(NSError *)error
 {
-    NSLog(@"HOST DELEGATE: PERIPHERAL ERROR: %@: %@", peripheral, error);
+    PGLogDebug(@"HOST DELEGATE: PERIPHERAL ERROR: %@: %@", peripheral, error);
     [self updateConnectedCount];
 }
 
 - (void)partyHostManagerReceivedImage:(UIImage *)image fromPeripheral:(NSDictionary *)peripheral
 {
-    NSLog(@"HOST DELEGATE: RECEIVED IMAGE: %@", [peripheral objectForKey:kPGPartyManagerPeripheralIdentifierKey]);
+    PGLogDebug(@"HOST DELEGATE: RECEIVED IMAGE: %@", [peripheral objectForKey:kPGPartyManagerPeripheralIdentifierKey]);
     [self handleImageComplete:image];
 }
 
-- (void)partyHostManagerUploadProgress:(float)progress identifier:(NSUInteger)identifier
+- (void)partyHostManagerUploadProgress:(CGFloat)progress identifier:(NSUInteger)identifier
 {
-    NSLog(@"HOST DELEGATE: UPLOAD: PROGRESS: %lu: %.5f", (unsigned long)identifier, progress);
+    PGLogDebug(@"HOST DELEGATE: UPLOAD: PROGRESS: %lu: %.5f", (unsigned long)identifier, progress);
 }
 
-- (void)partyHostManagerDownloadProgress:(float)progress identifier:(NSUInteger)identifier
+- (void)partyHostManagerDownloadProgress:(CGFloat)progress identifier:(NSUInteger)identifier
 {
-    NSLog(@"HOST DELEGATE: DOWNLOAD: PROGRESS: %lu: %.5f", (unsigned long)identifier, progress);
+    PGLogDebug(@"HOST DELEGATE: DOWNLOAD: PROGRESS: %lu: %.5f", (unsigned long)identifier, progress);
 }
 
 #pragma mark - PGPartyGuestManagerDelegate
 
 - (void)partyGuestManagerDidStartAdvertising
 {
-    NSLog(@"GUEST DELEGATE: ADVERTISING ON");
+    PGLogDebug(@"GUEST DELEGATE: ADVERTISING ON");
 }
 
 - (void)partyGuestManagerDidStopAdvertising
 {
-    NSLog(@"GUEST DELEGATE: ADVERTISING OFF");
+    PGLogDebug(@"GUEST DELEGATE: ADVERTISING OFF");
     [self stopUI];
 }
 
 - (void)partyGuestManagerAdvertisingError:(NSError *)error
 {
-    NSLog(@"GUEST DELEGATE: ADVERTISING ERROR: %@", error);
+    PGLogDebug(@"GUEST DELEGATE: ADVERTISING ERROR: %@", error);
     [self alertWithTitle:@"Scanning Error" message:error.localizedDescription];
 }
 
 - (void)partyGuestManagerDidConnectCentral
 {
-    NSLog(@"GUEST DELEGATE: CONNECTED CENTRAL");
+    PGLogDebug(@"GUEST DELEGATE: CONNECTED CENTRAL");
     [self joinedUI];
 }
 
 - (void)partyGuestManagerDidDisconnectCentral
 {
-    NSLog(@"GUEST DELEGATE: CONNECTED CENTRAL");
+    PGLogDebug(@"GUEST DELEGATE: CONNECTED CENTRAL");
     [self waitingToJoinUI];
 }
 
 - (void)partyGuestManagerHostReceivedImage:(UIImage *)image
 {
-    NSLog(@"GUEST DELEGATE: HOST RECEIVED: %@", image);
+    PGLogDebug(@"GUEST DELEGATE: HOST RECEIVED: %@", image);
     [self hideProgress];
 }
 
 - (void)partyGuestManagerUploadProgress:(float)progress
 {
-    NSLog(@"GUEST DELEGATE: UPLOAD: PROGRESS: %.5f", progress);
+    PGLogDebug(@"GUEST DELEGATE: UPLOAD: PROGRESS: %.5f", progress);
     [self updateProgress:0.5 * progress];
 }
 
 - (void)partyGuestManagerDownloadProgress:(float)progress
 {
-    NSLog(@"GUEST DELEGATE: DOWNLOAD: PROGRESS: %.5f", progress);
+    PGLogDebug(@"GUEST DELEGATE: DOWNLOAD: PROGRESS: %.5f", progress);
     [self updateProgress:0.5 + 0.5 * progress];
 }
 
@@ -355,18 +353,18 @@ static NSString * const kPrinterConnected = @"printer_connected";
 {
     [[PGInAppMessageManager sharedInstance] showPartyPhotoReceivedMessage];
 
-    if ([PGPartyManager isPartySaveEnabled]) {
-        [PGSavePhotos saveImage:image album:kPGSavePhotosSprocketPartyAlbumn completion:^(BOOL success, PHAsset *asset) {
+    if ([PGFeatureFlag isPartySaveEnabled]) {
+        [PGSavePhotos saveImage:image album:kPGSavePhotosSprocketPartyAlbum completion:^(BOOL success, PHAsset *asset) {
             if (success) {
-                NSLog(@"PHOTO SAVED!");
+                PGLogDebug(@"PHOTO SAVED!");
                 [[NSNotificationCenter defaultCenter] postNotificationName:kHPPRSelectPhotoRefreshImagesNotification object:nil];
             } else {
-                NSLog(@"PHOTO SAVE ERROR");
+                PGLogDebug(@"PHOTO SAVE ERROR");
             }
         }];
     }
     
-    if ([PGPartyManager isPartyPrintEnabled]) {
+    if ([PGFeatureFlag isPartyPrintEnabled]) {
         @synchronized ([MPBTPrintManager sharedInstance]) {
             MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:image];
             NSMutableDictionary *metrics = [[PGAnalyticsManager sharedManager] getMetrics:kMetricsOffRampQueueAddParty printItem:printItem extendedInfo:@{}];
@@ -389,20 +387,6 @@ static NSString * const kPrinterConnected = @"printer_connected";
             }
         }
     }
-}
-
-#pragma mark - Utility
-
-// Stolen from PGCameraManager
-- (UIViewController*) topMostController
-{
-    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    
-    while (topController.presentedViewController) {
-        topController = topController.presentedViewController;
-    }
-    
-    return topController;
 }
 
 @end

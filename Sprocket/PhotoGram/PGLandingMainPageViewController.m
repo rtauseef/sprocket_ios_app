@@ -34,7 +34,7 @@
 #import "PGHamburgerButton.h"
 #import "PGInAppMessageManager.h"
 #import "PGPrintQueueManager.h"
-#import "PGPartyManager.h"
+#import "PGFeatureFlag.h"
 
 #import <MP.h>
 #import <MPBTPrintManager.h>
@@ -110,7 +110,7 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
     [PGAppAppearance addGradientBackgroundToView:self.view];
     
     [self addLongPressGesture];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGPartyManagerPartyModeEnabledNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGFeatureFlagPartyModeEnabledNotification object:nil];
 
     [MPBTPrintManager sharedInstance].delegate = self;
     

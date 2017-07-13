@@ -44,7 +44,7 @@ extern NSString * const kPGPartyManagerPeripheralNameKey;
 
 - (void)partyHostManagerReceivedImage:(UIImage *)image fromPeripheral:(NSDictionary *)peripheral;
 
-- (void)partyHostManagerUploadProgress:(float)progress identifier:(NSUInteger)identifier;
-- (void)partyHostManagerDownloadProgress:(float)progress identifier:(NSUInteger)identifier;
+- (void)partyHostManagerUploadProgress:(CGFloat)progress identifier:(NSUInteger)identifier;
+- (void)partyHostManagerDownloadProgress:(CGFloat)progress identifier:(NSUInteger)identifier;
 
 @end

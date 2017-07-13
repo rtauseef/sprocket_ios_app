@@ -18,8 +18,8 @@
 
 static NSString *kSettingSaveCameraPhotos = @"SettingSaveCameraPhotos";
 
-NSString * const kPGSavePhotosSprocketAlbumn = @"sprocket";
-NSString * const kPGSavePhotosSprocketPartyAlbumn = @"sprocket-party";
+NSString * const kPGSavePhotosSprocketAlbum = @"sprocket";
+NSString * const kPGSavePhotosSprocketPartyAlbum = @"sprocket-party";
 
 #pragma mark - Save Photos Methods
 
@@ -69,7 +69,7 @@ NSString * const kPGSavePhotosSprocketPartyAlbumn = @"sprocket-party";
 
 + (void)saveImage:(UIImage *)image completion:(void (^)(BOOL, PHAsset*))completion
 {
-    [self saveImage:image album:kPGSavePhotosSprocketAlbumn completion:completion];
+    [self saveImage:image album:kPGSavePhotosSprocketAlbum completion:completion];
 }
 
 + (void)saveImage:(UIImage *)image album:(NSString *)albumTitle completion:(void (^)(BOOL, PHAsset*))completion

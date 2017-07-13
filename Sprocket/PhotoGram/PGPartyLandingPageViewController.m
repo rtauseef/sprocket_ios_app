@@ -28,7 +28,7 @@
 
 @interface PGPartyLandingPageViewController () <HPPRSelectPhotoCollectionViewControllerDelegate>
 
-@property (strong, nonatomic) void(^accessCompletion)(BOOL granted);
+@property (copy, nonatomic) void(^accessCompletion)(BOOL granted);
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsLabel;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -82,15 +82,16 @@
             [self didSignInToSocialSource:socialSource];
             
             [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
-                [spinner removeFromSuperview];
-                
-                viewController.provider = [HPPRPartyFolderPhotoProvider sharedInstance];
-                viewController.customNoPhotosMessage = NSLocalizedString(@"No Party images found", @"Message displayed when no images from the Party folder can be found");
-                
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-                UIViewController *partyViewController = [storyboard instantiateViewControllerWithIdentifier:@"PGPartyViewController"];
-                viewController.childViewController = partyViewController;
-                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [spinner removeFromSuperview];
+                    
+                    viewController.provider = [HPPRPartyFolderPhotoProvider sharedInstance];
+                    viewController.customNoPhotosMessage = NSLocalizedString(@"No Party images found", @"Message displayed when no images from the Party folder can be found");
+                    
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+                    UIViewController *partyViewController = [storyboard instantiateViewControllerWithIdentifier:@"PGPartyViewController"];
+                    viewController.childViewController = partyViewController;
+                });
             }];
             
         } else {

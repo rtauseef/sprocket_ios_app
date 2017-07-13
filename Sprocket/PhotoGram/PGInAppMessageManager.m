@@ -15,6 +15,7 @@
 #import "PGInAppMessageView.h"
 #import "NSLocale+Additions.h"
 #import "PGPartyManager.h"
+#import "PGFeatureFlag.h"
 
 #import <UIKit/UIKit.h>
 
@@ -71,11 +72,11 @@ NSString * const kInAppMessageTypeValueFirmwareUpgrade = @"firmware-upgrade";
     NSString *queue = NSLocalizedString(@"Queued to print", @"Action description for adding to print queue");
     NSString *save = NSLocalizedString(@"Saved to photos", @"Action description for saving to camera roll folder");
     NSString *both = NSLocalizedString(@"Queue and saved", @"Action description for both adding to queue and saving to camera roll folder");
-    if ([PGPartyManager isPartySaveEnabled] && [PGPartyManager isPartyPrintEnabled]) {
+    if ([PGFeatureFlag isPartySaveEnabled] && [PGFeatureFlag isPartyPrintEnabled]) {
         alert = [NSString stringWithFormat:@"%@ %@", alert, both];
-    } else if ([PGPartyManager isPartySaveEnabled]) {
+    } else if ([PGFeatureFlag isPartySaveEnabled]) {
         alert = [NSString stringWithFormat:@"%@ %@", alert, save];
-    } else if ([PGPartyManager isPartyPrintEnabled]) {
+    } else if ([PGFeatureFlag isPartyPrintEnabled]) {
         alert = [NSString stringWithFormat:@"%@ %@", alert, queue];
     }
     

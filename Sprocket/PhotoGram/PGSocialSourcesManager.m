@@ -13,7 +13,7 @@
 #import "PGSocialSourcesManager.h"
 #import "NSLocale+Additions.h"
 #import "PGLinkSettings.h"
-#import "PGPartyManager.h"
+#import "PGFeatureFlag.h"
 
 static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enableExtraSocialSources";
 
@@ -119,7 +119,7 @@ static NSString * const kEnableExtraSocialSourcesKey = @"com.hp.hp-sprocket.enab
         [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeFacebook]];
         [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeGoogle]];
         [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypeLocalPhotos]];
-        if ([PGPartyManager isPartyModeEnabled]) {
+        if ([PGFeatureFlag isPartyModeEnabled]) {
             [sources addObject:[[PGSocialSource alloc] initWithSocialSourceType:PGSocialSourceTypePartyFolder]];
         }
     }

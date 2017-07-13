@@ -13,23 +13,22 @@
 #import "PGPartyHostManager.h"
 #import "PGPartyFileInfo.h"
 #import "PGPartyAWSTransfer.h"
+#import "PGFeatureFlag.h"
 
 @interface PGPartyHostManager() <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) NSMutableArray<CBPeripheral *> *connectedPeripherals;
 @property (strong, nonatomic) NSMutableDictionary<CBPeripheral *, PGPartyFileInfo *> *downloads;
+@property (readonly, nonatomic) dispatch_queue_t centralQueue;
 
 @end
 
 @implementation PGPartyHostManager
-{
-    dispatch_queue_t _centralQueue;
-}
 
-static char *kCentralQueue = "com.hp.sprocket.queue.party.central";
+static char * const kCentralQueue = "com.hp.sprocket.queue.party.central";
 
-static NSString *kDefaultName = @"Party Device";
+static NSString * const kDefaultName = @"Party Device";
 
 NSString * const kPGPartyHostManagerErrorDomain = @"com.hp.sprocket.error.domain.party.host";
 
@@ -55,7 +54,7 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
         _centralQueue = dispatch_queue_create(kCentralQueue, NULL);
         self.connectedPeripherals = [NSMutableArray array];
         self.downloads = [NSMutableDictionary dictionary];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGPartyManagerPartyModeEnabledNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGFeatureFlagPartyModeEnabledNotification object:nil];
     }
     return self;
 }
@@ -65,13 +64,13 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 - (void)setScanning:(BOOL)scanning
 {
     @synchronized (self) {
-        NSLog(@"SCANNING: %@", scanning ? @"ON" : @"OFF");
+        PGLogDebug(@"SCANNING: %@", scanning ? @"ON" : @"OFF");
         _scanning = scanning;
         if (scanning) {
             if (nil == self.centralManager) {
                 [self initializeCentral];
             }
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerDidStartScanning)]) {
+            if ([self.delegate respondsToSelector:@selector(partyHostManagerDidStartScanning)]) {
                 [self.delegate partyHostManagerDidStartScanning];
             }
         } else {
@@ -83,7 +82,7 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
             }
             self.connectedPeripherals = [NSMutableArray array];
             self.centralManager = nil;
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerDidStopScanning)]) {
+            if ([self.delegate respondsToSelector:@selector(partyHostManagerDidStopScanning)]) {
                 [self.delegate partyHostManagerDidStopScanning];
             }
         }
@@ -93,12 +92,12 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 - (void)initializeCentral
 {
     NSDictionary *options = @{ CBCentralManagerOptionShowPowerAlertKey:[NSNumber numberWithBool:YES] };
-    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:_centralQueue options:options];
+    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:self.centralQueue options:options];
 }
 
 - (void)startScanning
 {
-    NSLog(@"SCANNING: START SCANNING");
+    PGLogDebug(@"SCANNING: START SCANNING");
     
     [self.centralManager scanForPeripheralsWithServices:@[ [CBUUID UUIDWithString:kPGPartyManagerServiceUUID] ] options:nil];
 }
@@ -106,8 +105,8 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 - (void)scanningError:(NSInteger)code description:(NSString *)description
 {
     NSError *error = [NSError errorWithDomain:kPGPartyHostManagerErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey: description}];
-    NSLog(@"SCANNING: ERROR: %@", error);
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerScanningError:)]) {
+    PGLogError(@"SCANNING: ERROR: %@", error);
+    if ([self.delegate respondsToSelector:@selector(partyHostManagerScanningError:)]) {
         [self.delegate partyHostManagerScanningError:error];
     }
     self.scanning = NO;
@@ -117,13 +116,13 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
-    NSLog(@"CENTRAL MANAGER: STATE CHANGE: (%ld) %@", (long)central.state, [self bluetoothState:central.state]);
+    PGLogDebug(@"CENTRAL MANAGER: STATE CHANGE: (%ld) %@", (long)central.state, [self bluetoothState:central.state]);
     
     if (CBManagerStatePoweredOn == central.state) {
         if (!self.centralManager.isScanning) {
             [self startScanning];
         } else {
-            NSLog(@"CENTRAL MANAGER: ALREADY SCANNING");
+            PGLogDebug(@"CENTRAL MANAGER: ALREADY SCANNING");
         }
     } else if (CBManagerStateUnsupported == central.state) {
         [self scanningError:PGPartyManagerErrorBluetoothUnsupported description:NSLocalizedString(@"The platform doesn't support the Bluetooth Low Energy Central/Client role.", nil)];
@@ -134,40 +133,40 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    NSLog(@"CENTRAL MANAGER: PERIPHERAL FOUND: %@: %@: %@", RSSI, peripheral, advertisementData);
+    PGLogDebug(@"CENTRAL MANAGER: PERIPHERAL FOUND: %@: %@: %@", RSSI, peripheral, advertisementData);
     
     if (CBPeripheralStateDisconnected == peripheral.state) {
         [self addPeripheral:peripheral];
         [self.centralManager connectPeripheral:peripheral options:nil];
-        NSLog(@"CENTRAL MANAGER: CONNECTING: %@", peripheral);
+        PGLogDebug(@"CENTRAL MANAGER: CONNECTING: %@", peripheral);
     } else if (CBPeripheralStateConnected == peripheral.state) {
-        NSLog(@"CENTRAL MANAGER: ALREADY CONNECTED: %@", peripheral);
+        PGLogDebug(@"CENTRAL MANAGER: ALREADY CONNECTED: %@", peripheral);
     } else { // CBPeripheralStateConnecting || CBPeripheralStateDisconnecting
-        NSLog(@"CENTRAL MANAGER: BUSY: %@", peripheral);
+        PGLogDebug(@"CENTRAL MANAGER: BUSY: %@", peripheral);
     }
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-    NSLog(@"CENTRAL MANAGER: CONNECTED PERIPHERAL: %@", [self infoForPeripheral:peripheral]);
+    PGLogDebug(@"CENTRAL MANAGER: CONNECTED PERIPHERAL: %@", [self infoForPeripheral:peripheral]);
     CBUUID *serviceUUID = [CBUUID UUIDWithString:kPGPartyManagerServiceUUID];
     [peripheral discoverServices:@[ serviceUUID ]];
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error
 {
-    NSLog(@"CENTRAL MANAGER: FAILED TO CONNECT PERIPHERAL: %@\nERROR: %@", [self infoForPeripheral:peripheral], error);
+    PGLogError(@"CENTRAL MANAGER: FAILED TO CONNECT PERIPHERAL: %@\nERROR: %@", [self infoForPeripheral:peripheral], error);
     [self removePeripheral:peripheral];
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerPeripheralError:error:)]) {
+    if ([self.delegate respondsToSelector:@selector(partyHostManagerPeripheralError:error:)]) {
         [self.delegate partyHostManagerPeripheralError:[self infoForPeripheral:peripheral] error:error];
     }
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error
 {
-    NSLog(@"CENTRAL MANAGER: DISCONNECTED PERIPHERAL: %@\nERROR: %@", [self infoForPeripheral:peripheral], error);
+    PGLogError(@"CENTRAL MANAGER: DISCONNECTED PERIPHERAL: %@\nERROR: %@", [self infoForPeripheral:peripheral], error);
     [self removePeripheral:peripheral];
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerDidDisconnectPeripheral:error:)]) {
+    if ([self.delegate respondsToSelector:@selector(partyHostManagerDidDisconnectPeripheral:error:)]) {
         [self.delegate partyHostManagerDidDisconnectPeripheral:[self infoForPeripheral:peripheral] error:error];
     }
 }
@@ -176,19 +175,19 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 
 - (void)peripheralDidInvalidateServices:(CBPeripheral *)peripheral
 {
-    NSLog(@"PERIPHERAL: INVALIDATED SERVICES");
+    PGLogDebug(@"PERIPHERAL: INVALIDATED SERVICES");
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didModifyServices:(NSArray<CBService *> *)invalidatedServices
 {
-    NSLog(@"PERIPHERAL: MODIFIED SERVICES: %@", invalidatedServices);
+    PGLogDebug(@"PERIPHERAL: MODIFIED SERVICES: %@", invalidatedServices);
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error
 {
-    NSLog(@"PERIPHERAL: DISCOVERED SERVICES: %@", error);
+    PGLogDebug(@"PERIPHERAL: DISCOVERED SERVICES: %@", error);
     if (error) {
-        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerPeripheralError:error:)]) {
+        if ([self.delegate respondsToSelector:@selector(partyHostManagerPeripheralError:error:)]) {
             [self.delegate partyHostManagerPeripheralError:[self infoForPeripheral:peripheral] error:error];
         }
         [self.centralManager cancelPeripheralConnection:peripheral];
@@ -200,9 +199,9 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error
 {
-    NSLog(@"PERIPHERAL: DISCOVERED CHARACTERISTICS: %@", error);
+    PGLogDebug(@"PERIPHERAL: DISCOVERED CHARACTERISTICS: %@", error);
     if (error) {
-        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerPeripheralError:error:)]) {
+        if ([self.delegate respondsToSelector:@selector(partyHostManagerPeripheralError:error:)]) {
             [self.delegate partyHostManagerPeripheralError:[self infoForPeripheral:peripheral] error:error];
         }
         [self.centralManager cancelPeripheralConnection:peripheral];
@@ -213,19 +212,19 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 
 - (void)peripheralDidUpdateName:(CBPeripheral *)peripheral
 {
-    NSLog(@"PERIPHERAL: UPDATED NAME: %@", peripheral);
+    PGLogDebug(@"PERIPHERAL: UPDATED NAME: %@", peripheral);
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    NSLog(@"PERIPHERAL: UPDATED NOTIFICATION STATE: %@", error);
+    PGLogDebug(@"PERIPHERAL: UPDATED NOTIFICATION STATE: %@", error);
     if (error) {
-        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerPeripheralError:error:)]) {
+        if ([self.delegate respondsToSelector:@selector(partyHostManagerPeripheralError:error:)]) {
             [self.delegate partyHostManagerPeripheralError:[self infoForPeripheral:peripheral] error:error];
         }
         [self.centralManager cancelPeripheralConnection:peripheral];
     } else {
-        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerDidConnectPeripheral:)]) {
+        if ([self.delegate respondsToSelector:@selector(partyHostManagerDidConnectPeripheral:)]) {
             [self.delegate partyHostManagerDidConnectPeripheral:[self infoForPeripheral:peripheral]];
         }
     }
@@ -249,22 +248,22 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
     }
     info.sent = sent;
     
-    NSLog(@"PERIPHERAL: UPDATED VALUE: %lu: %lu: %@", (unsigned long)size, (unsigned long)sent, error);
+    PGLogDebug(@"PERIPHERAL: UPDATED VALUE: %lu: %lu: %@", (unsigned long)size, (unsigned long)sent, error);
     
-    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerUploadProgress:identifier:)]) {
-        float progress = (float)info.sent / (float)info.size;
+    if ([self.delegate respondsToSelector:@selector(partyHostManagerUploadProgress:identifier:)]) {
+        CGFloat progress = (CGFloat)info.sent / (CGFloat)info.size;
         [self.delegate partyHostManagerUploadProgress:progress identifier:info.identifier];
     }
 
     if (sent == size) {
-        NSLog(@"PERIPHERAL: UPLOAD COMPLETE: STARTING DOWNLOAD");
+        PGLogDebug(@"PERIPHERAL: UPLOAD COMPLETE: STARTING DOWNLOAD");
         [self downloadImage:peripheral];
     }
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
 {
-    NSLog(@"PERIPHERAL: WROTE VALUE: %@: %@", characteristic.value, error);
+    PGLogDebug(@"PERIPHERAL: WROTE VALUE: %@: %@", characteristic.value, error);
 }
 
 #pragma mark - Utility
@@ -328,9 +327,9 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
         [peripheral writeValue:info.packet forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
         NSUInteger received = [PGPartyFileInfo receivedFromPacket:info.packet];
         NSUInteger size = [PGPartyFileInfo sizeFromPacket:info.packet];
-        NSLog(@"DOWNLOAD: STATS: %lu: %@: %lu", (unsigned long)info.identifier, peripheral.identifier.UUIDString, (unsigned long)received);
-        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerDownloadProgress:identifier:)]) {
-            float progress = (float)received / (float)size;
+        PGLogDebug(@"DOWNLOAD: STATS: %lu: %@: %lu", (unsigned long)info.identifier, peripheral.identifier.UUIDString, (unsigned long)received);
+        if ([self.delegate respondsToSelector:@selector(partyHostManagerDownloadProgress:identifier:)]) {
+            CGFloat progress = (CGFloat)received / (CGFloat)size;
             [self.delegate partyHostManagerDownloadProgress:progress identifier:info.identifier];
         }
     }
@@ -339,23 +338,23 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 - (void)downloadImage:(CBPeripheral *)peripheral
 {
     PGPartyFileInfo *info = [self fileInfoForPeripheral:peripheral];
-    NSLog(@"DOWNLOAD: START: %lu: %@", (unsigned long)info.identifier, peripheral.identifier.UUIDString);
+    PGLogDebug(@"DOWNLOAD: START: %lu: %@", (unsigned long)info.identifier, peripheral.identifier.UUIDString);
     [[PGPartyAWSTransfer sharedInstance] download:info progress:^(NSUInteger bytesReceived) {
-        NSLog(@"DOWNLOAD: PROGRESS: %lu: %@: %lu", (unsigned long)info.identifier, peripheral.identifier.UUIDString, (unsigned long)bytesReceived);
+        PGLogDebug(@"DOWNLOAD: PROGRESS: %lu: %@: %lu", (unsigned long)info.identifier, peripheral.identifier.UUIDString, (unsigned long)bytesReceived);
         info.received = bytesReceived;
         if (info.received < info.size) {
             [self updateDownloadStats:peripheral];
         }
     } completion:^(UIImage *image, NSError *error) {
         if (nil == error) {
-            NSLog(@"DOWNLOAD: COMPLETE: %lu: %@", (unsigned long)info.identifier, peripheral.identifier.UUIDString);
+            PGLogDebug(@"DOWNLOAD: COMPLETE: %lu: %@", (unsigned long)info.identifier, peripheral.identifier.UUIDString);
             info.received = info.size;
             [self updateDownloadStats:peripheral];
-            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(partyHostManagerReceivedImage:fromPeripheral:)]) {
+            if ([self.delegate respondsToSelector:@selector(partyHostManagerReceivedImage:fromPeripheral:)]) {
                 [self.delegate partyHostManagerReceivedImage:image fromPeripheral:[self infoForPeripheral:peripheral]];
             }
         } else {
-            NSLog(@"DOWNLOAD ERROR: %@: %@", peripheral, error);
+            PGLogError(@"DOWNLOAD ERROR: %@: %@", peripheral, error);
         }
     }];
 }
@@ -364,7 +363,7 @@ NSString * const kPGPartyManagerPeripheralNameKey = @"com.hp.sprocket.key.party.
 
 - (void)handleSettingsChangedNotification:(NSNotification *)notification
 {
-    if (![PGPartyManager isPartyModeEnabled]) {
+    if (![PGFeatureFlag isPartyModeEnabled]) {
         self.scanning = NO;
     }
 }

@@ -16,17 +16,12 @@
 
 NSString * const kPGPartyManagerServiceUUID = @"3605946E-9BBB-4366-9369-06B7D4412927";
 NSString * const kPGPartyManagerCharacteristicUUID = @"A2C300D2-72CF-4B17-BD4A-6C0BDFE28DAC";
-NSString * const kPGPartyManagerPartyModeEnabledNotification = @"com.hp.sprocket.notification.party.mode.enabled";
-
-static NSString *kPGPartyManagerPartyModeEnabledKey = @"com.hp.sprocket.key.party.mode.enabled";
-static NSString *kPGPartyManagerPartySaveEnabledKey = @"com.hp.sprocket.key.party.save.enabled";
-static NSString *kPGPartyManagerPartyPrintEnabledKey = @"com.hp.sprocket.key.party.print.enabled";
 
 - (NSString *)bluetoothState:(NSInteger)code
 {
     switch (code) {
         case CBManagerStateUnknown:
-            return @"Unknown";
+            return  @"Unknown";
         case CBManagerStateResetting:
             return @"Resetting";
         case CBManagerStateUnsupported:
@@ -40,34 +35,6 @@ static NSString *kPGPartyManagerPartyPrintEnabledKey = @"com.hp.sprocket.key.par
     }
     
     return @"Undefined";
-}
-
-+ (BOOL)isPartyModeEnabled {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kPGPartyManagerPartyModeEnabledKey];
-}
-
-+ (void)setPartyModeEnabled:(BOOL)enabled {
-    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGPartyManagerPartyModeEnabledKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPGPartyManagerPartyModeEnabledNotification object:self];
-}
-
-+ (BOOL)isPartySaveEnabled {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kPGPartyManagerPartySaveEnabledKey];
-}
-
-+ (void)setPartySaveEnabled:(BOOL)enabled {
-    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGPartyManagerPartySaveEnabledKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-+ (BOOL)isPartyPrintEnabled {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kPGPartyManagerPartyPrintEnabledKey];
-}
-
-+ (void)setPartyPrintEnabled:(BOOL)enabled {
-    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:kPGPartyManagerPartyPrintEnabledKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

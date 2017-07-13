@@ -19,13 +19,13 @@
 
 @property (strong, nonatomic) UIImage *image;
 
-@property (copy, nonatomic, readonly) MPPrintItem *printItem;
-@property (copy, nonatomic, readonly) HPPRMedia *media;
-@property (copy, nonatomic, readonly) NSString *origin;
-@property (copy, nonatomic, readonly) NSString *offramp;
-@property (copy, nonatomic, readonly) NSDictionary *extendedMetrics;
-@property (assign, nonatomic, readonly) BOOL connected;
-@property (assign, nonatomic, readonly) NSInteger copies;
+@property (nonatomic, readonly) MPPrintItem *printItem;
+@property (nonatomic, readonly) HPPRMedia *media;
+@property (nonatomic, readonly) NSString *origin;
+@property (nonatomic, readonly) NSString *offramp;
+@property (nonatomic, readonly) NSDictionary *extendedMetrics;
+@property (nonatomic, readonly) BOOL connected;
+@property (nonatomic, readonly) NSInteger copies;
 
 - (instancetype)initWithImage:(UIImage *)image
                         media:(HPPRMedia *)media

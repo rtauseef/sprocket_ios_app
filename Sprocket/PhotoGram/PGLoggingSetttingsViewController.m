@@ -23,7 +23,7 @@
 #import "PGFeatureFlag.h"
 #import "PGLinkSettings.h"
 #import "PGCloudAssetClient.h"
-#import "PGPartyManager.h"
+#import "PGFeatureFlag.h"
 
 static NSString* kLogLevelCellID = @"logLevelCell";
 static NSString* kPickerCellID   = @"levelPickerCell";
@@ -53,14 +53,11 @@ enum {
     kForceUpgradeIndex,
     kUseExperimentalFirmwareIndex,
     kEnableCloudAssetsIndex,
-		kEnablePartyModeIndex,
+    kEnablePartyModeIndex,
     kEnablePartySaveIndex,
     kEnablePartyPrintIndex,
     kCellIndexMax // keep this on last position so we have a source for number of rows
 };
-
-
-
 
 NSString * const kFeatureCodeAll = @"hpway";
 NSString * const kFeatureCodeLink = @"link";
@@ -361,33 +358,33 @@ NSString * const kFeatureCodePartyMode = @"fiesta";
             cell.detailTextLabel.font = self.photogramCell.textLabel.font;
             [self setBooleanDetailText:cell value:[PGFeatureFlag isCloudAssetsEnabled]];
         } else if(kEnablePartyModeIndex == selectedRow) {
-						cell = [tableView dequeueReusableCellWithIdentifier:@"enablePartyMode"];
-						if (!cell) {
-								cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePartyMode"];
-						}
-						cell.textLabel.text = @"Enable Party Mode";
-						cell.textLabel.font = self.photogramCell.textLabel.font;
-						cell.detailTextLabel.font = self.photogramCell.textLabel.font;
-						[self setBooleanDetailText:cell value:[PGPartyManager isPartyModeEnabled]];
-				} else if(kEnablePartySaveIndex == selectedRow) {
-						cell = [tableView dequeueReusableCellWithIdentifier:@"enablePartySave"];
-						if (!cell) {
-								cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePartySave"];
-						}
-						cell.textLabel.text = @"Save Incoming Party Photos";
-						cell.textLabel.font = self.photogramCell.textLabel.font;
-						cell.detailTextLabel.font = self.photogramCell.textLabel.font;
-						[self setBooleanDetailText:cell value:[PGPartyManager isPartySaveEnabled]];
-				} else if(kEnablePartyPrintIndex == selectedRow) {
-						cell = [tableView dequeueReusableCellWithIdentifier:@"enablePartyPrint"];
-						if (!cell) {
-								cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePartyPrint"];
-						}
-						cell.textLabel.text = @"Print Incoming Party Photos";
-						cell.textLabel.font = self.photogramCell.textLabel.font;
-						cell.detailTextLabel.font = self.photogramCell.textLabel.font;
-						[self setBooleanDetailText:cell value:[PGPartyManager isPartyPrintEnabled]];
-				}
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enablePartyMode"];
+            if (!cell) {
+                    cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePartyMode"];
+            }
+            cell.textLabel.text = @"Enable Party Mode";
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[PGFeatureFlag isPartyModeEnabled]];
+        } else if(kEnablePartySaveIndex == selectedRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enablePartySave"];
+            if (!cell) {
+                    cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePartySave"];
+            }
+            cell.textLabel.text = @"Save Incoming Party Photos";
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[PGFeatureFlag isPartySaveEnabled]];
+        } else if(kEnablePartyPrintIndex == selectedRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"enablePartyPrint"];
+            if (!cell) {
+                    cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"enablePartyPrint"];
+            }
+            cell.textLabel.text = @"Print Incoming Party Photos";
+            cell.textLabel.font = self.photogramCell.textLabel.font;
+            cell.detailTextLabel.font = self.photogramCell.textLabel.font;
+            [self setBooleanDetailText:cell value:[PGFeatureFlag isPartyPrintEnabled]];
+        }
 
         cell.hidden = ![self enableFeature:selectedRow forCode:self.unlockCode];
     }
@@ -478,15 +475,15 @@ NSString * const kFeatureCodePartyMode = @"fiesta";
                     [cac refreshAssetCatalog];
                 }
             } else if (kEnablePartyModeIndex == selectedRow) {
-							[PGPartyManager setPartyModeEnabled:![PGPartyManager isPartyModeEnabled]];
-							[self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGPartyManager isPartyModeEnabled]];
-						} else if (kEnablePartySaveIndex == selectedRow) {
-								[PGPartyManager setPartySaveEnabled:![PGPartyManager isPartySaveEnabled]];
-								[self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGPartyManager isPartySaveEnabled]];
-						} else if (kEnablePartyPrintIndex == selectedRow) {
-								[PGPartyManager setPartyPrintEnabled:![PGPartyManager isPartyPrintEnabled]];
-								[self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGPartyManager isPartyPrintEnabled]];
-						}
+                [PGFeatureFlag setPartyModeEnabled:![PGFeatureFlag isPartyModeEnabled]];
+                [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGFeatureFlag isPartyModeEnabled]];
+            } else if (kEnablePartySaveIndex == selectedRow) {
+                    [PGFeatureFlag setPartySaveEnabled:![PGFeatureFlag isPartySaveEnabled]];
+                    [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGFeatureFlag isPartySaveEnabled]];
+            } else if (kEnablePartyPrintIndex == selectedRow) {
+                    [PGFeatureFlag setPartyPrintEnabled:![PGFeatureFlag isPartyPrintEnabled]];
+                    [self setBooleanDetailText:[tableView cellForRowAtIndexPath:indexPath] value:[PGFeatureFlag isPartyPrintEnabled]];
+            }
         }
     }
 

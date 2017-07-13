@@ -10,18 +10,8 @@
 // the license agreement.
 //
 
-#import <CoreBluetooth/CoreBluetooth.h>
+#import "HPPRCameraRollPhotoProvider.h"
 
-@interface PGPartyManager : NSObject
-
-extern NSString * const kPGPartyManagerServiceUUID;
-extern NSString * const kPGPartyManagerCharacteristicUUID;
-
-typedef NS_ENUM(NSInteger, PGPartyManagerErrorCode) {
-    PGPartyManagerErrorBluetoothUnsupported = 1000,
-    PGPartyManagerErrorBluetoothUnauthorized
-};
-
-- (NSString *)bluetoothState:(NSInteger)code;
+@interface HPPRFolderPhotoProvider : HPPRCameraRollPhotoProvider
 
 @end

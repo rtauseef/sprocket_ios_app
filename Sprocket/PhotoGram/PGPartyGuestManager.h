@@ -25,7 +25,7 @@ extern NSString * const kPGPartyGuestManagerErrorDomain;
 + (instancetype)sharedInstance;
 
 - (void)sendImage:(UIImage *)image;
-- (void)sendImage:(UIImage *)image progress:(void(^_Nullable)(double progress))progress completion:(void (^_Nullable)(NSError *error))completion;
+- (void)sendImage:(UIImage *)image progress:(void(^_Nullable)(CGFloat progress))progress completion:(void (^_Nullable)(NSError *error))completion;
 
 @end
 

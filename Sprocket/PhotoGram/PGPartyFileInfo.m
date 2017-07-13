@@ -21,8 +21,8 @@
         _identifier = identifier;
         _size = size;
         _data = [NSData data];
-        _sent = 0;
-        _received = 0;
+        self.sent = 0;
+        self.received = 0;
     }
     return self;
 }
@@ -34,8 +34,8 @@
         _identifier = identifier;
         _size = data.length;
         _data = data;
-        _sent = 0;
-        _received = 0;
+        self.sent = 0;
+        self.received = 0;
     }
     return self;
 }

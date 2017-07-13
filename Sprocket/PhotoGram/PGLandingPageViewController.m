@@ -21,7 +21,7 @@
 #import "PGMediaNavigation.h"
 #import "PGPhotoSelection.h"
 #import "PGInAppMessageManager.h"
-#import "PGPartyManager.h"
+#import "PGFeatureFlag.h"
 #import "PGAppNavigation.h"
 
 const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
@@ -43,7 +43,7 @@ const NSInteger PGLandingPageViewControllerCollectionViewBottomInset = 120;
     
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGPartyManagerPartyModeEnabledNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSettingsChangedNotification:) name:kPGFeatureFlagPartyModeEnabledNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated

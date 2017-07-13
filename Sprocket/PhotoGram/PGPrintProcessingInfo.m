@@ -35,7 +35,7 @@
         _offramp = offramp;
         _copies = copies;
         _connected = connected;
-        _extendedMetrics = metrics;
+        _extendedMetrics = [metrics copy];
     }
     return self;
 }

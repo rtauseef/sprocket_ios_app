@@ -1440,7 +1440,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [partyPrintCompleteOperation addDependency:partyPrintStartOperation];
 
     [partyPrintStartOperation addExecutionBlock:^{
-        [[PGPartyGuestManager sharedInstance] sendImage:info.image progress:^(double progress) {
+        [[PGPartyGuestManager sharedInstance] sendImage:info.image progress:^(CGFloat progress) {
             [self handlePartySendProgress:progress];
         } completion:^(NSError *error) {
             if (nil != error) {
