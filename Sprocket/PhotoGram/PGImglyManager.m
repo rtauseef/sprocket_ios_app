@@ -472,7 +472,7 @@ int const kCustomButtonTag = 9999;
                                 }
                                 strongSelf.aurView = [AURView viewWithFrame:strongSelf.magicFrameController.workspaceView.frame andController:controller];
                                 strongSelf.aurView.userInteractionEnabled = NO; //tapping on the preview dismisses
-                                [strongSelf.magicFrameController.workspaceView addSubview:strongSelf->_aurView];
+                                [strongSelf.magicFrameController.workspaceView addSubview:strongSelf.aurView];
                             });
                         };
                         [[AURCachedContentService getServiceWithContext:[PGAurasmaGlobalContext instance].context] cacheAura:magicFrame.auraId withCallback:callback];
