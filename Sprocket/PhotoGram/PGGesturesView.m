@@ -13,7 +13,6 @@
 #import "PGGesturesView.h"
 #import "UIImage+ImageResize.h"
 #import "UIView+Background.h"
-#import <QuartzCore/QuartzCore.h>
 
 static CGFloat const kMinimumZoomScale = 1.0f;
 static CGFloat const kAnimationDuration = 0.3f;
