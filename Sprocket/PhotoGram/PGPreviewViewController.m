@@ -775,7 +775,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
 {
     [self showDownloadingImagesAlertWithCompletion:^{
-        [self closeDrawerAnimated:NO];
         [self saveSelectedPhotosWithCompletion:^(BOOL success, NSArray<UIImage *> *selectedPhotos) {
             if (success) {
                 [self handleSaveAndSharePhotoPrintMetrics:selectedPhotos offRamp:NSStringFromClass([PGSaveToCameraRollActivity class])];
@@ -851,7 +850,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (IBAction)didTouchUpInsideEditButton:(id)sender
 {
     BOOL drawerWasOpened = self.drawer.isOpened;
-    [self closeDrawerAnimated:NO];
     [self showImgly];
 
     if (drawerWasOpened) {
@@ -864,7 +862,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     [self showDownloadingImagesAlertWithCompletion:^{
         BOOL wasDrawerOpened = self.drawer.isOpened;
 
-        [self closeDrawerAnimated:NO];
         if ([MP sharedInstance].numberOfPairedSprockets > 0) {
             [[MP sharedInstance] presentBluetoothDeviceSelectionFromController:self animated:YES completion:^(BOOL success) {
                 [self printWithDrawerOpened:wasDrawerOpened andPrinterConnectedStatus:success];
@@ -878,7 +875,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (IBAction)didTouchUpInsideShareButton:(id)sender
 {
     [self showDownloadingImagesAlertWithCompletion:^{
-        [self closeDrawerAnimated:NO];
         [[MP sharedInstance] closeAccessorySession];
 
         [self presentActivityViewControllerWithActivities:nil];
