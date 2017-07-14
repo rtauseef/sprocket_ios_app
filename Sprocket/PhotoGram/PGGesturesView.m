@@ -228,8 +228,8 @@ static CGFloat const kMarginOfSquare = 2.0f;
         height = CGImageGetHeight(imgRef);
     }
     
-    if (fabs(initialImage.size.width - initialImage.size.height) >= kMarginOfSquare) {
-        // Scale image to fit scroll view size
+    if (self.imageContentMode == UIViewContentModeScaleAspectFill) {
+        // Scale image to fill scroll view size
         
         CGRect scaleRect = CGRectZero;
         CGFloat newHeight = self.scrollView.bounds.size.height;
@@ -241,12 +241,21 @@ static CGFloat const kMarginOfSquare = 2.0f;
         initialImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
     } else {
-        // Image is square. Scale and put image in the center of the scroll view
-        
+        // Scale image to fit some scroll view dimension
         CGRect scaleRect = CGRectZero;
-        CGFloat newHeight = self.scrollView.bounds.size.width;
-        CGFloat newWidth = self.scrollView.bounds.size.width;
-        scaleRect.origin.y = self.scrollView.bounds.size.height/2 - self.scrollView.bounds.size.width/2;
+
+        CGFloat scrollViewRatio = self.scrollView.bounds.size.width / self.scrollView.bounds.size.height;
+        CGFloat imageRatio = width / height;
+        CGFloat newWidth, newHeight;
+        if (imageRatio > scrollViewRatio) {
+            newWidth = self.scrollView.bounds.size.width;
+            newHeight = (height/width) * newWidth;
+            scaleRect.origin.y = self.scrollView.bounds.size.height/2 - newHeight/2;
+        } else {
+            newHeight = self.scrollView.bounds.size.height;
+            newWidth = (width/height) * newHeight;
+            scaleRect.origin.x = self.scrollView.bounds.size.width/2 - newWidth/2;
+        }
         scaleRect.size = CGSizeMake(newWidth, newHeight);
         
         UIGraphicsBeginImageContext(self.scrollView.bounds.size);
@@ -371,7 +380,7 @@ static CGFloat const kMarginOfSquare = 2.0f;
 }
 
 - (void)doubleTapRecognized:(UITapGestureRecognizer *)recognizer
-{
+{    
     if (UIViewContentModeScaleAspectFill == self.imageContentMode) {
         self.imageContentMode = UIViewContentModeScaleAspectFit;
     } else {
