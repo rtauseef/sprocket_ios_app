@@ -62,8 +62,6 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [self.aurasmaTrackingController restartLinkReader];
 }
 
 - (void)viewDidLoad {
@@ -105,6 +103,10 @@
 
 
 - (IBAction)close:(id)sender {
+    if (self.aurasmaTrackingController.state == AURTrackingState_Detached) {
+        [self.aurasmaTrackingController stopDetachedAura];
+        return;
+    }
     [self.aurasmaTrackingController removeDelegate:self];
     
     [self.closingDelegate finishedTracking:self];
@@ -414,6 +416,7 @@
     switch ([self lastTrackingState]) {
         case AURTrackingState_Idle:
         case AURTrackingState_Detecting:
+            [self.aurasmaTrackingController restartLinkReader];
             self.screenshotButton.hidden = YES;
             self.recordButton.hidden = YES;
             self.flashButton.hidden = NO;
