@@ -51,6 +51,7 @@ typedef enum
 - (void)enableGestures;
 - (void)showNoInternetConnectionView;
 - (void)hideNoInternetConnectionView;
+- (UIImage *)captureEditedImage;
 
 @end
 
@@ -58,9 +59,5 @@ typedef enum
 
 - (void)handleLongPress:(PGGesturesView *)gesturesView;
 - (void)imageEdited:(PGGesturesView *)gesturesView;
-
-@optional
-- (void)gesturesViewWillTakeScreenshot:(PGGesturesView *)gesturesView;
-- (void)gesturesViewDidTakeScreenshot:(PGGesturesView *)gesturesView;
 
 @end
