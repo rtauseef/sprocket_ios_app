@@ -439,7 +439,9 @@ static const NSUInteger kMaxRecordingTime = 20;
         [[NSNotificationCenter defaultCenter] removeObserver:observer];
         observer = nil; // Needed for iOS7
         
-        [[PGCameraManager sharedInstance] resetPresetSize];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[PGCameraManager sharedInstance] resetPresetSize];
+        });
     };
     
     observer = [[NSNotificationCenter defaultCenter] addObserverForName:AURDestroyTrackingControllerFinishedNotification
