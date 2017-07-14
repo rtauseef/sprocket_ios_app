@@ -7,7 +7,8 @@ class SprocketScreen < Calabash::IBase
   end
 
   def title
-      "navigationBar marked:'#{$list_loc['side_menu']}'"
+      #"navigationBar marked:'#{$list_loc['side_menu']}'"
+      "view {text CONTAINS[cd] '#{$list_loc['side_menu']}'}"
   end
     
   def modal_title

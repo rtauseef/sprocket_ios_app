@@ -84,7 +84,7 @@ def terms_of_service_link
     xcoord = xcoord +(attr_width.to_i/4)
     touch(nil, :offset => {:x => xcoord.to_i, :y => ycoord+10.to_i})
   else
-      if ENV['LANGUAGE'] == "Turkish"
+      if ENV['LANGUAGE'] == "Turkish" || ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
         touch(nil, :offset => {:x => xcoord-30.to_i, :y => ycoord+10.to_i})
       else
           if ENV['LANGUAGE'] == "Danish" || ENV['LANGUAGE'] == "Italian" || ENV['LANGUAGE'] == "Dutch" || ENV['LANGUAGE'] == "Estonian" || ENV['LANGUAGE'] == "Latvian" || ENV['LANGUAGE'] == "Norwegian" || ENV['LANGUAGE'] == "Portuguese" || ENV['LANGUAGE'] == "Swedish" || ENV['LANGUAGE'] == "Indonesian" || ENV['LANGUAGE'] == "Russian" || ENV['LANGUAGE'] == "Portuguese-Brazil"              

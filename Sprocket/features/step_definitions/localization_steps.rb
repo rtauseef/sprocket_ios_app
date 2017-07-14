@@ -206,47 +206,38 @@ def check_options_exist item
                     end
                      
                  
-                 else
-                     if item == "How to & Help"
-                        if ENV['LANGUAGE'] == "Italian"
-                        
-                            #item1 = query("UITableViewLabel index:2", :text)[0]
-                            item1 = query("UILabel index:5", :text)[0]
-                            raise "localization failed!" unless item1 == $list_loc[item]
-                        end
-                     else
-                         if item == "Version"
-                             check_element_exists "view {text CONTAINS '#{$list_loc[item]}'}"
+                else
+                    if item == "Version"
+                        check_element_exists "view {text CONTAINS '#{$list_loc[item]}'}"
+                    else
+                        if item == "Terms and service"
+                            if ENV['LANGUAGE'] == "Danish"
+                                link_text = query("PGTermsAttributedLabel", :text)[0] 
+                                 raise "localization failed!" unless link_text == $list_loc[item]
+                             end
                          else
-                             if item == "Terms and service"
-                                if ENV['LANGUAGE'] == "Danish"
-                                     link_text = query("PGTermsAttributedLabel", :text)[0] 
-                                     raise "localization failed!" unless link_text == $list_loc[item]
-                                 end
-                             else
-                                 if item == "Print to sprocket"
-                                    if ENV['LANGUAGE'] == "Turkish"
+                             if item == "Print to sprocket"
+                                if ENV['LANGUAGE'] == "Turkish"
                                     
-                                        item_text = query("UILabel index:3", :text)[0]
-                                        raise "localization failed!" unless item_text == $list_loc[item]
-                                    end
-                                else
-                                     if item == "Messenger Support"
-                                         if ENV['LANGUAGE'] == "Mexico-English" || ENV['LANGUAGE'] == "Canada-English" || ENV['LANGUAGE'] == "English-US"
+                                    item_text = query("UILabel index:3", :text)[0]
+                                    raise "localization failed!" unless item_text == $list_loc[item]
+                                end
+                            else
+                                if item == "Messenger Support"
+                                     if ENV['LANGUAGE'] == "Mexico-English" || ENV['LANGUAGE'] == "Canada-English" || ENV['LANGUAGE'] == "English-US"
+                                         check_element_exists "view marked:'#{$list_loc[item]}'"
+                                     else
+                                         puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
+                                     end
+                                 else
+                                     if item == "Tweet Support"
+                                         if ENV['LANGUAGE'] == "English-US" || ENV['LANGUAGE'] == "English-UK"
                                              check_element_exists "view marked:'#{$list_loc[item]}'"
                                          else
                                              puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
                                          end
                                      else
-                                         if item == "Tweet Support"
-                                             if ENV['LANGUAGE'] == "English-US" || ENV['LANGUAGE'] == "English-UK"
-                                                 check_element_exists "view marked:'#{$list_loc[item]}'"
-                                             else
-                                                 puts "#{item} - Not Applicable for #{ENV['LANGUAGE']}!".blue
-                                             end
-                                         else
-                                             check_element_exists "view marked:'#{$list_loc[item]}'"
-                                         end
+                                         check_element_exists "view marked:'#{$list_loc[item]}'"
                                      end
                                  end
                              end
@@ -260,7 +251,7 @@ end
 
 Then /^I touch "(.*?)" option in the screen$/ do |option|
     if option == "sprocket"
-        touch "view marked:'#{$list_loc['side_menu']}'" 
+        touch "view {text CONTAINS[cd] '#{$list_loc['side_menu']}'}" 
         sleep(STEP_PAUSE)
     else
         touch "view marked:'#{$list_loc[option]}'" 
@@ -285,7 +276,8 @@ Then /^I should see the popup message for the "(.*?)"$/ do |option|
            # touch @current_page.download
            # sleep(STEP_PAUSE)
        # end
-        check_element_exists "view marked:'#{$list_loc['Save_to_CameraRoll']}'"
+        wait_for_elements_exist("view marked:'#{$list_loc['Save_to_CameraRoll']}'")
+        #check_element_exists "view marked:'#{$list_loc['Save_to_CameraRoll']}'"
         sleep(STEP_PAUSE)
     end
 end
@@ -312,7 +304,11 @@ Then /^I verify the "(.*?)" of the popup message for "(.*?)"$/ do |option, butto
         if button == "No Prints"
              check_element_exists "label marked:'No prints in Print Queue'"
          else
-			check_element_exists "view {text CONTAINS 'Sprocket Printer Not Connected, 1 print added to the queue'}"
+            if option == "title" && button == "PrintButton"
+                check_element_exists "view {text CONTAINS '#{$list_loc['popup_print_title']}'}"
+            else
+                check_element_exists "view {text CONTAINS '#{$list_loc['popup_print_content']}'}"
+            end
         end
     end
 end
@@ -327,7 +323,13 @@ Then /^I verify the "(.*?)" button text$/ do |button|
     end
 end
 When(/^I touch hamburger button on navigation bar$/) do
-  selenium.find_element(:name, "HPPRBack").click
+  #selenium.find_element(:name, "HPPRBack").click
+  if selenium.find_elements(:name, "HPPRBack").size > 0
+        selenium.find_elements(:name, "HPPRBack").click
+      else
+        selenium.find_elements(:name, "hamburger").click
+        puts "ham"
+    end
   sleep(SLEEP_SCREENLOAD)
 end
 

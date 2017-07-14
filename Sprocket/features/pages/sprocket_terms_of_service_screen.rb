@@ -12,7 +12,7 @@ class SprocketTermsOfServiceScreen < BaseHtmlScreen
 
 
   def sprocket_header
-    "view marked:'#{$list_loc['terms_of_service_title']}'"
+    "label {text CONTAINS '#{$list_loc['terms_of_service_title']}'}"
   end
   
   def done_button

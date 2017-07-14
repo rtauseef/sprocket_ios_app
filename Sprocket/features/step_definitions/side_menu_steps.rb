@@ -4,7 +4,11 @@ Given /^Side menu is open$/ do
 end
 
 When /^I touch menu button on navigation bar$/ do
-  touch("UIImageView id:'hamburger'")
+   if element_exists("UIImageView id:'hamburger'")
+    touch("UIImageView id:'hamburger'")
+  else
+    touch("UIImageView id:'hamburgerActive'")
+  end
   sleep(WAIT_SCREENLOAD)
 end
 

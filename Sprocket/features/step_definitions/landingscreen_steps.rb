@@ -2,7 +2,8 @@ Then(/^I should see "(.*?)" logo$/) do |arg|
 
   if arg=="Instagram"
       if ENV['LANGUAGE'] == "Chinese" || ENV['LANGUAGE'] == "Chinese-Traditional"
-          if element_exists("view marked:'sprocket'")
+          #if element_exists("view marked:'sprocket'")
+          if element_exists("* id:'HPLogo'")
               touch query "UIButton index:1"
               sleep(STEP_PAUSE)
           end
