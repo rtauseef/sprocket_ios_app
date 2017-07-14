@@ -169,7 +169,7 @@ static NSInteger  const connectionDefaultValue = -1;
 }
 
 - (IBAction)printTapped:(id)sender {
-    UIImage *image = [self.gesturesView screenshotImage];
+    UIImage *image = [self.gesturesView captureEditedImage];
     [[MP sharedInstance] headlessBluetoothPrintFromController:self image:image animated:YES printCompletion:nil];
 }
 
@@ -191,7 +191,7 @@ static NSInteger  const connectionDefaultValue = -1;
     NSString *error = [notification.userInfo objectForKey:kMPBTPrintJobErrorKey];
     
     if (nil == error) {
-        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:[self.gesturesView screenshotImage]];
+        MPPrintItem *printItem = [MPPrintItemFactory printItemWithAsset:[self.gesturesView captureEditedImage]];
         printItem.layout = [MPLayoutFactory layoutWithType:[MPLayoutFill layoutType]];
         
         [[PGBaseAnalyticsManager sharedManager] postMetricsWithOfframp:[MPPrintManager printFromActionExtension] printItem:printItem extendedInfo:nil];

@@ -26,12 +26,6 @@
     return self.currentTiling.checkedTiles;
 }
 
-- (void)setIsOverlayVisible:(BOOL)isOverlayVisible
-{
-    _isOverlayVisible = isOverlayVisible;
-    self.currentTiling.hidden = !isOverlayVisible;
-}
-
 - (void)addTilingOverlay:(PGTilingOverlayOption)tilingOption toView:(UIView *)view
 {   
     if (self.currentTiling) {
