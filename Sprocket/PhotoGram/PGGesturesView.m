@@ -13,6 +13,7 @@
 #import "PGGesturesView.h"
 #import "UIImage+ImageResize.h"
 #import "UIView+Background.h"
+#import <QuartzCore/QuartzCore.h>
 
 static CGFloat const kMinimumZoomScale = 1.0f;
 static CGFloat const kAnimationDuration = 0.3f;
@@ -195,32 +196,145 @@ static CGFloat const kMarginOfSquare = 2.0f;
     }
 }
 
-- (UIImage *)screenshotImage
+- (UIImage *)initialImage
 {
-    // If the image is not loaded yet do not take a screenshot
-    if (self.image) {
-        BOOL isCheckmarkHidden = self.checkmark.hidden;
-        self.checkmark.hidden = YES;
-        if ([self.delegate respondsToSelector:@selector(gesturesViewWillTakeScreenshot:)]) {
-            [self.delegate gesturesViewWillTakeScreenshot:self];
-        }
+    UIImage *initialImage = self.image;
+    CGImageRef imgRef = initialImage.CGImage;
+    
+    CGFloat width = CGImageGetWidth(imgRef);
+    CGFloat height = CGImageGetHeight(imgRef);
+    if (width > height) {
+        // Rotate image
+
+        CGFloat centerX = initialImage.size.width/2;
+        CGFloat centerY = initialImage.size.height/2;
         
-        UIImage *image = [super screenshotImage];
+        CGAffineTransform transform = CGAffineTransformMakeTranslation(centerX, centerY);
+        transform = CGAffineTransformRotate(transform, M_PI/2);
+        transform = CGAffineTransformTranslate(transform, -centerY, -centerX);
         
-        self.checkmark.hidden = isCheckmarkHidden;
-        if ([self.delegate respondsToSelector:@selector(gesturesViewDidTakeScreenshot:)]) {
-            [self.delegate gesturesViewDidTakeScreenshot:self];
-        }
+        UIGraphicsBeginImageContext(CGSizeMake(height, width));
+        CGContextRef context = UIGraphicsGetCurrentContext();
         
-        return image;
+        CGContextConcatCTM(context, transform);
+        CGContextTranslateCTM(context, 0, height);
+        CGContextScaleCTM(context, 1.0, -1.0);
+        
+        CGContextDrawImage(context, CGRectMake(0, 0, width, height), imgRef);
+        initialImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        imgRef = initialImage.CGImage;
+        width = CGImageGetWidth(imgRef);
+        height = CGImageGetHeight(imgRef);
+    }
+    
+    if (fabs(initialImage.size.width - initialImage.size.height) >= kMarginOfSquare) {
+        // Scale image to fit scroll view size
+        
+        CGRect scaleRect = CGRectZero;
+        CGFloat newHeight = self.scrollView.bounds.size.height;
+        CGFloat newWidth = (width/height) * newHeight;
+        scaleRect.size = CGSizeMake(newWidth, newHeight);
+        
+        UIGraphicsBeginImageContext(scaleRect.size);
+        [self.image drawInRect:scaleRect];
+        initialImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    } else {
+        // Image is square. Scale and put image in the center of the scroll view
+        
+        CGRect scaleRect = CGRectZero;
+        CGFloat newHeight = self.scrollView.bounds.size.width;
+        CGFloat newWidth = self.scrollView.bounds.size.width;
+        scaleRect.origin.y = self.scrollView.bounds.size.height/2 - self.scrollView.bounds.size.width/2;
+        scaleRect.size = CGSizeMake(newWidth, newHeight);
+        
+        UIGraphicsBeginImageContext(self.scrollView.bounds.size);
+        [self.image drawInRect:scaleRect];
+        initialImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
     }
 
-    return nil;
+    return initialImage;
+}
+
+- (UIImage *)applyTransformToImage:(UIImage *)image
+{
+    CGImageRef imgRef = image.CGImage;
+    
+    CGFloat width = CGImageGetWidth(imgRef);
+    CGFloat height = CGImageGetHeight(imgRef);
+    
+    CGFloat centerX = image.size.width/2;
+    CGFloat centerY = image.size.height/2;
+    
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(centerX, centerY);
+    transform = CGAffineTransformRotate(transform, self.totalRotation);
+    transform = CGAffineTransformScale(transform, self.scrollView.zoomScale, self.scrollView.zoomScale);
+    
+    CGFloat centerOffsetX = self.imageView.frame.size.width/2 - self.scrollView.bounds.size.width/2;
+    CGFloat centerOffsetY = self.imageView.frame.size.height/2 - self.scrollView.bounds.size.height/2;
+    CGFloat offsetX = (centerOffsetX - self.scrollView.contentOffset.x) / self.scrollView.zoomScale;
+    CGFloat offsetY = (centerOffsetY - self.scrollView.contentOffset.y) / self.scrollView.zoomScale;
+    transform = CGAffineTransformTranslate(transform, offsetX, offsetY);
+    transform = CGAffineTransformTranslate(transform, -centerX, -centerY);
+    
+    CGRect bounds = CGRectMake(0, 0, width, height);
+    
+    UIGraphicsBeginImageContext(bounds.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextConcatCTM(context, transform);
+    
+    CGContextTranslateCTM(context, 0, height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imgRef);
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return resultImage;
+}
+
+- (UIImage *)captureEditedImage
+{
+    if (!self.image) {
+        return nil;
+    }
+    
+    UIImage *initialImage = [self initialImage];
+    UIImage *transformedImage = [self applyTransformToImage:initialImage];
+    
+    CGRect cropRect = CGRectMake(0, 0, initialImage.size.width, initialImage.size.height);
+    if (initialImage.size.height >= initialImage.size.width) {
+        cropRect.origin.x += (initialImage.size.width-self.scrollView.bounds.size.width)/2;
+        cropRect.size.width -= initialImage.size.width-self.scrollView.bounds.size.width;
+    } else {
+        cropRect.origin.y += (initialImage.size.height-self.scrollView.bounds.size.height)/2;
+        cropRect.size.width -= initialImage.size.height-self.scrollView.bounds.size.height;
+    }
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect(transformedImage.CGImage, cropRect);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef scale:1 orientation:transformedImage.imageOrientation];
+    
+    CGRect finalRect = CGRectMake(0, 0, croppedImage.size.width, croppedImage.size.height);
+    UIGraphicsBeginImageContext(croppedImage.size);
+    
+    [[UIColor whiteColor] setFill];
+    [[UIBezierPath bezierPathWithRect:finalRect] fill];
+    
+    [croppedImage drawInRect:finalRect blendMode:kCGBlendModeNormal alpha:1.0];
+    
+    UIImage *resultImage =  UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return resultImage;
 }
 
 - (void)zoomTimer:(NSTimer *)timer
 {
-    self.editedImage = [self screenshotImage];
+    self.editedImage = [self captureEditedImage];
     [self.zoomTimer invalidate];
     self.zoomTimer = nil;
 }
@@ -248,7 +362,7 @@ static CGFloat const kMarginOfSquare = 2.0f;
     recognizer.rotation = 0;
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        self.editedImage = [self screenshotImage];
+        self.editedImage = [self captureEditedImage];
     }
 }
 
@@ -271,11 +385,11 @@ static CGFloat const kMarginOfSquare = 2.0f;
     } completion:^(BOOL finished) {
         self.imageView.contentMode = self.imageContentMode;
         self.scrollView.contentMode = self.imageContentMode;
-        self.editedImage = [self screenshotImage];
+        self.editedImage = [self captureEditedImage];
         self.scrollView.zoomScale = kMinimumZoomScale;
     }];
     
-    self.editedImage = [self screenshotImage];
+    self.editedImage = [self captureEditedImage];
 }
 
 - (void)longPressGestureRecognized:(UILongPressGestureRecognizer *)gestureRecognizer
@@ -310,17 +424,17 @@ static CGFloat const kMarginOfSquare = 2.0f;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self adjustContentOffset];
-    self.editedImage = [self screenshotImage];
+    self.editedImage = [self captureEditedImage];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    self.editedImage = [self screenshotImage];
+    self.editedImage = [self captureEditedImage];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    self.editedImage = [self screenshotImage];
+    self.editedImage = [self captureEditedImage];
 }
 
 #pragma mark - Photo position

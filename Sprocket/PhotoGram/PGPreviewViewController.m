@@ -238,7 +238,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
     // Updating visible edited images with the correct contentMode after loading the screen;
     for (PGGesturesView *visibleGestureView in self.carouselView.visibleItemViews) {
-        visibleGestureView.editedImage = [visibleGestureView screenshotImage];
+        visibleGestureView.editedImage = [visibleGestureView captureEditedImage];
     }
 
     if ([[MPBTPrintManager sharedInstance] queueSize] > 0 && self.carouselView.visibleItemViews.count > 0) {
@@ -768,16 +768,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     
 }
 
-- (void)gesturesViewWillTakeScreenshot:(PGGesturesView *)gesturesView
-{
-    self.tilingOverlay.isOverlayVisible = NO;
-}
-
-- (void)gesturesViewDidTakeScreenshot:(PGGesturesView *)gesturesView
-{
-    self.tilingOverlay.isOverlayVisible = YES;
-}
-
 #pragma mark - Bottom Menu Handlers
 
 - (IBAction)didTouchUpInsideDownloadButton:(id)sender
@@ -948,7 +938,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
             imageToPrint = tiles[x];
         } else if (!printingTiles) {
             gestureView = selectedViews[x];
-            gestureView.editedImage = [gestureView screenshotImage];
+            gestureView.editedImage = [gestureView captureEditedImage];
             imageToPrint = gestureView.editedImage;
         }
         __block MPPrintItem *printItem = nil;
@@ -1209,7 +1199,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 
 - (NSMutableArray<UIImage *> *)generateTiles:(PGGesturesView*)gestureView rotatingLastRow:(BOOL)shouldRotate {
     NSMutableArray<UIImage *> *tiles = [[NSMutableArray alloc] init];
-    UIImage* currentImage = [gestureView screenshotImage];
+    UIImage* currentImage = [gestureView captureEditedImage];
     NSArray<NSNumber *> *selectedTiles = self.tilingOverlay.selectedTiles;
     
     NSInteger tilesColumnCount;
@@ -1667,7 +1657,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
 - (UIImage *)currentEditedImage
 {
     PGGesturesView *gesturesView = self.gesturesViews[self.carouselView.currentItemIndex];
-    gesturesView.editedImage = [gesturesView screenshotImage];
+    gesturesView.editedImage = [gesturesView captureEditedImage];
     
     return gesturesView.editedImage;
 }
@@ -1707,7 +1697,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         
         BOOL isVisibleItem = [carousel.indexesForVisibleItems containsObject:[NSNumber numberWithInteger:index]];
         if (isVisibleItem) {
-            gestureView.editedImage = [gestureView screenshotImage];
+            gestureView.editedImage = [gestureView captureEditedImage];
         }
 
         [carousel setNeedsLayout];
