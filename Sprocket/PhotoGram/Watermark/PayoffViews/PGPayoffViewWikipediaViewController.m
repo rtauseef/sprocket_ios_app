@@ -78,6 +78,9 @@ static const CGFloat kTableViewMargin = 15;
     self.blocksTableView.backgroundView = nil;
     self.blocksTableView.backgroundColor = [UIColor clearColor];
     self.scrollView.hidden = YES;
+    
+    self.imagesShowMorebutton.imageView.clipsToBounds = NO;
+    self.imagesShowMorebutton.imageView.contentMode = UIViewContentModeCenter;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -185,20 +188,15 @@ static const CGFloat kTableViewMargin = 15;
                 self.articleDescriptionTextView.text = page.text;
                 
                 // Article Description
-                self.descriptionExpanded = NO;
+                self.descriptionExpanded = YES;
                 CGRect newFrame = self.articleDescriptionTextView.frame;
                 newFrame.size.height = kShortDescriptionFixedHeight;
                 
                 CGFloat fixedWidth = self.articleDescriptionTextView.frame.size.width;
                 CGSize newSize = [self.articleDescriptionTextView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
                 
-                if (newSize.height <= kShortDescriptionFixedHeight) {
-                    self.showMoreHeightConstraint.constant = 0;
-                    self.articleDescriptionHeightConstraint.constant = newSize.height;
-                } else {
-                    self.showMoreHeightConstraint.constant = kShowMoreButtonFixedHeight;
-                    self.articleDescriptionHeightConstraint.constant = kShortDescriptionFixedHeight;
-                }
+                self.showMoreHeightConstraint.constant = 0;
+                self.articleDescriptionHeightConstraint.constant = newSize.height;
                 
                 [self.articleDescriptionTextView setNeedsLayout];
                 
@@ -248,8 +246,9 @@ static const CGFloat kTableViewMargin = 15;
         self.imagesCollectionView.frame = imageGalleryFrame;
         
         if (numberOfLines == 2) {
-            self.imageCollectionViewHeightConstraint.constant = 0;
+            self.imageShowMoreButtonHeightConstraint.constant = 0;
             self.galleryGradientView.hidden = YES;
+            self.imageCollectionViewHeightConstraint.constant = height;
         } else {
             self.imageCollectionViewHeightConstraint.constant = height;
             self.galleryGradientView.hidden = NO;
@@ -262,6 +261,18 @@ static const CGFloat kTableViewMargin = 15;
         self.imageShowMoreButtonHeightConstraint.constant = 0;
         self.galleryGradientView.hidden = YES;
     }
+}
+
+- (void) rotateImageArrow {
+    [UIView beginAnimations:@"rotate" context:nil];
+    [UIView setAnimationDuration:.5f];
+    if( CGAffineTransformEqualToTransform( self.imagesShowMorebutton.imageView.transform, CGAffineTransformIdentity ) )
+    {
+        self.imagesShowMorebutton.imageView.transform = CGAffineTransformMakeRotation(M_PI);
+    } else {
+        self.imagesShowMorebutton.imageView.transform = CGAffineTransformIdentity;
+    }
+    [UIView commitAnimations];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -296,6 +307,7 @@ static const CGFloat kTableViewMargin = 15;
     }
     
     [self.imagesCollectionView setNeedsLayout];
+    [self rotateImageArrow];
 }
 
 - (IBAction)didClickArticleDescriptionShowMore:(id)sender {
