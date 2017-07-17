@@ -1725,16 +1725,7 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     gestureView.isMultiSelectImage = [PGPhotoSelection sharedInstance].hasMultiplePhotos;
 
     if (media.image) {
-        UIImage *finalImage = media.image;
-
-        if (media.image.size.width > media.image.size.height) {
-            finalImage = [[UIImage alloc] initWithCGImage: media.image.CGImage
-                                                    scale: 1.0
-                                              orientation: UIImageOrientationRight];
-        }
-
-        gestureView.image = finalImage;
-
+        gestureView.image = media.image;
         [self.carouselView setNeedsLayout];
     } else {
         gestureView.isSelected = NO;
@@ -1782,16 +1773,6 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
     gestureView.frame = [self carouselItemFrame];
 
     if (gestureView.image) {
-        UIImage *finalImage = gestureView.image;
-
-        if (gestureView.image.size.width > gestureView.image.size.height) {
-            finalImage = [[UIImage alloc] initWithCGImage: gestureView.image.CGImage
-                                                    scale: 1.0
-                                              orientation: UIImageOrientationRight];
-        }
-
-        [gestureView setImage:finalImage];
-
         BOOL isVisibleItem = [carousel.indexesForVisibleItems containsObject:[NSNumber numberWithInteger:index]];
         if (isVisibleItem) {
             gestureView.editedImage = [gestureView captureEditedImage];

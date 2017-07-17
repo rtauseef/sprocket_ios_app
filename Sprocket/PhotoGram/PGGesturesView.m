@@ -209,7 +209,7 @@ static CGFloat const kMarginOfSquare = 2.0f;
         CGFloat centerY = initialImage.size.height/2;
         
         CGAffineTransform transform = CGAffineTransformMakeTranslation(centerX, centerY);
-        transform = CGAffineTransformRotate(transform, M_PI/2);
+        transform = CGAffineTransformRotate(transform, M_PI_2);
         transform = CGAffineTransformTranslate(transform, -centerY, -centerX);
         
         UIGraphicsBeginImageContext(CGSizeMake(height, width));
@@ -231,15 +231,10 @@ static CGFloat const kMarginOfSquare = 2.0f;
     if (self.imageContentMode == UIViewContentModeScaleAspectFill) {
         // Scale image to fill scroll view size
         
-        CGRect scaleRect = CGRectZero;
         CGFloat newHeight = self.scrollView.bounds.size.height;
         CGFloat newWidth = (width/height) * newHeight;
-        scaleRect.size = CGSizeMake(newWidth, newHeight);
-        
-        UIGraphicsBeginImageContext(scaleRect.size);
-        [self.image drawInRect:scaleRect];
-        initialImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        CGSize scaleSize = CGSizeMake(newWidth, newHeight);
+        initialImage = [initialImage imageResize:scaleSize];
     } else {
         // Scale image to fit some scroll view dimension
         CGRect scaleRect = CGRectZero;
@@ -259,7 +254,7 @@ static CGFloat const kMarginOfSquare = 2.0f;
         scaleRect.size = CGSizeMake(newWidth, newHeight);
         
         UIGraphicsBeginImageContext(self.scrollView.bounds.size);
-        [self.image drawInRect:scaleRect];
+        [initialImage drawInRect:scaleRect];
         initialImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
     }
@@ -393,8 +388,8 @@ static CGFloat const kMarginOfSquare = 2.0f;
     } completion:^(BOOL finished) {
         self.imageView.contentMode = self.imageContentMode;
         self.scrollView.contentMode = self.imageContentMode;
-        self.editedImage = [self captureEditedImage];
         self.scrollView.zoomScale = kMinimumZoomScale;
+        self.editedImage = [self captureEditedImage];
     }];
     
     self.editedImage = [self captureEditedImage];
