@@ -17,6 +17,11 @@ Then(/^I open cameraroll$/) do
         sleep(WAIT_SCREENLOAD)
         touch("view marked:'#{$list_loc['auth']}' index:0")
     end
+     sleep(WAIT_SCREENLOAD)
+    if device_agent.springboard_alert_visible?
+        puts "true"
+        device_agent.dismiss_springboard_alert("OK")
+    end
     sleep(WAIT_SCREENLOAD)
 end
 
@@ -30,7 +35,7 @@ Then(/^I touch the option "(.*?)"$/) do |option|
     if option == "How to & Help"
         if ENV['LANGUAGE'] == "Italian"
             #touch "UITableViewLabel index:2"
-            touch "UILabel index:5"
+            touch "UILabel index:4"
         else
             touch ("view marked:'#{$list_loc[option]}'")
             sleep(STEP_PAUSE)
