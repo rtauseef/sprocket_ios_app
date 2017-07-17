@@ -145,7 +145,7 @@ static NSString * const kPGHPCareTwitterURLFormat = @"http://hp.care/HPCS%@TW";
 
 + (NSDictionary *)supportedLocales
 {
-    return @{@"cs":@"cz", @"da":@"dk", @"de":@"de", @"el":@"el", @"en":@"us", @"es":@"es", @"et":@"ee", @"fi":@"fi", @"fr":@"fr", @"he":@"il", @"hu":@"hu", @"id":@"id", @"it":@"it", @"lt":@"lt", @"lv":@"lv", @"nb":@"no", @"nl":@"nl", @"pl":@"pl", @"pt":@"pt", @"ru":@"ru", @"sk":@"sk", @"sv":@"se", @"th":@"th", @"tr":@"tr", @"zh":@"cn"};
+    return @{@"ar":@"eg",@"cs":@"cz", @"da":@"dk", @"de":@"de", @"el":@"el", @"en":@"us", @"es":@"es", @"et":@"ee", @"fi":@"fi", @"fr":@"fr", @"he":@"il", @"hu":@"hu", @"id":@"id", @"it":@"it", @"lt":@"lt", @"lv":@"lv", @"nb":@"no", @"nl":@"nl", @"pl":@"pl", @"pt":@"pt", @"ru":@"ru", @"sk":@"sk", @"sv":@"se", @"th":@"th", @"tr":@"tr", @"zh":@"cn"};
 }
 
 + (NSDictionary *)twitterHPSupportLocales

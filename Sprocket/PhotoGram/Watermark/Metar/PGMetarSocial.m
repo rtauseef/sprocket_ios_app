@@ -58,8 +58,6 @@
         return PGMetarSocialProviderInstagram;
     } else if ([provider rangeOfString:@"google" options:NSCaseInsensitiveSearch].location != NSNotFound) {
         return PGMetarSocialProviderGoogle;
-    } else if ([provider rangeOfString:@"flickr" options:NSCaseInsensitiveSearch].location != NSNotFound) {
-        return PGMetarSocialProviderFlickr;
     }
     
     return PGMetarSocialProviderUnknown;
@@ -77,9 +75,6 @@
             break;
         case PGMetarSocialProviderGoogle:
             [dict setObject:@"Google" forKey:@"provider"];
-            break;
-        case PGMetarSocialProviderFlickr:
-            [dict setObject:@"Flickr" forKey:@"provider"];
             break;
         default:
             break;

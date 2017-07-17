@@ -17,7 +17,6 @@
 
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRFacebookPhotoProvider.h>
-#import <HPPRFlickrPhotoProvider.h>
 #import <HPPRGooglePhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
 #import <HPPRPituPhotoProvider.h>
@@ -26,7 +25,6 @@
 
 #import <HPPRFacebookLoginProvider.h>
 #import <HPPRInstagramLoginProvider.h>
-#import <HPPRFlickrLoginProvider.h>
 #import <HPPRGoogleLoginProvider.h>
 #import <HPPRCameraRollLoginProvider.h>
 #import <HPPRQzoneLoginProvider.h>
@@ -35,7 +33,6 @@ typedef NS_ENUM(NSUInteger, PGSocialSourceType) {
     PGSocialSourceTypeLocalPhotos = 0,
     PGSocialSourceTypeFacebook,
     PGSocialSourceTypeInstagram,
-    PGSocialSourceTypeFlickr,
     PGSocialSourceTypePitu,
     PGSocialSourceTypeWeiBo,
     PGSocialSourceTypeQzone,

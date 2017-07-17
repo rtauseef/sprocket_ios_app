@@ -10,7 +10,6 @@
 // the license agreement.
 //
 
-#import <HPPRFlickrPhotoProvider.h>
 #import <HPPRFacebookPhotoProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
@@ -21,7 +20,6 @@
 #import "PGLandingSelectorPageViewController.h"
 #import "PGInstagramLandingPageViewController.h"
 #import "PGFacebookLandingPageViewController.h"
-#import "PGFlickrLandingPageViewController.h"
 #import "PGQzoneLandingPageViewController.h"
 #import "PGCameraRollLandingPageViewController.h"
 #import "PGPituLandingPageViewController.h"
@@ -182,13 +180,6 @@ NSString * const kSettingShowSwipeCoachMarks = @"SettingShowSwipeCoachMarks";
             }
             case PGSocialSourceTypeFacebook: {
                 UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFacebookLandingPageViewNavigationController"];
-                viewController.delegate = self;
-                ((PGLandingPageViewController *) viewController.viewControllers.firstObject).delegate = self;
-                [viewControllers addObject:viewController];
-                break;
-            }
-            case PGSocialSourceTypeFlickr: {
-                UINavigationController *viewController = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"PGFlickrLandingPageViewNavigationController"];
                 viewController.delegate = self;
                 ((PGLandingPageViewController *) viewController.viewControllers.firstObject).delegate = self;
                 [viewControllers addObject:viewController];

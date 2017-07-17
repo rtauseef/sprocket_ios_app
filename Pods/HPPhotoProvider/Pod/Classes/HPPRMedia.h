@@ -23,8 +23,7 @@ typedef NS_ENUM(NSUInteger, HPPRMediaType) {
 typedef NS_ENUM(NSUInteger, HPPRSocialMediaProvider) {
     HPPRSocialMediaProviderFacebook,
     HPPRSocialMediaProviderInstagram,
-    HPPRSocialMediaProviderGoogle,
-    HPPRSocialMediaProviderFlickr
+    HPPRSocialMediaProviderGoogle
 };
 
 @class HPPRSelectPhotoProvider;
