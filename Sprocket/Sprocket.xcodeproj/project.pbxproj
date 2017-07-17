@@ -1125,7 +1125,6 @@
 		49230dfae2b8359e79122f24 /* MobilePrinting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385519BE57C5009C695F /* MobilePrinting@2x.png */; };
 		49ad600baf4c001336afed6f /* PGTermsAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821851D71D60EF4A001288D9 /* PGTermsAttributedLabel.m */; };
 		49f04ff6f777ef64c4d0cae4 /* PGSwipeCoachMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1ECD7401A608297004B512E /* PGSwipeCoachMarksView.m */; };
-		4a37c5bca08e6b1cd9722903 /* PGFlickrLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3335231A0BEC4800E421AC /* PGFlickrLandingPageViewController.m */; };
 		5089b6e4b798bd669905cc1d /* PGExperimentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DAD7671B8D3196006FAB3D /* PGExperimentManager.m */; };
 		525a7a6a2dbd92bfd64cc42f /* About@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E375385319BE57C5009C695F /* About@2x.png */; };
 		53233482f8178877320112d9 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E39CE8D31AA7C05900A2A644 /* DBChooser.framework */; };
@@ -2351,7 +2350,6 @@
 		CC10807F19CA0D2400C1553A /* PGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC10807E19CA0D2400C1553A /* PGAboutViewController.m */; };
 		CC10808319CA122B00C1553A /* hp.logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808119CA122B00C1553A /* hp.logo.blue.png */; };
 		CC10808519CA122B00C1553A /* logo.blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CC10808219CA122B00C1553A /* logo.blue.png */; };
-		CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3335231A0BEC4800E421AC /* PGFlickrLandingPageViewController.m */; };
 		CC4661E11A11898A0000BC2E /* FlickrLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4661E01A11898A0000BC2E /* FlickrLogo@2x.png */; };
 		E30841A21AEECF8E0031FB67 /* NSLocale+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */; };
 		E316630D19C09FE400996E20 /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E316630C19C09FE400996E20 /* UIImageView+MaskImage.m */; };
@@ -2587,7 +2585,7 @@
 		F24DA7D31EAEA13800C24AAB /* PGLinkCredentialsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C31EAEA0F500C24AAB /* PGLinkCredentialsManager.m */; };
 		F24DA7D41EAEA13800C24AAB /* PGLinkReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C51EAEA0F500C24AAB /* PGLinkReaderViewController.m */; };
 		F24DA7D51EAEA13800C24AAB /* PGLinkSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DA7C71EAEA0F500C24AAB /* PGLinkSettings.m */; };
-		F24DA7D71EAEA13800C24AAB /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		F24DA7D71EAEA13800C24AAB /* (null) in Sources */ = {isa = PBXBuildFile; };
 		F254DDE91EF9E7F600A0FE87 /* PGFrameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82362A171D59408E0019F024 /* PGFrameItem.m */; };
 		F27256FD1E95ACA3009E553D /* PGImglyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82006BEB1D64E5CC009D5E3B /* PGImglyManager.m */; };
 		F27256FF1E96B2A6009E553D /* imgly_license in Resources */ = {isa = PBXBuildFile; fileRef = F27256FE1E96B2A6009E553D /* imgly_license */; };
@@ -4386,8 +4384,6 @@
 		CC10807E19CA0D2400C1553A /* PGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGAboutViewController.m; sourceTree = "<group>"; };
 		CC10808119CA122B00C1553A /* hp.logo.blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.logo.blue.png; sourceTree = "<group>"; };
 		CC10808219CA122B00C1553A /* logo.blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.blue.png; sourceTree = "<group>"; };
-		CC3335221A0BEC4800E421AC /* PGFlickrLandingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGFlickrLandingPageViewController.h; sourceTree = "<group>"; };
-		CC3335231A0BEC4800E421AC /* PGFlickrLandingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFlickrLandingPageViewController.m; sourceTree = "<group>"; };
 		CC4661E01A11898A0000BC2E /* FlickrLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlickrLogo@2x.png"; path = "Resources/Images/Icons/FlickrLogo@2x.png"; sourceTree = "<group>"; };
 		E30841A01AEECF8E0031FB67 /* NSLocale+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+Additions.h"; sourceTree = "<group>"; };
 		E30841A11AEECF8E0031FB67 /* NSLocale+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+Additions.m"; sourceTree = "<group>"; };
@@ -6748,8 +6744,6 @@
 				E31BE42219ED91FA006B78BB /* PGCameraRollLandingPageViewController.m */,
 				260BD0711DDE3D3C00AE6BAA /* PGPituLandingPageViewController.h */,
 				260BD0721DDE3D3C00AE6BAA /* PGPituLandingPageViewController.m */,
-				CC3335221A0BEC4800E421AC /* PGFlickrLandingPageViewController.h */,
-				CC3335231A0BEC4800E421AC /* PGFlickrLandingPageViewController.m */,
 				F18C59241A702DB900DEF77C /* PGLandingMainPageViewController.h */,
 				F18C59251A702DB900DEF77C /* PGLandingMainPageViewController.m */,
 				F2CE0E8D1DC1848A00AA2F6C /* PGLandingNavigationController.h */,
@@ -9684,7 +9678,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		502EED59CEC201E8990249C8 /* [CP] Check Pods Manifest.lock */ = {
@@ -9702,7 +9696,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		658DF9D81EDF898600F0EBCB /* Copy proper Urban Airship configuration */ = {
@@ -9787,7 +9781,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8271DCD81D46D07B00B21549 /* ShellScript */ = {
@@ -10273,7 +10267,6 @@
 				0e6f71c3b0167e8d64f39ace /* PGLoggingSetttingsViewController.m in Sources */,
 				65E025261ECA26A000C88803 /* PGCustomStickerViewController.m in Sources */,
 				ccfb36060f6f2da115b594d3 /* PGMediaNavigation.m in Sources */,
-				4a37c5bca08e6b1cd9722903 /* PGFlickrLandingPageViewController.m in Sources */,
 				F2C46E821DB6F22A00604371 /* PGIntroWizardViewController.m in Sources */,
 				e265c297713e9b6e3f04b533 /* PGView.m in Sources */,
 				7f8d860833dd0b905e33e418 /* PGPreviewViewController.m in Sources */,
@@ -10317,7 +10310,7 @@
 				65CB1EC01F0180A300B3D9B1 /* PGPartyFileInfo.m in Sources */,
 				656FC3AC1EC6744800433269 /* UIImage+Fixup.m in Sources */,
 				F2E7852C1DDA782F0074FFB7 /* PGSocialSource.m in Sources */,
-				F24DA7D71EAEA13800C24AAB /* BuildFile in Sources */,
+				F24DA7D71EAEA13800C24AAB /* (null) in Sources */,
 				F20630211F03291A00A369EB /* PGCloudAssetCategory.m in Sources */,
 				F21185BC1EBBD9CD00D8D073 /* PGInAppMessageManager.m in Sources */,
 				8257D6401E94559000EEC08F /* PGPreviewDrawerViewController.m in Sources */,
@@ -10483,7 +10476,6 @@
 				EDD33F6B1EF9CE520028DBC8 /* PGMetarLocation.m in Sources */,
 				EDD33F921EF9CE520028DBC8 /* PGWatermarkOperationHPMetar.m in Sources */,
 				EDD33F681EF9CE520028DBC8 /* PGMetarImage.m in Sources */,
-				CC3335241A0BEC4800E421AC /* PGFlickrLandingPageViewController.m in Sources */,
 				929B99F71EA801F200A2CF0E /* PGGoogleLandingPageViewController.m in Sources */,
 				F2C46E811DB6F21300604371 /* PGIntroWizardViewController.m in Sources */,
 				82E97D111DB97FFD00946555 /* PGResetSprocketViewController.m in Sources */,

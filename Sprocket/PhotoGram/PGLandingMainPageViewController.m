@@ -10,7 +10,6 @@
 // the license agreement.
 //
 
-#import <HPPRFlickrPhotoProvider.h>
 #import <HPPRCameraRollPhotoProvider.h>
 
 #import "PGLandingMainPageViewController.h"
@@ -360,11 +359,6 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
     [self showSocialNetwork:PGSocialSourceTypeInstagram includeLogin:NO];
 }
 
-- (IBAction)flickrTapped:(id)sender
-{
-    [self showSocialNetwork:PGSocialSourceTypeFlickr includeLogin:NO];
-}
-
 - (IBAction)linkScanTapped:(id)sender
 {
     [self presentViewController:[PGScanViewController new] animated:YES completion:nil];
@@ -442,9 +436,6 @@ NSInteger const kMantaErrorNoSession        = 0xFF00;
             break;
         case PGSocialSourceTypeInstagram:
             [self instagramTapped:button];
-            break;
-        case PGSocialSourceTypeFlickr:
-            [self flickrTapped:button];
             break;
         case PGSocialSourceTypeLocalPhotos:
             [self cameraRollTapped:button];

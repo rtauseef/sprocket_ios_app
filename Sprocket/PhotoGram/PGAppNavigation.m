@@ -50,8 +50,6 @@ NSString * const kSurveyNotifyURL = @"www.surveymonkey.com/r/close-window";
     } else if ([location isEqualToString:@"howToAndHelp"]) {
         UIViewController *viewController = [PGAppNavigation howToAndHelpViewController];
         [[PGAppNavigation currentTopViewController] presentViewController:viewController animated:YES completion:nil];
-    } else if ([location isEqualToString:@"flickr"]) {
-        [PGAppNavigation goToSocialSource:PGSocialSourceTypeFlickr];
     } else if ([location isEqualToString:@"instagram"]) {
         [PGAppNavigation goToSocialSource:PGSocialSourceTypeInstagram];
     } else if ([location isEqualToString:@"facebook"]) {

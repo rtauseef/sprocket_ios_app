@@ -24,10 +24,6 @@
 
 #define FACEBOOK_PERMISSIONS @[@"public_profile", @"user_videos", @"user_photos"]
 
-#define FLICKR_MAX_PER_PAGE @"50"
-#define FLICKR_MAX_FAVORITES_PER_PAGE @"50"
-#define FLICKR_INVALID_TOKEN_ERROR_CODE 98
-
 #define NO_INTERNET_CONNECTION_ERROR_CODE -1009
 #define THE_REQUEST_TIME_OUT_ERROR_CODE -1001
 #define THE_NETWORK_CONNECTION_WAS_LOST_ERROR_CODE -1005
@@ -71,10 +67,6 @@
 
 extern NSString * const kHPPRTrackableScreenNameKey;
 extern NSString * const kHPPRProviderName;
-
-@property (nonatomic, strong) NSString *flickrAppKey;
-@property (nonatomic, strong) NSString *flickrAppSecret;
-@property (nonatomic, strong) NSString *flickrAuthCallbackURL;
 
 @property (nonatomic, strong) NSString *instagramClientId;
 @property (nonatomic, strong) NSString *instagramRedirectURL;

@@ -21,7 +21,6 @@
 #define HIDE_SWIPE_COACH_MARKS_NOTIFICATION @"HideSwipeCoachMarksNotification"
 
 #define FACEBOOK_DISPLAY_NAME @"Facebook"
-#define FLICKR_DISPLAY_NAME @"Flickr"
 #define INSTAGRAM_DISPLAY_NAME @"Instagram"
 
 #define COACH_MARK_ANIMATION_DURATION 0.4f
