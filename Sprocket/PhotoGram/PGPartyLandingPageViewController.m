@@ -53,7 +53,7 @@
 
 - (IBAction)signInButtonTapped:(id)sender
 {
-    [[HPPRCameraRollLoginProvider sharedInstance] loginWithCompletion:^(BOOL loggedIn, NSError *error) {
+    [[HPPRFolderPhotoProvider sharedInstance].loginProvider loginWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             [self showPhotoGallery];
             [[PGAnalyticsManager sharedManager] trackAuthRequestActivity:kEventAuthRequestOkAction
@@ -77,21 +77,19 @@
     PGSocialSource *socialSource = [[PGSocialSourcesManager sharedInstance] socialSourceByType:PGSocialSourceTypePartyFolder];
     [self willSignInToSocialSource:socialSource];
     
-    [[HPPRCameraRollLoginProvider sharedInstance] checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
+    [[HPPRFolderPhotoProvider sharedInstance].loginProvider checkStatusWithCompletion:^(BOOL loggedIn, NSError *error) {
         if (loggedIn) {
             [self didSignInToSocialSource:socialSource];
             
             [self presentPhotoGalleryWithSettings:^(HPPRSelectPhotoCollectionViewController *viewController) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [spinner removeFromSuperview];
-                    
-                    viewController.provider = [HPPRPartyFolderPhotoProvider sharedInstance];
-                    viewController.customNoPhotosMessage = NSLocalizedString(@"No Party images found", @"Message displayed when no images from the Party folder can be found");
-                    
-                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
-                    UIViewController *partyViewController = [storyboard instantiateViewControllerWithIdentifier:@"PGPartyViewController"];
-                    viewController.childViewController = partyViewController;
-                });
+                [spinner removeFromSuperview];
+                
+                viewController.provider = [HPPRPartyFolderPhotoProvider sharedInstance];
+                viewController.customNoPhotosMessage = NSLocalizedString(@"No Party images found", @"Message displayed when no images from the Party folder can be found");
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PG_Main" bundle:nil];
+                UIViewController *partyViewController = [storyboard instantiateViewControllerWithIdentifier:@"PGPartyViewController"];
+                viewController.childViewController = partyViewController;
             }];
             
         } else {
