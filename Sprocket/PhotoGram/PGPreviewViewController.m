@@ -1106,11 +1106,11 @@ static CGFloat kAspectRatio2by3 = 0.66666666667;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self dismissProgressView];
-            if (wasAddedToQueue && !isPrinterConnected) {
-                [self showAddToQueueAlert:numberOfPrintsAdded withCompletion:nil];
-            } else if (isPrinterConnected && !isPrinting) {
-                [self resumePrintingWithDrawerOpened:wasDrawerOpened andNumberOfPrintsAddedToQueue:numberOfPrintsAdded];
-            }
+//            if (wasAddedToQueue && !isPrinterConnected) {
+//                [self showAddToQueueAlert:numberOfPrintsAdded withCompletion:nil];
+//            } else if (isPrinterConnected && !isPrinting) {
+//                [self resumePrintingWithDrawerOpened:wasDrawerOpened andNumberOfPrintsAddedToQueue:numberOfPrintsAdded];
+//            }
         });
     }];
     

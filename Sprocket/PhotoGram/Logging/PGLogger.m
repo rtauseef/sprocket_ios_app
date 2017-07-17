@@ -15,7 +15,7 @@
 // Hi James!  This is where you turn it all off :-)
 #ifdef DEBUG
 int pgLogLevel = PGLogLevelVerbose;
-int ddLogLevel = DDLogLevelInfo;
+int ddLogLevel = DDLogLevelVerbose;
 #else
 int pgLogLevel = PGLogLevelInfo;
 int ddLogLevel = DDLogLevelInfo;
