@@ -13,8 +13,6 @@
 #import <MPSecretKeeper.h>
 
 extern NSString * const kSecretKeeperEntryInstagramClientId;
-extern NSString * const kSecretKeeperEntryFlickrAppKey;
-extern NSString * const kSecretKeeperEntryFlickrAppSecret;
 extern NSString * const kSecretKeeperEntryQZoneAppId;
 extern NSString * const kSecretKeeperEntryGoogleAnalyticsTrakingId;
 extern NSString * const kSecretKeeperEntryGoogleAnalyticsTrakingIdDev;

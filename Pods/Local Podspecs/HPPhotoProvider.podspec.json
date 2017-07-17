@@ -2,7 +2,7 @@
   "name": "HPPhotoProvider",
   "version": "0.13.32",
   "summary": "Photo provider for the social networks.",
-  "description": "Selection of photo from Facebook, Flickr or Instagram.",
+  "description": "Selection of photo from Facebook, Google or Instagram.",
   "homepage": "http://hp.com",
   "license": "MIT",
   "authors": {
@@ -34,9 +34,6 @@
   ],
   "dependencies": {
     "AFNetworking": [
-
-    ],
-    "FlickrKit": [
 
     ],
     "Google/SignIn": [

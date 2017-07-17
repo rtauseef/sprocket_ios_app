@@ -35,7 +35,6 @@ PODS:
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (1.0.10):
     - FirebaseCore (~> 3.6)
-  - FlickrKit (1.0.9)
   - Google/Core (3.1.0):
     - FirebaseAnalytics (~> 3.2)
   - Google/SignIn (3.1.0):
@@ -70,7 +69,6 @@ PODS:
   - HPLinkUtils (0.8.0)
   - HPPhotoProvider (0.13.32):
     - AFNetworking
-    - FlickrKit
     - Google/SignIn
   - iCarousel (1.8)
   - LivePaperSDK (2.0.0):
@@ -103,10 +101,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HPPhotoProvider:
-    :commit: 86d1823db7905c29230510cd5fe2eac7d0e404f6
+    :commit: 63ad076ccce61399040c13aa78d5097101452cb7
     :git: https://github.com/IPGPTP/hp_photo_provider
   MobilePrintSDK:
-    :commit: 36c2adc491e96fd45c462dd7d4875574e6b91a14
+    :commit: 61e3c2e554f58f69ef62fcf1fc7c9606d6bf383b
     :git: https://github.com/IPGPTP/ios-print-sdk.git
 
 SPEC CHECKSUMS:
@@ -118,7 +116,6 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
-  FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
   Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
   GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
@@ -127,13 +124,13 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   HPLinkUtils: 86ff98d9afc49c6571f9f7d07fdf6a4a36ded70f
-  HPPhotoProvider: '08358b88169d402942d7a48e86446188d7c5028e'
+  HPPhotoProvider: 1ba34107f473f067cfbccd5ba9f1018656af0df2
   iCarousel: f3e180611656b4b83e9f36e55c6f95a73b714b81
   LivePaperSDK: f7e2ff47f9c3ac71c3928b5d33769b6b3dc23d15
   MobilePrintSDK: 21bba3229fdd863ac0248a7af5956b09d27c615a
   TTTAttributedLabel: c8f3801a6463b9c9b82b0c84c465fdda9751892a
   UrbanAirship-iOS-SDK: 51a0deb935d0be5905473654316ad1b6f09f3353
 
-PODFILE CHECKSUM: 47e2d3e4171cd85cb38973e17af02ba5c8c101a8
+PODFILE CHECKSUM: f5b185fcfbd6d686ee37e78c57f84c2d672782ea
 
 COCOAPODS: 1.2.1

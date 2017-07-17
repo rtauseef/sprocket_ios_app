@@ -14,7 +14,6 @@
 
 typedef NS_ENUM(NSUInteger, HPPRAuthService) {
     HPPRAuthServiceInstagram,
-    HPPRAuthServiceFlickr,
     HPPRAuthServiceFacebook,
     HPPRAuthServiceQzone
 };

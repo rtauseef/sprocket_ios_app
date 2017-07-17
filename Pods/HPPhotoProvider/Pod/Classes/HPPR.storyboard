@@ -24,7 +24,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hb1-ST-9Ac"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jAx-bQ-6cK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KDP-Ka-xEI">
@@ -160,7 +160,7 @@
                                 </cells>
                             </collectionView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6q-do-DUT" customClass="HPPRNoInternetConnectionRetryView">
-                                <rect key="frame" x="27.5" y="305.5" width="320" height="56"/>
+                                <rect key="frame" x="27.5" y="273.5" width="320" height="56"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="ICe-9G-sXR"/>
@@ -174,14 +174,14 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mp6-Z4-5jW" customClass="HPPRNoInternetConnectionMessageView">
-                                <rect key="frame" x="0.0" y="75" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="21"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="VDU-3Z-1Gi"/>
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The user account is private." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fv-hU-KtF">
-                                <rect key="frame" x="0.0" y="323" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="291" width="375" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="2gz-gj-S9j"/>
                                 </constraints>
@@ -190,7 +190,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Photos Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZH-Av-Kfr">
-                                <rect key="frame" x="0.0" y="323" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="291" width="375" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="BxT-rq-E3M"/>
                                 </constraints>
@@ -344,62 +344,6 @@
             </objects>
             <point key="canvasLocation" x="5897" y="2554"/>
         </scene>
-        <!--Flickr Login View Controller-->
-        <scene sceneID="8Dr-LT-cSz">
-            <objects>
-                <viewController storyboardIdentifier="HPPRFlickrLoginViewController" id="IoE-Bq-MVj" userLabel="Flickr Login View Controller" customClass="HPPRFlickrLoginViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ki8-xu-c1p"/>
-                        <viewControllerLayoutGuide type="bottom" id="zTm-Uy-8sh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="f0d-B5-vzQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92y-cD-gmz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqv-eK-FQv" userLabel="Alert Strip View" customClass="HPPRAlertStripView">
-                                <rect key="frame" x="0.0" y="533" width="375" height="90"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="Hv0-ho-ulw"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="92y-cD-gmz" secondAttribute="trailing" id="CNU-SQ-IOp"/>
-                            <constraint firstItem="92y-cD-gmz" firstAttribute="top" secondItem="f0d-B5-vzQ" secondAttribute="top" id="Ky4-Fw-ROx"/>
-                            <constraint firstItem="92y-cD-gmz" firstAttribute="leading" secondItem="f0d-B5-vzQ" secondAttribute="leading" id="QAA-7o-nDs"/>
-                            <constraint firstAttribute="centerX" secondItem="sqv-eK-FQv" secondAttribute="centerX" id="Qz1-zr-BbP"/>
-                            <constraint firstAttribute="trailing" secondItem="sqv-eK-FQv" secondAttribute="trailing" id="Ucu-Ca-xx5"/>
-                            <constraint firstItem="zTm-Uy-8sh" firstAttribute="top" secondItem="sqv-eK-FQv" secondAttribute="bottom" id="cLW-X3-co7"/>
-                            <constraint firstItem="sqv-eK-FQv" firstAttribute="leading" secondItem="f0d-B5-vzQ" secondAttribute="leading" id="myJ-xG-Mto"/>
-                            <constraint firstAttribute="bottom" secondItem="92y-cD-gmz" secondAttribute="bottom" id="qzc-jU-S60"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Jnh-n5-s8x">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="sc1-5D-PJm">
-                            <connections>
-                                <action selector="cancelButtonTapped:" destination="IoE-Bq-MVj" id="C8V-dI-kTN"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="alertStripView" destination="sqv-eK-FQv" id="jWk-zx-bbi"/>
-                        <outlet property="cancelButton" destination="sc1-5D-PJm" id="vfy-iW-Ys3"/>
-                        <outlet property="webView" destination="92y-cD-gmz" id="mjS-pF-hAF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sQD-Oq-eqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4161" y="3701"/>
-        </scene>
         <!--Google Login View Controller-->
         <scene sceneID="q6L-NO-kqd">
             <objects>
@@ -445,24 +389,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iuf-Td-hzG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4161" y="4399"/>
-        </scene>
-        <!--Flickr Navigation Controller-->
-        <scene sceneID="0tf-bg-7ES">
-            <objects>
-                <navigationController storyboardIdentifier="HPPRFlickrLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="cLo-O4-i6G" userLabel="Flickr Navigation Controller" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T3g-kr-9iG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="IoE-Bq-MVj" kind="relationship" relationship="rootViewController" id="xnP-qX-dIA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L3Y-dX-bec" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3475" y="3701"/>
         </scene>
         <!--Instagram Login View Controller-->
         <scene sceneID="01V-Pa-eHt">
@@ -525,7 +451,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRInstagramLoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="d1M-ws-WX4" userLabel="Instagram Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="PU6-hx-jyi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="PU6-hx-jyi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -547,11 +473,11 @@
                         <viewControllerLayoutGuide type="bottom" id="6mq-47-dMO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="v8f-WU-b8g" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6w5-zy-ZhI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="cgE-I5-SCA" userLabel="Header View">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
@@ -587,10 +513,10 @@
                                 </view>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wnq-5T-0pq">
-                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="291.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryb-PZ-5MH" customClass="HPPRNoInternetConnectionRetryView">
-                                <rect key="frame" x="27.5" y="305.5" width="320" height="56"/>
+                                <rect key="frame" x="27.5" y="273.5" width="320" height="56"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="FB2-kp-jNb"/>
@@ -598,7 +524,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vio-gn-alT">
-                                <rect key="frame" x="0.0" y="323" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="291" width="375" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="W1P-JJ-3ld"/>
                                 </constraints>
@@ -655,7 +581,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HPPRSelectAlbumTableViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NnT-dj-EWd" userLabel="Album Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GxV-vi-yaa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GxV-vi-yaa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -692,7 +618,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hwc-ES-QRS" userLabel="Google Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2QO-0F-x1I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2QO-0F-x1I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -731,7 +657,7 @@
         <image name="HPPRCameraCell.png" width="52" height="40"/>
         <image name="HPPRSearch.png" width="21" height="21"/>
         <image name="Loading_Image.png" width="13" height="13"/>
-        <image name="Video.png" width="35" height="35"/>
+        <image name="Video.png" width="37" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ti8-Zn-FSC"/>

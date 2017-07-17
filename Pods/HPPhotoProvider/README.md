@@ -28,32 +28,30 @@ a) Go to http://instagram.com/developer/clients/manage/ and select the option "R
 b) Select an "Application Name", an "OAuth redirect_uri" and make sure the option "Disable implicit OAuth" is selected.
 
 
-2) Configure to AppDelegate for those social networks that requires (Facebook, Flickr):
+2) Configure to AppDelegate for those social networks that requires (Facebook, Google, Qzone):
 
 a) Configure the delegate method application:openURL:sourceApplication:annotation :
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    if ([url.scheme isEqual:@"<Flikr scheme>"]) {
-        return [[HPPRFlickrLoginProvider sharedInstance] handleOpenURL:url sourceApplication:sourceApplication];
+    if ([url.scheme isEqual:@"<Google scheme>"]) {
+        return [[HPPRGoogleLoginProvider sharedInstance] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+    } else if ([url.scheme isEqual:@"<Qzone scheme>"]) {
+        return [[HPPRQzoneLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     } else {
-        return [[HPPRFacebookLoginProvider sharedInstance] handleOpenURL:url sourceApplication:sourceApplication];
+        return [[HPPRFacebookLoginProvider sharedInstance] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
     }
 }
 
-NOTE: <Flickr scheme> should be the same you configured when the Flickr application id was created (for example hpgcflickr).
-
-
 3) Configure the <application>info.plist file:
 
-a) Add URL schemes for Facebook and Flickr:
+a) Add URL schemes for Facebook:
 
 
 URL types
 	Item 0
 		URL Schemes
-			Item 0 <Flikr scheme> (for example hpgcflickr)
-			Item 1 <fb<Facebook App Id>>  (for example fb651104071665196)
+			Item 0 <fb<Facebook App Id>>  (for example fb651104071665196)
 
 
 
@@ -61,7 +59,7 @@ b) Add FacebookAppID <Facebook App Id> (for example 651104071665196)
 
 c) Add FacebookDisplayName <Facebook Display Name> (for example HP Greeting Cards)
 
-4) Configure Instagram and Flickr in HPPR:
+4) Configure Instagram and QZone in HPPR:
 
 a) Configure Instagram:
 
@@ -74,19 +72,15 @@ a-2) redirectUrl
 [HPPR sharedInstance].instagramRedirectURL = @"hpgcig://callback";
 
 
-b) Configure Flickr:
+b) Configure Qzone:
 
-b-1) flickrAuthCallbackURL
+b-1) appId
 
-[HPPR sharedInstance].flickrAuthCallbackURL = @"hpgcflickr://callback";
+[HPPR sharedInstance].qzoneAppId = @"222222";
 
-b-2) flickrAppKey
+b-2) redirectUrl
 
-[HPPR sharedInstance].flickrAppKey = @"609e80fb396e9cef3f153e6a6c24145b";
-
-b-3) flickrAppSecret
-
-[HPPR sharedInstance].flickrAppSecret = @"3597009f3552db04";
+[HPPR sharedInstance].qzoneRedirectURL = @"www.qq.com";
 
 
 ## Author

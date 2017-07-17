@@ -15,7 +15,6 @@
 
 
 static NSString * const kAuthServiceTokenKeyInstagram = @"authtokenservice.instagram";
-static NSString * const kAuthServiceTokenKeyFlickr    = @"authtokenservice.flickr";
 static NSString * const kAuthServiceTokenKeyFacebook  = @"authtokenservice.facebook";
 static NSString * const kAuthServiceTokenKeyQzone     = @"authtokenservice.qzone";
 
@@ -48,9 +47,6 @@ static NSString * const kAuthServiceTokenKeyQzone     = @"authtokenservice.qzone
     switch (authService) {
         case HPPRAuthServiceInstagram:
             key = kAuthServiceTokenKeyInstagram;
-            break;
-        case HPPRAuthServiceFlickr:
-            key = kAuthServiceTokenKeyFlickr;
             break;
         case HPPRAuthServiceFacebook:
             key = kAuthServiceTokenKeyFacebook;

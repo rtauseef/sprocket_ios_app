@@ -13,8 +13,6 @@
 #import <HPPR.h>
 #import <MP.h>
 #import <HPPRFacebookLoginProvider.h>
-#import <HPPRFlickrPhotoProvider.h>
-#import <HPPRFlickrLoginProvider.h>
 #import <HPPRInstagramPhotoProvider.h>
 #import <DBChooser/DBChooser.h>
 #import <MPBTPrintManager.h>
@@ -60,10 +58,6 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
     
     [HPPR sharedInstance].instagramClientId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryInstagramClientId];
     [HPPR sharedInstance].instagramRedirectURL = @"http://www8.hp.com/us/en/contact-hp/contact.html";
-    
-    [HPPR sharedInstance].flickrAppKey = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryFlickrAppKey];
-    [HPPR sharedInstance].flickrAppSecret = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryFlickrAppSecret];
-    [HPPR sharedInstance].flickrAuthCallbackURL = @"hpsprocket://callback/flickr";
     
     [HPPR sharedInstance].qzoneAppId = [[PGSecretKeeper sharedInstance] secretForEntry:kSecretKeeperEntryQZoneAppId];
     [HPPR sharedInstance].qzoneRedirectURL = @"www.qq.com";
@@ -187,9 +181,7 @@ static NSUInteger const kPGAppDelegatePrinterConnectivityCheckInterval = 1;
         return YES;
     }
 
-    if ([url.scheme isEqual:@"hpsprocket"]) {
-        return [[HPPRFlickrLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    } else if ([url.scheme containsString:@"googleusercontent"]) {
+    if ([url.scheme containsString:@"googleusercontent"]) {
         return [[HPPRGoogleLoginProvider sharedInstance] handleApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
     } else if ([url.scheme caseInsensitiveCompare:@"com.hp.sprocket.deeplinks"] == NSOrderedSame) {
         [self deepLink:url.host];
